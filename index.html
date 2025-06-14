@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARABIANVILLAIN</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bunya&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: 'Bunya', sans-serif;
+      text-align: center;
+    }
+
+    h1.brand {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin-top: 2rem;
+      text-transform: uppercase;
+    }
+
+    .slogan-block {
+      text-transform: uppercase;
+      margin: 2rem auto;
+      font-size: 1rem;
+      line-height: 1.6;
+      width: 90%;
+      max-width: 700px;
+      padding: 0 1rem;
+    }
+
+    .separator {
+      width: 60px;
+      height: 2px;
+      background: white;
+      margin: 1.5rem auto;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2.5s ease-in-out forwards;
+    }
+
+    .fade-in.slow {
+      animation-duration: 5s;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .main-cta {
+      background-color: #333;
+      border: none;
+      padding: 1rem 2rem;
+      color: white;
+      font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      margin: 3rem auto;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .main-cta:hover {
+      background-color: #555;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1.brand {
+        font-size: 2.2rem;
+      }
+      .slogan-block {
+        font-size: 0.9rem;
+      }
+      .main-cta {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="brand">ARABIANVILLAIN</h1>
+
+  <div class="slogan-block">
+    A BRAND FOR THOSE WHO MOVE IN SILENCE, SPEAK THROUGH PRESENCE, AND WEAR THEIR DARKNESS WITH ELEGANCE.
+  </div>
+
+  <div class="separator"></div>
+
+  <div class="slogan-block">
+    YOU DON'T FOLLOW THE LIGHT. YOU MASTER THE SHADOW.
+  </div>
+
+  <div class="separator"></div>
+
+  <div class="slogan-block fade-in">
+    YOU LOOKED AWAY
+  </div>
+
+  <div class="slogan-block fade-in">
+    HE SUMMONED YOU
+  </div>
+
+  <div class="slogan-block fade-in slow" style="font-size: 1.4rem;">
+    LET THE VILLAIN POSSESS
+  </div>
+
+  <button class="main-cta">ENTER THE REALM</button>
+</body>
+</html>
