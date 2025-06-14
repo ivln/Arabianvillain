@@ -1,130 +1,111 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARABIANVILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
+  <title>Arabian Villain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bunya&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
-  background-color: #0a0a0a;
-  color: #ffffff;
-  font-family: 'Outfit', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Bunya&display=swap');@font-face {
+  font-family: 'LemonMilk';
+  src: url('https://fonts.cdnfonts.com/s/16720/LemonMilkRegular-X3XE2.otf') format('opentype');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Bunya', sans-serif;
   overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  text-align: center;
 }
 
 .container {
   max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
 }
 
-h1.brand-name {
-  font-size: 2.5rem;
-  letter-spacing: 4px;
-  font-family: 'Lemon Milk', sans-serif;
-  margin-bottom: 30px;
+h1.brand {
+  font-family: 'LemonMilk', sans-serif;
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
 }
 
 .brand-description {
-  font-size: 0.95rem;
-  font-weight: 200;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  color: #ccc;
+  text-transform: uppercase;
 }
 
-.divider {
-  margin: 15px auto;
-  width: 40px;
-  height: 1px;
-  background-color: #555;
+.separator {
+  margin: 20px 0;
+  border-top: 1px solid #333;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slogan {
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 18px;
+  margin: 10px 0;
   opacity: 0;
-  animation: fadeIn 2s ease forwards;
+  animation: fadeIn 2s ease-in-out forwards;
 }
 
-.slogan:nth-of-type(1) {
-  animation-delay: 0.5s;
+.slogan.delay-1 {
+  animation-delay: 1s;
 }
 
-.slogan:nth-of-type(2) {
-  animation-delay: 1.5s;
+.slogan.delay-2 {
+  animation-delay: 2s;
 }
 
-.slogan:nth-of-type(3) {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-top: 30px;
+.slogan.delay-3 {
   animation-delay: 3s;
 }
 
 @keyframes fadeIn {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-.cta-button {
-  display: inline-block;
+.enter-button {
   margin-top: 40px;
-  padding: 12px 28px;
-  background-color: #2e2e2e;
-  color: white;
-  text-decoration: none;
-  font-family: 'Lemon Milk', sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  border: none;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
+  padding: 12px 24px;
   background-color: #444;
+  color: #fff;
+  border: none;
+  font-family: 'LemonMilk', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
 }
 
-@media screen and (max-width: 600px) {
-  h1.brand-name {
-    font-size: 2rem;
-  }
-
-  .brand-description {
-    font-size: 0.85rem;
-  }
+.enter-button:hover {
+  background-color: #666;
 }
 
   </style>
-</head>
-<body>
+</head><body>
   <div class="container">
-    <h1 class="brand-name">ARABIANVILLAIN</h1><p class="brand-description">
-  A BRAND FOR THE ONES WHO NEVER FIT IN.<br>
-  A TRIBUTE TO THE DARK SIDE WITHIN.<br>
-</p>
-<div class="divider"></div>
-<p class="brand-description">
-  BORN IN SILENCE. BUILT TO DISRUPT.<br>
-  MADE FOR THOSE WHO DARE TO POSSESS THEIR TRUE NATURE.<br>
-</p>
+    <h1 class="brand">ARABIANVILLAIN</h1><div class="brand-description">
+  UNLEASH THE DEPTHS WITHIN<br>
+  WHERE DARKNESS MEETS IDENTITY
+</div>
+<div class="separator"></div>
+<div class="brand-description">
+  CLOTHING FOR THE UNSEEN, THE UNHEARD, THE UNBROKEN<br>
+  THIS IS YOUR AWAKENING
+</div>
 
-<p class="slogan">LET THE VILLAIN POSSESS</p>
+<div class="slogan delay-3">LET THE VILLAIN POSSESS</div>
 
-<a href="#" class="cta-button">ENTER TO THE REALM</a>
+<button class="enter-button" onclick="location.href='test.html'">ENTER THE REALM</button>
 
   </div>
-</body>
-</html>
+</body></html>
