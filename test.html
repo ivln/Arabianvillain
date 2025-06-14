@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arabian Villain - The Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #000000, #0d0d0d);
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }.container {
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  animation: fadeIn 2s ease-in;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.question-box {
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-in;
+}
+
+.answers button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+.answers button:hover {
+  background-color: #555;
+}
+
+.next-btn {
+  background-color: #444;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.result {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  font-weight: 600;
+  animation: fadeIn 1.5s ease-in;
+}
+
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+</head>
+<body>
+  <button class="language-toggle" onclick="toggleLanguage()">مصرى</button>  <div class="container">
+    <h1 id="intro">THE TEST BEGINS. ARE YOU READY TO MEET THE VILLAIN?</h1>
+    <div class="question-box" id="quizBox">
+      <div id="question">Loading...</div>
+      <div class="answers" id="answers"></div>
+      <button class="next-btn" onclick="nextQuestion()">Next</button>
+    </div>
+    <div class="result" id="result"></div>
+  </div>  <script>
+    const quizData = {
+      en: [
+        {
+          q: "What's your reaction when someone crosses your boundaries?",
+          options: ["I stay silent", "I try to please them anyway", "I confront them directly", "I manipulate the situation"]
+        },
+        {
+          q: "Do you often hide your real emotions?",
+          options: ["Always", "Sometimes", "Rarely", "Never"]
+        },
+        {
+          q: "What gives you power?",
+          options: ["Silence", "Control", "Revenge", "Freedom"]
+        },
+        {
+          q: "Do you feel people understand the real you?",
+          options: ["Not at all", "A little", "Sometimes", "Yes"]
+        }
+      ],
+      ar: [
+        {
+          q: "بتتصرف ازاي لما حد بيعدي حدودك؟",
+          options: ["باسكت", "بحاول أرضيه برضو", "بواجهه على طول", "بلعبها بذكاء"]
+        },
+        {
+          q: "بتخبي مشاعرك الحقيقية كتير؟",
+          options: ["طول الوقت", "أوقات", "نادراً", "لأ"]
+        },
+        {
+          q: "ايه اللي بيديك القوة؟",
+          options: ["الصمت", "التحكم", "الانتقام", "الحرية"]
+        },
+        {
+          q: "حاسس الناس فاهمين حقيقتك؟",
+          options: ["ولا واحد", "شوية", "أوقات", "آه"]
+        }
+      ]
+    };
+
+    let currentLang = 'en';
+    let currentQ = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const answersEl = document.getElementById('answers');
+    const resultEl = document.getElementById('result');
+
+    function renderQuestion() {
+      const data = quizData[currentLang][currentQ];
+      questionEl.textContent = data.q;
+      answersEl.innerHTML = '';
+      data.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.onclick = () => {
+          score += idx;
+          nextQuestion();
+        };
+        answersEl.appendChild(btn);
+      });
+    }
+
+    function nextQuestion() {
+      currentQ++;
+      if (currentQ < quizData[currentLang].length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('quizBox').style.display = 'none';
+      const resultText = [
+        'You are The Silent One.',
+        'You are The Pleaser.',
+        'You are The Rebel.',
+        'You are The Mastermind.'
+      ];
+      const resultIndex = Math.min(Math.floor(score / quizData[currentLang].length), 3);
+      resultEl.textContent = resultText[resultIndex];
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      document.querySelector('.language-toggle').textContent = currentLang === 'en' ? 'مصرى' : 'English';
+      currentQ = 0;
+      score = 0;
+      document.getElementById('quizBox').style.display = 'block';
+      resultEl.textContent = '';
+      renderQuestion();
+    }
+
+    renderQuestion();
+  </script></body>
+</html>
