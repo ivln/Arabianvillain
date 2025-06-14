@@ -1,65 +1,63 @@
 <!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARABIAN VILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Jost:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARABIANVILLAIN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-dark: #1c1c1c;
-      --accent-gray: #333;
-      --white: #fff;
-      --highlight: #e50914;
-    }* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap');@font-face {
+  font-family: 'Lemon Milk';
+  src: url('https://fonts.cdnfonts.com/s/16299/LemonMilkRegular-X3XE2.otf') format('opentype');
 }
 
 body {
-  background-color: var(--primary-dark);
-  color: var(--white);
-  font-family: 'Jost', sans-serif;
-  overflow-x: hidden;
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   text-align: center;
+  padding: 20px;
 }
 
 h1.brand {
-  font-family: 'Bungee', sans-serif;
-  font-size: 2.5rem;
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: 2.8rem;
   letter-spacing: 2px;
 }
 
-p.tagline {
-  font-size: 1rem;
-  margin-top: 1rem;
+p.definition {
   font-weight: 300;
-  opacity: 0.85;
+  font-size: 1rem;
+  max-width: 600px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
 }
 
-.divider {
-  margin: 1rem 0;
-  height: 1px;
-  background-color: #444;
-  opacity: 0.4;
-}
-
-.fade-in {
+.fade {
   opacity: 0;
-  animation: fadeIn 2s forwards;
+  animation: fadeIn 3s ease-in forwards;
 }
 
-.fade-in.delay {
+.fade.delay1 {
+  animation-delay: 0.5s;
+}
+
+.fade.delay2 {
   animation-delay: 2s;
 }
 
-.fade-in.slow {
-  animation-delay: 4s;
+.fade.delay3 {
+  animation-delay: 3.5s;
 }
 
 @keyframes fadeIn {
@@ -68,122 +66,114 @@ p.tagline {
   }
 }
 
-.cta-button {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.8rem 2rem;
-  background-color: var(--accent-gray);
-  color: var(--white);
-  font-family: 'Bungee', sans-serif;
-  font-size: 0.9rem;
+button {
+  margin-top: 40px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-family: 'Lemon Milk', sans-serif;
+  background-color: #333;
+  color: white;
   border: none;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.3s;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.cta-button:hover {
-  background-color: #444;
+button:hover {
+  background-color: #555;
 }
 
 .hidden {
   display: none;
 }
 
-/* Second Page Styling */
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 3rem;
+.test-page {
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: auto;
+  font-size: 1rem;
 }
 
-.section .box {
-  background: #222;
-  padding: 1.5rem;
-  border-radius: 8px;
+.question {
+  margin-bottom: 20px;
 }
 
-.quiz-section {
-  margin-top: 1rem;
-  text-align: left;
-}
-
-.quiz-section label {
-  display: block;
-  margin: 0.5rem 0;
-}
-
-.lang-toggle {
-  margin: 1rem 0;
+.lang-switch {
+  margin: 20px 0;
 }
 
   </style>
 </head><body>
-  <div class="container" id="landing">
+  <div class="container" id="main-page">
     <h1 class="brand">ARABIANVILLAIN</h1>
-    <p class="tagline">EXPRESS YOUR HIDDEN SELF THROUGH BOLD ATTIRE</p>
-    <div class="divider"></div>
-    <p class="tagline">UNLEASH THE VILLAIN WITHIN THROUGH IDENTITY & FASHION</p>
-    <div class="divider"></div>
-    <h2 class="fade-in">YOU LOOKED AWAY</h2>
-    <h2 class="fade-in delay">HE SUMMONED YOU</h2>
-    <h2 class="fade-in slow">LET THE VILLAIN <span style="color: var(--highlight);">POSSESS</span></h2>
-    <a href="#realm" class="cta-button">ENTER THE REALM</a>
-  </div>  <div class="container hidden" id="realm">
-    <h2 class="brand">THE REALM</h2>
-    <div class="section">
-      <div class="box">
-        <h3>🧠 Personality Test</h3>
-        <p>Discover the villain inside you.</p>
-        <div class="lang-toggle">
-          <label><input type="radio" name="lang" value="en" checked> English</label>
-          <label><input type="radio" name="lang" value="ar"> Egyptian Arabic</label>
-        </div>
-        <form id="quiz-form">
-          <div class="quiz-section">
-            <p>1. How do you react when someone disrespects you?</p>
-            <label><input type="radio" name="q1" value="silent"> Stay silent and walk away</label>
-            <label><input type="radio" name="q1" value="please"> Try to make peace</label>
-            <label><input type="radio" name="q1" value="rebel"> Talk back directly</label>
-            <label><input type="radio" name="q1" value="manipulate"> Use words smartly later</label><p>2. What drives you?</p>
-        <label><input type="radio" name="q2" value="control"> Control</label>
-        <label><input type="radio" name="q2" value="acceptance"> Acceptance</label>
-        <label><input type="radio" name="q2" value="freedom"> Freedom</label>
-        <label><input type="radio" name="q2" value="revenge"> Revenge</label>
-
-        <p>3. How do people describe you?</p>
-        <label><input type="radio" name="q3" value="quiet"> Quiet but deep</label>
-        <label><input type="radio" name="q3" value="sweet"> Kind and caring</label>
-        <label><input type="radio" name="q3" value="wild"> Outspoken and wild</label>
-        <label><input type="radio" name="q3" value="clever"> Clever and calculating</label>
-
-        <br><br>
-        <button type="submit" class="cta-button">Reveal Your Villain</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="box">
-    <h3>🌀 Rituals (Coming Soon)</h3>
-    <p>Unlock daily acts of power & transformation.</p>
-  </div>
-
-  <div class="box">
-    <h3>👁 Characters (Coming Soon)</h3>
-    <p>Meet the archetypes that rule the realm.</p>
-  </div>
-</div>
+    <p class="definition">
+      WE ARE NOT HERE TO SELL CLOTHES.<br>
+      WE ARE HERE TO AWAKEN WHAT YOU'VE BURIED.<br><br>
+      THIS IS NOT A BRAND. IT'S A POSSESSION.<br>
+      ONE YOU'VE BEEN SUMMONED TO.<br>
+    </p>
+    <h2 class="fade delay1">YOU LOOKED AWAY</h2>
+    <h3 class="fade delay2">HE SUMMONED YOU</h3>
+    <h2 class="fade delay3">LET THE VILLAIN POSSESS</h2>
+    <button onclick="showTestPage()">ENTER THE REALM</button>
+  </div>  <div class="test-page hidden" id="test-page">
+    <div class="lang-switch">
+      <label>
+        <input type="radio" name="lang" value="en" checked onchange="switchLanguage('en')"> English
+      </label>
+      <label>
+        <input type="radio" name="lang" value="ar" onchange="switchLanguage('ar')"> Egyptian Arabic
+      </label>
+    </div><form id="quiz-form">
+  <div id="questions"></div>
+  <button type="submit">Submit</button>
+</form>
 
   </div>  <script>
-    document.querySelector('.cta-button').addEventListener('click', function (e) {
-      e.preventDefault();
-      document.getElementById('landing').classList.add('hidden');
-      document.getElementById('realm').classList.remove('hidden');
-    });
+    const questionsData = {
+      en: [
+        { q: "What's your first instinct in conflict?", a: ["Stay silent", "Please others", "Rebel", "Manipulate"] },
+        { q: "How do you deal with rejection?", a: ["Withdraw", "Blame yourself", "Get angry", "Plot quietly"] },
+        { q: "What power tempts you the most?", a: ["Control", "Freedom", "Respect", "Influence"] },
+        { q: "What are you hiding most from others?", a: ["Fear", "Sadness", "Rage", "Truth"] },
+        { q: "What role do you play in your group?", a: ["The quiet one", "The supporter", "The wild card", "The planner"] },
+      ],
+      ar: [
+        { q: "أول رد فعلك في الخناقة؟", a: ["بسكت", "أرضّي اللي قدامي", "أثور", "ألف وأدور"] },
+        { q: "بتتعامل إزاي مع الرفض؟", a: ["أنسحب", "ألوم نفسي", "أتنرفز", "أخطط في سِرّي"] },
+        { q: "أكتر قوة بتشدك؟", a: ["السيطرة", "الحرية", "الهيبة", "النفوذ"] },
+        { q: "مخبي إيه عن الناس؟", a: ["الخوف", "الحزن", "الغضب", "الحقيقة"] },
+        { q: "دورك إيه وسط شلتك؟", a: ["الساكت", "المساند", "العشوائي", "المدبّر"] },
+      ]
+    };
 
-    document.getElementById('quiz-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert("Your inner villain has been revealed. (Feature under construction)");
-    });
+    function showTestPage() {
+      document.getElementById('main-page').classList.add('hidden');
+      document.getElementById('test-page').classList.remove('hidden');
+      renderQuestions('en');
+    }
+
+    function switchLanguage(lang) {
+      renderQuestions(lang);
+    }
+
+    function renderQuestions(lang) {
+      const container = document.getElementById('questions');
+      container.innerHTML = '';
+      questionsData[lang].forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+        const q = document.createElement('p');
+        q.textContent = `${index + 1}. ${item.q}`;
+        div.appendChild(q);
+        item.a.forEach((choice, cIdx) => {
+          const label = document.createElement('label');
+          label.innerHTML = `
+            <input type="radio" name="q${index}" value="${choice}" required>
+            ${choice}<br>
+          `;
+          div.appendChild(label);
+        });
+        container.appendChild(div);
+      });
+    }
   </script></body></html>
