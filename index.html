@@ -1,67 +1,65 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ARABIAN VILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bunya&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/lemon-milk" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Jost:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
-  font-family: 'Bunya', sans-serif;
-  background-color: #0a0a0a;
-  color: white;
+    :root {
+      --primary-dark: #1c1c1c;
+      --accent-gray: #333;
+      --white: #fff;
+      --highlight: #e50914;
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-dark);
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
   overflow-x: hidden;
 }
 
-h1, .brand-name {
-  font-family: 'Lemon Milk', sans-serif;
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+h1.brand {
+  font-family: 'Bungee', sans-serif;
+  font-size: 2.5rem;
   letter-spacing: 2px;
 }
 
-.section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
+p.tagline {
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 .divider {
   margin: 1rem 0;
-  height: 2px;
-  width: 80%;
+  height: 1px;
   background-color: #444;
-}
-
-.cta-button {
-  margin-top: 2rem;
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-family: 'Lemon Milk', sans-serif;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-}
-
-.cta-button:hover {
-  background-color: #555;
+  opacity: 0.4;
 }
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn 2s ease-in forwards;
+  animation: fadeIn 2s forwards;
 }
 
 .fade-in.delay {
   animation-delay: 2s;
+}
+
+.fade-in.slow {
+  animation-delay: 4s;
 }
 
 @keyframes fadeIn {
@@ -70,63 +68,122 @@ h1, .brand-name {
   }
 }
 
-@media (max-width: 768px) {
-  h1, h2, p {
-    font-size: 90%;
-  }
+.cta-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  background-color: var(--accent-gray);
+  color: var(--white);
+  font-family: 'Bungee', sans-serif;
+  font-size: 0.9rem;
+  border: none;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #444;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Second Page Styling */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.section .box {
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.quiz-section {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.quiz-section label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.lang-toggle {
+  margin: 1rem 0;
 }
 
   </style>
-</head>
-<body>
-  <div class="section">
-    <h1 class="brand-name">ARABIANVILLAIN</h1>
+</head><body>
+  <div class="container" id="landing">
+    <h1 class="brand">ARABIANVILLAIN</h1>
+    <p class="tagline">EXPRESS YOUR HIDDEN SELF THROUGH BOLD ATTIRE</p>
     <div class="divider"></div>
-    <p style="max-width: 600px; font-weight: 300;">UNVEIL YOUR DARKEST LAYERS AND EXPRESS YOUR INNER VILLAIN THROUGH BOLD FASHION, FEARLESS ATTITUDE, AND A WORLD THAT CHOSE TO HIDE WHAT YOU SET FREE.</p>
+    <p class="tagline">UNLEASH THE VILLAIN WITHIN THROUGH IDENTITY & FASHION</p>
     <div class="divider"></div>
     <h2 class="fade-in">YOU LOOKED AWAY</h2>
-    <h2 class="fade-in">HE SUMMONED YOU</h2>
-    <h2 class="fade-in delay" style="margin-top: 1rem;">LET THE VILLAIN POSSESS</h2>
-    <a href="#test" class="cta-button">Start the Test</a>
-  </div>  <div id="test" class="section" style="background-color: #111;">
-    <h2>Choose Your Language</h2>
-    <button onclick="toggleLanguage('en')" class="cta-button">English</button>
-    <button onclick="toggleLanguage('eg')" class="cta-button">مصري</button><div id="quiz"></div>
+    <h2 class="fade-in delay">HE SUMMONED YOU</h2>
+    <h2 class="fade-in slow">LET THE VILLAIN <span style="color: var(--highlight);">POSSESS</span></h2>
+    <a href="#realm" class="cta-button">ENTER THE REALM</a>
+  </div>  <div class="container hidden" id="realm">
+    <h2 class="brand">THE REALM</h2>
+    <div class="section">
+      <div class="box">
+        <h3>🧠 Personality Test</h3>
+        <p>Discover the villain inside you.</p>
+        <div class="lang-toggle">
+          <label><input type="radio" name="lang" value="en" checked> English</label>
+          <label><input type="radio" name="lang" value="ar"> Egyptian Arabic</label>
+        </div>
+        <form id="quiz-form">
+          <div class="quiz-section">
+            <p>1. How do you react when someone disrespects you?</p>
+            <label><input type="radio" name="q1" value="silent"> Stay silent and walk away</label>
+            <label><input type="radio" name="q1" value="please"> Try to make peace</label>
+            <label><input type="radio" name="q1" value="rebel"> Talk back directly</label>
+            <label><input type="radio" name="q1" value="manipulate"> Use words smartly later</label><p>2. What drives you?</p>
+        <label><input type="radio" name="q2" value="control"> Control</label>
+        <label><input type="radio" name="q2" value="acceptance"> Acceptance</label>
+        <label><input type="radio" name="q2" value="freedom"> Freedom</label>
+        <label><input type="radio" name="q2" value="revenge"> Revenge</label>
+
+        <p>3. How do people describe you?</p>
+        <label><input type="radio" name="q3" value="quiet"> Quiet but deep</label>
+        <label><input type="radio" name="q3" value="sweet"> Kind and caring</label>
+        <label><input type="radio" name="q3" value="wild"> Outspoken and wild</label>
+        <label><input type="radio" name="q3" value="clever"> Clever and calculating</label>
+
+        <br><br>
+        <button type="submit" class="cta-button">Reveal Your Villain</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="box">
+    <h3>🌀 Rituals (Coming Soon)</h3>
+    <p>Unlock daily acts of power & transformation.</p>
+  </div>
+
+  <div class="box">
+    <h3>👁 Characters (Coming Soon)</h3>
+    <p>Meet the archetypes that rule the realm.</p>
+  </div>
+</div>
 
   </div>  <script>
-    const questions = {
-      en: [
-        { q: "What triggers your inner villain?", a: ["Being ignored", "Losing control", "Injustice", "Fake people"] },
-        { q: "How do you usually react under pressure?", a: ["Stay silent", "Explode", "Manipulate", "Pretend all is fine"] },
-        { q: "Pick your weapon", a: ["Silence", "Mind games", "Rebellion", "Charm"] },
-        { q: "What's your biggest weakness?", a: ["Fear of rejection", "Overthinking", "Trusting too fast", "Being too nice"] },
-        { q: "Where does your villain hide?", a: ["In your eyes", "In your words", "In your silence", "In your past"] },
-      ],
-      eg: [
-        { q: "إيه أكتر حاجه بتطلع الشرير اللي جواك؟", a: ["إنك تتحس تجاهل", "تحس إنك فقدت السيطرة", "الظلم", "الناس المزيفة"] },
-        { q: "بتتصرف إزاي تحت الضغط؟", a: ["بسكت", "بانفجر", "بلعبها من تحت لتحت", "أعمل نفسي تمام"] },
-        { q: "اختار سلاحك؟", a: ["السكوت", "اللعب بالعقول", "التمرد", "الأسلوب"] },
-        { q: "أكبر نقطة ضعف عندك؟", a: ["الخوف من الرفض", "تفكير زيادة عن اللزوم", "الثقة بسرعة", "إني أكون طيب زيادة"] },
-        { q: "فين بيستخبى الشرير اللي جواك؟", a: ["في عينيك", "في كلامك", "في سكوتك", "في ماضيك"] },
-      ]
-    };
+    document.querySelector('.cta-button').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('landing').classList.add('hidden');
+      document.getElementById('realm').classList.remove('hidden');
+    });
 
-    function toggleLanguage(lang) {
-      const container = document.getElementById("quiz");
-      container.innerHTML = "";
-      questions[lang].forEach((q, i) => {
-        const div = document.createElement("div");
-        div.style.margin = "1rem 0";
-        div.innerHTML = `<p>${i + 1}. ${q.q}</p>` +
-          q.a.map(ans => `<label><input type='radio' name='q${i}' value='${ans}' /> ${ans}</label><br>`).join("");
-        container.appendChild(div);
-      });
-      container.innerHTML += `<button class='cta-button' onclick='submitQuiz()'>Reveal Your Villain</button>`;
-    }
-
-    function submitQuiz() {
-      alert("Your villain is being summoned...");
-      // هنا ممكن تضيف صفحة نتائج مستقبلًا
-    }
-  </script></body>
-</html>
+    document.getElementById('quiz-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert("Your inner villain has been revealed. (Feature under construction)");
+    });
+  </script></body></html>
