@@ -1,179 +1,130 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARABIANVILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap');@font-face {
-  font-family: 'Lemon Milk';
-  src: url('https://fonts.cdnfonts.com/s/16299/LemonMilkRegular-X3XE2.otf') format('opentype');
-}
-
-body {
-  margin: 0;
-  background: black;
-  color: white;
-  font-family: 'Inter', sans-serif;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
-  padding: 20px;
+  max-width: 800px;
 }
 
-h1.brand {
+h1.brand-name {
+  font-size: 2.5rem;
+  letter-spacing: 4px;
   font-family: 'Lemon Milk', sans-serif;
-  font-size: 2.8rem;
-  letter-spacing: 2px;
+  margin-bottom: 30px;
 }
 
-p.definition {
-  font-weight: 300;
-  font-size: 1rem;
-  max-width: 600px;
-  line-height: 1.6;
+.brand-description {
+  font-size: 0.95rem;
+  font-weight: 200;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 40px;
-  border-bottom: 1px solid white;
-  padding-bottom: 20px;
+  line-height: 1.6;
+  margin-bottom: 50px;
 }
 
-.fade {
+.divider {
+  margin: 15px auto;
+  width: 40px;
+  height: 1px;
+  background-color: #555;
+}
+
+.slogan {
+  font-size: 1.1rem;
+  font-weight: 400;
   opacity: 0;
-  animation: fadeIn 3s ease-in forwards;
+  animation: fadeIn 2s ease forwards;
 }
 
-.fade.delay1 {
+.slogan:nth-of-type(1) {
   animation-delay: 0.5s;
 }
 
-.fade.delay2 {
-  animation-delay: 2s;
+.slogan:nth-of-type(2) {
+  animation-delay: 1.5s;
 }
 
-.fade.delay3 {
-  animation-delay: 3.5s;
+.slogan:nth-of-type(3) {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 30px;
+  animation-delay: 3s;
 }
 
 @keyframes fadeIn {
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-button {
+.cta-button {
+  display: inline-block;
   margin-top: 40px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-family: 'Lemon Milk', sans-serif;
-  background-color: #333;
+  padding: 12px 28px;
+  background-color: #2e2e2e;
   color: white;
+  text-decoration: none;
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
   border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #555;
+.cta-button:hover {
+  background-color: #444;
 }
 
-.hidden {
-  display: none;
-}
+@media screen and (max-width: 600px) {
+  h1.brand-name {
+    font-size: 2rem;
+  }
 
-.test-page {
-  padding: 40px 20px;
-  max-width: 700px;
-  margin: auto;
-  font-size: 1rem;
-}
-
-.question {
-  margin-bottom: 20px;
-}
-
-.lang-switch {
-  margin: 20px 0;
+  .brand-description {
+    font-size: 0.85rem;
+  }
 }
 
   </style>
-</head><body>
-  <div class="container" id="main-page">
-    <h1 class="brand">ARABIANVILLAIN</h1>
-    <p class="definition">
-      WE ARE NOT HERE TO SELL CLOTHES.<br>
-      WE ARE HERE TO AWAKEN WHAT YOU'VE BURIED.<br><br>
-      THIS IS NOT A BRAND. IT'S A POSSESSION.<br>
-      ONE YOU'VE BEEN SUMMONED TO.<br>
-    </p>
-    <h2 class="fade delay1">YOU LOOKED AWAY</h2>
-    <h3 class="fade delay2">HE SUMMONED YOU</h3>
-    <h2 class="fade delay3">LET THE VILLAIN POSSESS</h2>
-    <button onclick="showTestPage()">ENTER THE REALM</button>
-  </div>  <div class="test-page hidden" id="test-page">
-    <div class="lang-switch">
-      <label>
-        <input type="radio" name="lang" value="en" checked onchange="switchLanguage('en')"> English
-      </label>
-      <label>
-        <input type="radio" name="lang" value="ar" onchange="switchLanguage('ar')"> Egyptian Arabic
-      </label>
-    </div><form id="quiz-form">
-  <div id="questions"></div>
-  <button type="submit">Submit</button>
-</form>
+</head>
+<body>
+  <div class="container">
+    <h1 class="brand-name">ARABIANVILLAIN</h1><p class="brand-description">
+  A BRAND FOR THE ONES WHO NEVER FIT IN.<br>
+  A TRIBUTE TO THE DARK SIDE WITHIN.<br>
+</p>
+<div class="divider"></div>
+<p class="brand-description">
+  BORN IN SILENCE. BUILT TO DISRUPT.<br>
+  MADE FOR THOSE WHO DARE TO POSSESS THEIR TRUE NATURE.<br>
+</p>
 
-  </div>  <script>
-    const questionsData = {
-      en: [
-        { q: "What's your first instinct in conflict?", a: ["Stay silent", "Please others", "Rebel", "Manipulate"] },
-        { q: "How do you deal with rejection?", a: ["Withdraw", "Blame yourself", "Get angry", "Plot quietly"] },
-        { q: "What power tempts you the most?", a: ["Control", "Freedom", "Respect", "Influence"] },
-        { q: "What are you hiding most from others?", a: ["Fear", "Sadness", "Rage", "Truth"] },
-        { q: "What role do you play in your group?", a: ["The quiet one", "The supporter", "The wild card", "The planner"] },
-      ],
-      ar: [
-        { q: "أول رد فعلك في الخناقة؟", a: ["بسكت", "أرضّي اللي قدامي", "أثور", "ألف وأدور"] },
-        { q: "بتتعامل إزاي مع الرفض؟", a: ["أنسحب", "ألوم نفسي", "أتنرفز", "أخطط في سِرّي"] },
-        { q: "أكتر قوة بتشدك؟", a: ["السيطرة", "الحرية", "الهيبة", "النفوذ"] },
-        { q: "مخبي إيه عن الناس؟", a: ["الخوف", "الحزن", "الغضب", "الحقيقة"] },
-        { q: "دورك إيه وسط شلتك؟", a: ["الساكت", "المساند", "العشوائي", "المدبّر"] },
-      ]
-    };
+<p class="slogan">LET THE VILLAIN POSSESS</p>
 
-    function showTestPage() {
-      document.getElementById('main-page').classList.add('hidden');
-      document.getElementById('test-page').classList.remove('hidden');
-      renderQuestions('en');
-    }
+<a href="#" class="cta-button">ENTER TO THE REALM</a>
 
-    function switchLanguage(lang) {
-      renderQuestions(lang);
-    }
-
-    function renderQuestions(lang) {
-      const container = document.getElementById('questions');
-      container.innerHTML = '';
-      questionsData[lang].forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'question';
-        const q = document.createElement('p');
-        q.textContent = `${index + 1}. ${item.q}`;
-        div.appendChild(q);
-        item.a.forEach((choice, cIdx) => {
-          const label = document.createElement('label');
-          label.innerHTML = `
-            <input type="radio" name="q${index}" value="${choice}" required>
-            ${choice}<br>
-          `;
-          div.appendChild(label);
-        });
-        container.appendChild(div);
-      });
-    }
-  </script></body></html>
+  </div>
+</body>
+</html>
