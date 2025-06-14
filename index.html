@@ -3,75 +3,130 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: black;
-      color: white;
-      font-family: 'Rajdhani', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-      text-align: center;
-    }
-    h1 {
-      font-family: 'Jura', sans-serif;
-      font-size: 3rem;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
-    }
-    .fade-text {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-    .fade-in {
-      opacity: 1;
-    }
-    .fade-out {
-      opacity: 0;
-    }
-    .cta-button {
-      margin-top: 40px;
-      background-color: #2f2f2f;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-family: 'Jura', sans-serif;
-      cursor: pointer;
-      letter-spacing: 1px;
-    }
-    .cta-button:hover {
-      background-color: #444;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.tagline, .slogan {
+  font-size: 1.2rem;
+  max-width: 90vw;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  transition: all 1s ease-in-out;
+}
+
+.slogan {
+  font-size: 2rem;
+  margin-top: 30px;
+  letter-spacing: 3px;
+}
+
+.cta-button {
+  margin-top: 40px;
+  padding: 12px 24px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .slogan {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
   </style>
 </head>
 <body>
-  <h1>ARABIANVILLAIN</h1>
-  <p id="text1" class="fade-text fade-in">A BRAND FOR THE ONES WHO NEVER FIT IN<br>A TRIBUTE TO THE DARK SIDE WITHIN</p>
-  <p id="text2" class="fade-text">BORN IN SILENCE<br>BUILT TO DISRUPT<br>MADE FOR THOSE WHO DARE TO POSSESS THEIR TRUE NATURE</p>
-  <button class="cta-button" onclick="location.href='test.html'">ENTER THE REALM</button>  <script>
-    setTimeout(() => {
-      const t1 = document.getElementById('text1');
-      const t2 = document.getElementById('text2');
-      t1.classList.remove('fade-in');
-      t1.classList.add('fade-out');
+  <h1>ARABIAN VILLAIN</h1>
+  <div id="taglines">
+    <p class="tagline fade" id="line1">A BRAND FOR THE ONES WHO NEVER FIT IN</p>
+    <p class="tagline fade" id="line2">A TRIBUTE TO THE DARK SIDE WITHIN</p>
+    <p class="tagline fade" id="line3">BORN IN SILENCE</p>
+    <p class="tagline fade" id="line4">BUILT TO DISRUPT</p>
+    <p class="tagline fade" id="line5">MADE FOR THOSE WHO DARE</p>
+    <p class="tagline fade" id="line6">TO POSSESS THEIR TRUE NATURE</p>
+  </div>
+  <p class="slogan fade" id="slogan">LET THE VILLAIN POSSESS</p>
+  <button class="cta-button" onclick="goToTest()">ENTER THE REALM</button>  <script>
+    const taglines = [
+      document.getElementById('line1'),
+      document.getElementById('line2'),
+      document.getElementById('line3'),
+      document.getElementById('line4'),
+      document.getElementById('line5'),
+      document.getElementById('line6'),
+    ];
+    const slogan = document.getElementById('slogan');
 
-      setTimeout(() => {
-        t1.style.display = 'none';
-        t2.classList.add('fade-in');
-      }, 2000);
-    }, 4000);
+    let i = 0;
+    function showTaglines() {
+      if (i < taglines.length) {
+        taglines[i].classList.add('visible');
+        setTimeout(() => {
+          taglines[i].classList.remove('visible');
+          i++;
+          showTaglines();
+        }, 2000);
+      } else {
+        slogan.classList.add('visible');
+      }
+    }
+
+    window.onload = () => {
+      showTaglines();
+    };
+
+    function goToTest() {
+      window.location.href = "test.html";
+    }
   </script></body>
 </html>
