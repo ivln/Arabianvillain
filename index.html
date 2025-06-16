@@ -1,75 +1,119 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ArabianVillain</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+      }img.logo {
+    width: 150px;
+    margin-bottom: 10px;
+  }
 
-        .logo {
-            width: 140px;
-            margin: 30px auto 10px;
-            animation: fadeIn 3s ease-in forwards;
-            display: block;
-        }
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 0 20px;
+  }
 
-        h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 0;
-        }
+  p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    max-width: 90%;
+    line-height: 1.5;
+  }
 
-        p {
-            margin: 20px 0;
-            font-size: 1.2em;
-        }
+  .cta {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    animation: fadeIn 2s ease-in-out forwards;
+  }
 
-        .btn {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
+  .btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    font-size: 1rem;
+    background-color: #222;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
 
-        .footer {
-            position: fixed;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.9em;
-            color: #888;
-        }
+  .btn:hover {
+    background-color: white;
+    color: black;
+  }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body>
-    <img src="assets/raqib-logo.png" alt="RAQIB Logo" class="logo" />
-    <h1>ARABIANVILLAIN</h1>
-    <p>A brand for the ones who never fit in.<br>
-    A tribute to the dark side within.<br>
-    This is where the Possession begins.</p>
-    <h2>LET THE VILLAIN POSSESS</h2>
-    <button class="btn">IVLN REALM</button>
+  footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+  }
 
-    <div class="footer">
-        © ArabianVillain 2025. All rights reserved.
-    </div>
-</body>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    .cta {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+  </head>
+  <body>
+    <!-- Logo -->
+    <img src="av-logo.png" alt="Arabian Villain Logo" class="logo" /><!-- Brand Name -->
+<h1>ARABIANVILLAIN</h1>
+
+<!-- Description -->
+<p>A brand for the ones who never fit in.</p>
+<p>A tribute to the dark side within.</p>
+<p>This is where the Possession begins.</p>
+
+<!-- Cinematic Slogan -->
+<div class="cta">LET THE VILLAIN POSSESS</div>
+
+<!-- Call to Action Button -->
+<a href="test.html">
+  <button class="btn">IVLN REALM</button>
+</a>
+
+<!-- Footer -->
+<footer>© ArabianVillain 2025. All rights reserved.</footer>
+
+  </body>
 </html>
