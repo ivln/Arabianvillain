@@ -2,45 +2,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arabian Villain</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bunya&display=swap" rel="stylesheet">
+  <title>ARABIANVILLAIN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'LemonMilk';
-      src: url('https://fonts.cdnfonts.com/s/19100/LemonMilkPro-Regular.woff') format('woff');
-    }body {
-  margin: 0;
-  padding: 0;
-  background-color: #000;
-  color: white;
-  font-family: 'Bunya', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-}
-
-header {
-  margin-top: 20px;
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }header {
+  padding: 30px 0 10px;
 }
 
 .logo {
-  width: 80px;
-  height: auto;
-  margin-bottom: 10px;
+  max-width: 120px;
+  margin: 0 auto 10px;
+  display: block;
 }
 
-h1.brand {
-  font-family: 'LemonMilk', sans-serif;
-  font-size: 2rem;
+.brand-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 40px;
+  letter-spacing: 2px;
   margin: 0;
 }
 
-.fade-in {
+.tagline {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 0;
-  animation: fadeIn 2.5s ease forwards;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.slogan {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 3s forwards;
+}
+
+.button {
+  margin-top: 50px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #777;
+}
+
+.logo-reveal {
+  margin-top: 60px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out 6s forwards;
+}
+
+footer {
+  margin-top: 100px;
+  font-size: 13px;
+  color: #777;
 }
 
 @keyframes fadeIn {
@@ -49,76 +82,21 @@ h1.brand {
   }
 }
 
-.slogan {
-  margin-top: 20px;
-  font-size: 1rem;
-  max-width: 90%;
-  line-height: 1.5;
-}
-
-.main-slogan {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 30px;
-  font-family: 'LemonMilk', sans-serif;
-  letter-spacing: 1px;
-}
-
-.cta-button {
-  margin-top: 40px;
-  padding: 12px 28px;
-  font-size: 1rem;
-  background-color: #444;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: 'LemonMilk', sans-serif;
-  transition: background-color 0.3s;
-}
-
-.cta-button:hover {
-  background-color: #666;
-}
-
-footer {
-  position: absolute;
-  bottom: 10px;
-  font-size: 0.7rem;
-  opacity: 0.6;
-}
-
-@media (max-width: 600px) {
-  h1.brand {
-    font-size: 1.5rem;
-  }
-
-  .slogan, .main-slogan {
-    font-size: 0.9rem;
-  }
-
-  .cta-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-  }
-}
-
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Arabian Villain Logo" class="logo" />
-    <h1 class="brand">ARABIANVILLAIN</h1>
-  </header>  <div class="fade-in slogan">
-    A BRAND FOR THE ONES WHO NEVER FIT IN<br />
-    A TRIBUTE TO THE DARK SIDE WITHIN
-  </div>  <div class="fade-in main-slogan" style="animation-delay: 3s">
-    LET THE VILLAIN POSSESS
-  </div>  <a href="test.html">
-    <button class="cta-button fade-in" style="animation-delay: 5s">
-      IVLN REALM
-    </button>
-  </a>  <footer>
+    <img src="https://i.ibb.co/4Pb1G2z/logo.png" alt="Arabian Villain Logo" class="logo" />
+    <h1 class="brand-name">ARABIANVILLAIN</h1>
+  </header>  <p class="tagline">
+    A brand for the ones who never fit in.<br />
+    A tribute to the dark side within.<br />
+    This is where the Possession begins.
+  </p>  <p class="slogan">LET THE VILLAIN POSSESS</p>  <a href="https://ivln.github.io/AVLN-test/">
+    <button class="button">IVLN REALM</button>
+  </a>  <div class="logo-reveal">
+    <img src="https://i.ibb.co/LK3D0t8/RAQIB-LOGO.jpg" alt="Symbolic Logo" style="width: 200px; max-width: 90%;" />
+  </div>  <footer>
     © ArabianVillain 2025. All rights reserved.
   </footer>
 </body>
