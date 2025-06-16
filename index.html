@@ -2,118 +2,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ArabianVillain</title>
+    <title>Arabian Villain</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
+      * {
         margin: 0;
         padding: 0;
-        background-color: black;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: 'Bebas Neue', sans-serif;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         min-height: 100vh;
-        position: relative;
-      }img.logo {
-    width: 150px;
-    margin-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0 0 20px;
-  }
-
-  p {
-    margin: 5px 0;
-    font-size: 1.2rem;
-    max-width: 90%;
-    line-height: 1.5;
-  }
-
-  .cta {
-    margin-top: 30px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    animation: fadeIn 2s ease-in-out forwards;
-  }
-
-  .btn {
-    margin-top: 30px;
-    padding: 12px 30px;
-    font-size: 1rem;
-    background-color: #222;
-    color: white;
-    border: 2px solid white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-
-  .btn:hover {
-    background-color: white;
-    color: black;
-  }
-
-  footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    font-size: 0.8rem;
-    color: #888;
-    text-align: center;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 2.2rem;
-    }
-    .cta {
-      font-size: 1.2rem;
-    }
-    p {
-      font-size: 1rem;
-    }
-  }
-</style>
-
+        text-align: center;
+        padding: 20px;
+      }
+      .logo {
+        width: 80px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .brand-name {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 40px;
+        letter-spacing: 3px;
+        margin-bottom: 40px;
+      }
+      .fade-text {
+        opacity: 0;
+        animation: fadeInOut 6s forwards;
+      }
+      .tagline {
+        font-size: 28px;
+        line-height: 1.4;
+        margin-bottom: 50px;
+      }
+      .tagline span {
+        display: block;
+      }
+      .main-slogan {
+        font-size: 34px;
+        font-family: 'Orbitron', sans-serif;
+        opacity: 0;
+        animation: fadeIn 8s 6s forwards;
+      }
+      @keyframes fadeInOut {
+        0% { opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .cta-button {
+        margin-top: 60px;
+        padding: 12px 28px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 16px;
+        letter-spacing: 1px;
+        transition: background 0.3s;
+        text-decoration: none;
+      }
+      .cta-button:hover {
+        background-color: #555;
+      }
+      footer {
+        position: absolute;
+        bottom: 10px;
+        font-size: 12px;
+        color: #666;
+      }
+      @media (max-width: 600px) {
+        .brand-name { font-size: 30px; }
+        .tagline { font-size: 22px; }
+        .main-slogan { font-size: 28px; }
+      }
+    </style>
   </head>
   <body>
-    <!-- Logo -->
-    <img src="av-logo.png" alt="Arabian Villain Logo" class="logo" /><!-- Brand Name -->
-<h1>ARABIANVILLAIN</h1>
+    <img src="av-logo.png" alt="Arabian Villain Logo" class="logo" />
+    <div class="brand-name">ARABIAN VILLAIN</div><div class="tagline fade-text">
+  <span>A BRAND FOR THE ONES WHO NEVER FIT IN</span>
+  <span>A TRIBUTE TO THE DARK SIDE</span>
+  <span>WITHIN</span>
+</div>
 
-<!-- Description -->
-<p>A brand for the ones who never fit in.</p>
-<p>A tribute to the dark side within.</p>
-<p>This is where the Possession begins.</p>
+<div class="main-slogan">LET THE VILLAIN POSSESS</div>
 
-<!-- Cinematic Slogan -->
-<div class="cta">LET THE VILLAIN POSSESS</div>
+<a href="test.html" class="cta-button">IVLN REALM</a>
 
-<!-- Call to Action Button -->
-<a href="test.html">
-  <button class="btn">IVLN REALM</button>
-</a>
-
-<!-- Footer -->
-<footer>© ArabianVillain 2025. All rights reserved.</footer>
+<footer>
+  &copy; ARABIANVILLAIN 2025. All Rights Reserved.
+</footer>
 
   </body>
 </html>
