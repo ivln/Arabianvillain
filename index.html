@@ -24,6 +24,7 @@
         min-height: 100vh;
         text-align: center;
         padding: 20px;
+        position: relative;
       }
       .logo {
         width: 120px;
@@ -32,31 +33,33 @@
       }
       .brand-name {
         font-family: 'Orbitron', sans-serif;
-        font-size: 40px;
-        letter-spacing: 3px;
-        margin-bottom: 40px;
+        font-size: 44px;
+        letter-spacing: 4px;
+        margin-bottom: 30px;
         text-transform: uppercase;
+      }
+      .fade-text, .main-slogan {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
       }
       .fade-text {
         opacity: 0;
         animation: fadeInOut 6s forwards;
-        text-transform: uppercase;
-        margin-bottom: 50px;
-      }
-      .tagline {
         font-size: 28px;
-        line-height: 1.4;
+        line-height: 1.6;
+        text-transform: uppercase;
       }
-      .tagline span {
+      .fade-text span {
         display: block;
       }
       .main-slogan {
         font-size: 34px;
         font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
         opacity: 0;
         animation: fadeIn 8s 6s forwards;
-        margin: 40px 0;
-        text-transform: uppercase;
       }
       @keyframes fadeInOut {
         0% { opacity: 0; }
@@ -69,7 +72,7 @@
         to { opacity: 1; }
       }
       .cta-button {
-        margin-top: 40px;
+        margin-top: 60px;
         padding: 12px 28px;
         background-color: #333;
         color: #fff;
@@ -90,26 +93,30 @@
         bottom: 10px;
         font-size: 12px;
         color: #666;
+        text-transform: uppercase;
       }
       @media (max-width: 600px) {
         .brand-name { font-size: 30px; }
-        .tagline { font-size: 22px; }
-        .main-slogan { font-size: 28px; }
+        .fade-text, .main-slogan { font-size: 22px; }
+        .logo { width: 90px; }
       }
     </style>
   </head>
   <body>
     <img src="av-logo.png" alt="Arabian Villain Logo" class="logo" />
-    <div class="brand-name">ARABIAN VILLAIN</div>
-    <div class="tagline fade-text">
-      <span>A BRAND FOR THE ONES WHO NEVER FIT IN</span>
-      <span>A TRIBUTE TO THE DARK SIDE</span>
-      <span>WITHIN</span>
-    </div>
-    <div class="main-slogan">LET THE VILLAIN POSSESS</div>
-    <a href="test.html" class="cta-button">IVLN REALM</a>
-    <footer>
-      &copy; ARABIANVILLAIN 2025. All Rights Reserved.
-    </footer>
+    <div class="brand-name">Arabian Villain</div><div class="fade-text">
+  <span>A BRAND FOR THE ONES WHO NEVER FIT IN</span>
+  <span>A TRIBUTE TO THE DARK SIDE</span>
+  <span>WITHIN</span>
+</div>
+
+<div class="main-slogan">LET THE VILLAIN POSSESS</div>
+
+<a href="test.html" class="cta-button">IVLN REALM</a>
+
+<footer>
+  &copy; ARABIANVILLAIN 2025. All Rights Reserved.
+</footer>
+
   </body>
 </html>
