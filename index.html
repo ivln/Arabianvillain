@@ -3,121 +3,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bunya&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: #000;
-      color: white;
-      font-family: 'Barlow', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      overflow: hidden;
-      padding: 20px;
-    }
-    .logo {
-      width: 100px;
-      margin-bottom: 10px;
-    }
-    .brand-name {
-      font-family: 'Anton', sans-serif;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
-    }
-    .tagline {
-      font-size: 1.2rem;
-      max-width: 600px;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-    }
-    .tagline.fade-in {
-      opacity: 1;
-    }
-    .tagline.fade-out {
-      opacity: 0;
-    }
-    .main-slogan {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      margin-top: 30px;
-      opacity: 0;
-      transition: opacity 2s ease-in;
-    }
-    .main-slogan.show {
-      opacity: 1;
-    }
-    .cta-button {
-      margin-top: 40px;
-      padding: 12px 30px;
-      background-color: #333;
-      color: white;
-      border: none;
-      font-family: 'Anton', sans-serif;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-    .cta-button:hover {
-      background-color: #555;
-    }
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.8rem;
-      color: #666;
-    }
-    @media (max-width: 600px) {
-      .brand-name {
-        font-size: 2rem;
-      }
-      .tagline, .main-slogan {
-        font-size: 1rem;
-      }
-      .cta-button {
-        font-size: 0.9rem;
-        padding: 10px 20px;
-      }
-    }
+    @font-face {
+      font-family: 'LemonMilk';
+      src: url('https://fonts.cdnfonts.com/s/19100/LemonMilkPro-Regular.woff') format('woff');
+    }body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: white;
+  font-family: 'Bunya', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+header {
+  margin-top: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+h1.brand {
+  font-family: 'LemonMilk', sans-serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slogan {
+  margin-top: 20px;
+  font-size: 1rem;
+  max-width: 90%;
+  line-height: 1.5;
+}
+
+.main-slogan {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 30px;
+  font-family: 'LemonMilk', sans-serif;
+  letter-spacing: 1px;
+}
+
+.cta-button {
+  margin-top: 40px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'LemonMilk', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #666;
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  h1.brand {
+    font-size: 1.5rem;
+  }
+
+  .slogan, .main-slogan {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
   </style>
 </head>
 <body>
-  <img src="./logo.png" alt="Logo" class="logo" />
-  <div class="brand-name">ARABIANVILLAIN</div>
-  <div id="tagline" class="tagline">A BRAND FOR THE ONES WHO NEVER FIT IN<br>A TRIBUTE TO THE DARK SIDE WITHIN</div>
-  <div id="tagline2" class="tagline" style="display:none;">BORN IN SILENCE<br>BUILT TO DISRUPT<br>MADE FOR THOSE WHO DARE TO POSSESS THEIR TRUE NATURE</div>
-  <div id="mainSlogan" class="main-slogan">LET THE VILLAIN POSSESS</div>
-  <button class="cta-button" onclick="location.href='test.html'">Begin the Possession</button>
-  <footer>
+  <header>
+    <img src="logo.png" alt="Arabian Villain Logo" class="logo" />
+    <h1 class="brand">ARABIANVILLAIN</h1>
+  </header>  <div class="fade-in slogan">
+    A BRAND FOR THE ONES WHO NEVER FIT IN<br />
+    A TRIBUTE TO THE DARK SIDE WITHIN
+  </div>  <div class="fade-in main-slogan" style="animation-delay: 3s">
+    LET THE VILLAIN POSSESS
+  </div>  <a href="test.html">
+    <button class="cta-button fade-in" style="animation-delay: 5s">
+      IVLN REALM
+    </button>
+  </a>  <footer>
     © ArabianVillain 2025. All rights reserved.
   </footer>
-  <script>
-    setTimeout(() => {
-      document.getElementById("tagline").classList.add("fade-in");
-    }, 500);setTimeout(() => {
-  document.getElementById("tagline").classList.remove("fade-in");
-  document.getElementById("tagline").classList.add("fade-out");
-}, 3500);
-
-setTimeout(() => {
-  document.getElementById("tagline").style.display = "none";
-  document.getElementById("tagline2").style.display = "block";
-  document.getElementById("tagline2").classList.add("fade-in");
-}, 5000);
-
-setTimeout(() => {
-  document.getElementById("mainSlogan").classList.add("show");
-}, 8000);
-
-  </script>
 </body>
 </html>
