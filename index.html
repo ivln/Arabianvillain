@@ -1,120 +1,139 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arabian Villain - Intro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARABIAN VILLAIN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body, html {
-      width: 100%;
       height: 100%;
-      font-family: 'Bebas Neue', sans-serif;
+      background: black;
+      color: white;
+      font-family: 'Share Tech Mono', monospace;
       overflow: hidden;
-      background-color: #000;
-      color: #fff;
     }
     video.bg-video {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
+      z-index: -2;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
       z-index: -1;
     }
-    .center-content {
+    .centered {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
     }
-    .fade {
-      opacity: 0;
-      animation: fadeSequence 14s forwards;
+    .hidden { opacity: 0; transition: opacity 1s ease; }
+    .visible { opacity: 1; transition: opacity 1s ease; }
+    #main-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
     }
-    .fade.delay-2 { animation-delay: 2s; }
-    .fade.delay-4 { animation-delay: 4s; }
-    .fade.delay-6 { animation-delay: 6s; }
-    .fade.delay-8 { animation-delay: 8s; }@keyframes fadeSequence {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  30% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-.final-content {
-  opacity: 0;
-  animation: fadeInFinal 1s 10s forwards;
-}
-@keyframes fadeInFinal {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.glitch {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 36px;
-  color: #fff;
-  animation: glitch 1s infinite;
-}
-@keyframes glitch {
-  0% { text-shadow: 2px 0 red, -2px 0 blue; }
-  20% { text-shadow: -2px 0 red, 2px 0 blue; }
-  40% { text-shadow: 2px 0 red, -2px 0 blue; }
-  60% { text-shadow: -2px 0 red, 2px 0 blue; }
-  100% { text-shadow: none; }
-}
-.cta-button {
-  margin-top: 40px;
-  padding: 12px 30px;
-  background: #111;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 16px;
-  letter-spacing: 1px;
-  transition: background 0.3s;
-  text-decoration: none;
-  display: inline-block;
-}
-.cta-button:hover {
-  background: #333;
-}
-
+    #main-content h1 {
+      font-size: 2.5rem;
+      margin: 1rem 0;
+    }
+    #main-content p {
+      margin: 0.5rem 0;
+    }
+    #realm-button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: #333;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #realm-button:hover {
+      background-color: #555;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: gray;
+    }
+    img.logo {
+      width: 200px;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
-  <!-- Background video -->
-  <video class="bg-video" autoplay muted loop>
-    <source src="your-background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>  <div class="center-content">
-    <div class="fade">
-      <img src="av-logo.png" alt="Arabian Villain Logo" style="width: 100px;" />
-    </div>
-    <div class="fade delay-2">
-      <div style="font-size: 24px;">A BRAND FOR THE ONES WHO NEVER FIT IN</div>
-    </div>
-    <div class="fade delay-4">
-      <div style="font-size: 28px;">LET THE VILLAIN POSSESS</div>
-    </div>
-    <div class="fade delay-6">
-      <div class="glitch">ARABIAN VILLAIN</div>
-    </div><div class="final-content">
-  <img src="av-logo.png" alt="Arabian Villain Logo" style="width: 80px; margin-bottom: 10px;" />
-  <div style="font-family: 'Orbitron', sans-serif; font-size: 32px; letter-spacing: 3px;">ARABIAN VILLAIN</div>
-  <div style="margin-top: 20px; font-size: 20px;">A BRAND FOR THE ONES WHO NEVER FIT IN</div>
-  <div style="margin-top: 10px; font-size: 22px;">LET THE VILLAIN POSSESS</div>
-  <a href="test.html" class="cta-button">ENTER IVLN REALM</a>
-</div>
+  <video autoplay muted loop class="bg-video" id="bg-video">
+    <source src="background.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>  <div class="centered" id="sequence">
+    <img src="logo.png" class="logo hidden" id="logo">
+    <p class="hidden" id="tagline">A BRAND FOR THE ONES WHO NEVER FIT IN<br>A TRIBUTE TO THE DARK SIDE<br>WITHIN</p>
+    <p class="hidden" id="slogan">LET THE VILLAIN POSSESS</p>
+    <h1 class="hidden" id="brandname">ARABIAN VILLAIN</h1>
+  </div>  <div id="main-content">
+    <img src="logo.png" class="logo">
+    <h1>ARABIAN VILLAIN</h1>
+    <p>A BRAND FOR THE ONES WHO NEVER FIT IN</p>
+    <p>A TRIBUTE TO THE DARK SIDE</p>
+    <p>WITHIN</p>
+    <p style="margin-top: 1rem;">LET THE VILLAIN POSSESS</p>
+    <button id="realm-button" onclick="location.href='test.html'">IVLN REALM</button>
+    <footer>© ARABIANVILLAIN 2025. ALL RIGHTS RESERVED.</footer>
+  </div>  <script>
+    const logo = document.getElementById('logo');
+    const tagline = document.getElementById('tagline');
+    const slogan = document.getElementById('slogan');
+    const brandname = document.getElementById('brandname');
+    const sequence = document.getElementById('sequence');
+    const main = document.getElementById('main-content');
 
-  </div>
-</body>
+    async function showSequence() {
+      await delay(500);
+      logo.classList.add('visible');
+      await delay(2000);
+      logo.classList.remove('visible');
+
+      await delay(1000);
+      tagline.classList.add('visible');
+      await delay(2500);
+      tagline.classList.remove('visible');
+
+      await delay(1000);
+      slogan.classList.add('visible');
+      await delay(2000);
+      slogan.classList.remove('visible');
+
+      await delay(1000);
+      brandname.classList.add('visible');
+      await delay(2000);
+      brandname.classList.remove('visible');
+
+      await delay(1000);
+      sequence.style.display = 'none';
+      main.style.display = 'flex';
+    }
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    showSequence();
+  </script></body>
 </html>
