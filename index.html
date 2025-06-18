@@ -3,9 +3,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -15,12 +13,12 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: 'Orbitron', sans-serif;
-  background: black;
-  color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  color: #fff;
+  background-color: #000;
 }
 
-video.bg-video {
+.video-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -30,92 +28,124 @@ video.bg-video {
   z-index: -1;
 }
 
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.overlay {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  padding: 20px;
 }
 
-.show {
-  opacity: 1 !important;
+.fade-step {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1s ease-in-out;
+  font-size: 32px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.brand-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 42px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.tagline, .slogan {
+  font-size: 28px;
+  text-transform: uppercase;
+  line-height: 1.4;
 }
 
 .final-content {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
+  gap: 20px;
 }
 
-.btn {
-  background-color: #333;
-  color: white;
-  padding: 12px 24px;
-  margin-top: 30px;
+.cta-button {
+  padding: 12px 28px;
+  background-color: #111;
+  color: #fff;
   border: none;
-  font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
-.btn:hover {
-  background-color: #555;
+.cta-button:hover {
+  background-color: #444;
 }
 
 footer {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
   font-size: 12px;
-  color: #aaa;
+  color: #666;
+  margin-top: 40px;
 }
 
   </style>
 </head>
 <body>
-  <!-- فيديو الخلفية -->
-  <video class="bg-video" autoplay muted loop id="bgVideo">
-    <source src="background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>  <!-- المراحل السينمائية -->  <div class="center" id="logo" style="font-size: 80px;">🔥</div>
-  <div class="center" id="intro" style="font-size: 18px;">A BRAND FOR THE ONES WHO NEVER FIT IN</div>
-  <div class="center" id="slogan" style="font-size: 18px;">A TRIBUTE TO THE DARK SIDE WITHIN</div>
-  <div class="center" id="name" style="font-size: 40px; letter-spacing: 4px;">ARABIAN VILLAIN</div>  <!-- المرحلة النهائية -->  <div class="final-content" id="finalContent">
-    <img src="logo.png" alt="Logo" style="width: 100px; margin-bottom: 20px;" />
-    <h1 style="font-size: 28px;">ARABIAN VILLAIN</h1>
-    <p style="margin-top: 10px; font-size: 16px;">A BRAND FOR THE ONES WHO NEVER FIT IN<br/>A TRIBUTE TO THE DARK SIDE WITHIN</p>
-    <button class="btn" onclick="location.href='quiz.html'">IVLN REALM</button>
-    <footer>© ARABIANVILLAIN 2025. ALL RIGHTS RESERVED.</footer>
-  </div>  <audio id="bgAudio" autoplay loop>
-    <source src="background.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>  <script>
-    const steps = ["logo", "intro", "slogan", "name"];
-    let index = 0;
+  <!-- Background Video -->
+  <video class="video-background" autoplay muted loop id="bg-video">
+    <source src="bg-video.mp4" type="video/mp4" />
+  </video>  <!-- Audio -->  <audio id="bg-audio" autoplay>
+    <source src="bg-audio.mp3" type="audio/mpeg" />
+  </audio>  <div class="overlay">
+    <div id="step1" class="fade-step">
+      <img src="av-logo.png" alt="Arabian Villain Logo" class="logo" />
+    </div>
+    <div id="step2" class="fade-step tagline">
+      A BRAND FOR THE ONES WHO NEVER FIT IN
+    </div>
+    <div id="step3" class="fade-step slogan">
+      LET THE VILLAIN POSSESS
+    </div>
+    <div id="step4" class="fade-step brand-name">
+      ARABIAN VILLAIN
+    </div><div id="final" class="final-content">
+  <img src="av-logo.png" alt="Arabian Villain Logo" class="logo" />
+  <div class="brand-name">ARABIAN VILLAIN</div>
+  <div class="tagline">
+    A BRAND FOR THE ONES WHO NEVER FIT IN<br />
+    A TRIBUTE TO THE DARK SIDE WITHIN
+  </div>
+  <div class="slogan">LET THE VILLAIN POSSESS</div>
+  <a href="test.html" class="cta-button">IVLN REALM</a>
+  <footer>&copy; ARABIANVILLAIN 2025. All Rights Reserved.</footer>
+</div>
+
+  </div>  <script>
+    const steps = ["step1", "step2", "step3", "step4"];
+    let current = 0;
 
     function showStep() {
-      if (index < steps.length) {
-        const el = document.getElementById(steps[index]);
-        el.classList.add("show");
+      if (current < steps.length) {
+        const el = document.getElementById(steps[current]);
+        el.style.opacity = 1;
         setTimeout(() => {
-          el.classList.remove("show");
-          index++;
+          el.style.opacity = 0;
+          current++;
           showStep();
         }, 2000);
       } else {
-        // عرض المحتوى النهائي بعد آخر خطوة
-        document.getElementById("finalContent").style.display = "flex";
+        document.getElementById("final").style.display = "flex";
       }
     }
 
-    window.onload = function () {
+    window.onload = () => {
       showStep();
     };
   </script></body>
