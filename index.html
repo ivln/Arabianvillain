@@ -2,9 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARABIANVILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&family=Unica+One&display=swap" rel="stylesheet">
-  <style>
+  <title>ARABIANVILLAIN</title>  <!-- فونت Cinzel الفخم -->  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">  <style>
     * {
       margin: 0;
       padding: 0;
@@ -13,7 +11,7 @@
     body, html {
       width: 100%;
       height: 100%;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Cinzel', serif;
       background: black;
       overflow: hidden;
       color: white;
@@ -74,16 +72,16 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      gap: 10px;
+      gap: 6px; /* قللنا المسافة بين العناصر */
     }
     .main-logo {
       width: 175px;
-      margin-bottom: -5px;
     }
     .brand-name {
-      font-family: 'Unica One', cursive;
-      font-size: 40px;
-      margin-top: -20px;
+      font-family: 'Cinzel', serif;
+      font-size: 34px;
+      margin-top: -5px; /* قللنا المسافة بين اللوجو والاسم */
+      letter-spacing: 2px;
     }
     .enter-btn {
       margin-top: 20px;
@@ -107,11 +105,10 @@
     @media(max-width: 768px) {
       .line { font-size: 20px; }
       #slogan { font-size: 24px; }
-      .brand-name { font-size: 28px; }
+      .brand-name { font-size: 22px; }
       .enter-btn { font-size: 16px; }
     }
-  </style>
-</head>
+  </style></head>
 <body>
   <video class="bg-video" autoplay muted loop playsinline>
     <source src="bg-video.mp4" type="video/mp4">
@@ -128,8 +125,7 @@
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
   </div>
-  <div class="footer" id="footer" style="display: none;">arabianvillain 2025. All Rights Reserved.</div>
-  <script>
+  <div class="footer" id="footer" style="display: none;">arabianvillain 2025. All Rights Reserved.</div>  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -143,60 +139,59 @@
       "No more mercy",
       "It’s time",
       "Unchain what they feared most"
-    ];const linesContainer = document.getElementById('lines');
-const logo = document.getElementById('logo');
-const slogan = document.getElementById('slogan');
-const main = document.getElementById('main');
-const intro = document.getElementById('intro');
-const skipBtn = document.getElementById('skipBtn');
-const footer = document.getElementById('footer');
+    ];
+    const linesContainer = document.getElementById('lines');
+    const logo = document.getElementById('logo');
+    const slogan = document.getElementById('slogan');
+    const main = document.getElementById('main');
+    const intro = document.getElementById('intro');
+    const skipBtn = document.getElementById('skipBtn');
+    const footer = document.getElementById('footer');
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-async function playIntro() {
-  await sleep(1500);
-  logo.style.display = 'block';
-  logo.style.opacity = 0;
-  logo.style.transition = 'opacity 2s';
-  logo.style.opacity = 1;
-  await sleep(2000);
-  logo.style.opacity = 0;
-  await sleep(2000);
-  logo.style.display = 'none';
+    async function playIntro() {
+      await sleep(1500);
+      logo.style.display = 'block';
+      logo.style.opacity = 0;
+      logo.style.transition = 'opacity 2s';
+      logo.style.opacity = 1;
+      await sleep(2000);
+      logo.style.opacity = 0;
+      await sleep(2000);
+      logo.style.display = 'none';
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = document.createElement('div');
-    line.className = 'line';
-    line.textContent = lines[i];
-    linesContainer.appendChild(line);
-    await sleep(100);
-    line.style.opacity = 1;
-    await sleep(1900);
-    line.style.opacity = 0;
-    await sleep(1000);
-    linesContainer.removeChild(line);
-  }
+      for (let i = 0; i < lines.length; i++) {
+        const line = document.createElement('div');
+        line.className = 'line';
+        line.textContent = lines[i];
+        linesContainer.appendChild(line);
+        await sleep(100);
+        line.style.opacity = 1;
+        await sleep(1900);
+        line.style.opacity = 0;
+        await sleep(1000);
+        linesContainer.removeChild(line);
+      }
 
-  slogan.style.opacity = 1;
-  await sleep(3000);
-  skipBtn.style.display = 'none';
-  intro.style.display = 'none';
-  await sleep(2000);
-  main.style.display = 'flex';
-  footer.style.display = 'block';
-}
+      slogan.style.opacity = 1;
+      await sleep(3000);
+      skipBtn.style.display = 'none';
+      intro.style.display = 'none';
+      await sleep(2000);
+      main.style.display = 'flex';
+      footer.style.display = 'block';
+    }
 
-function skipIntro() {
-  intro.style.display = 'none';
-  main.style.display = 'flex';
-  skipBtn.style.display = 'none';
-  footer.style.display = 'block';
-}
+    function skipIntro() {
+      intro.style.display = 'none';
+      main.style.display = 'flex';
+      skipBtn.style.display = 'none';
+      footer.style.display = 'block';
+    }
 
-playIntro();
-
-  </script>
-</body>
+    playIntro();
+  </script></body>
 </html>
