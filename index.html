@@ -3,7 +3,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARABIANVILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,7 +13,7 @@
     body, html {
       width: 100%;
       height: 100%;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Anton', sans-serif;
       background: black;
       overflow: hidden;
       color: white;
@@ -78,9 +78,11 @@
     }
     .main-logo {
       width: 175px;
+      margin-bottom: 10px;
     }
     .brand-name {
-      font-size: 32px;
+      font-size: 44px;
+      margin-top: -5px;
     }
     .enter-btn {
       margin-top: 20px;
@@ -104,7 +106,7 @@
     @media(max-width: 768px) {
       .line { font-size: 20px; }
       #slogan { font-size: 24px; }
-      .brand-name { font-size: 22px; }
+      .brand-name { font-size: 28px; }
       .enter-btn { font-size: 16px; }
     }
   </style>
@@ -140,15 +142,14 @@
       "No more mercy",
       "It’s time",
       "Unchain what they feared most"
-    ];const linesContainer = document.getElementById('lines');
-const logo = document.getElementById('logo');
-const slogan = document.getElementById('slogan');
-const main = document.getElementById('main');
-const intro = document.getElementById('intro');
-const skipBtn = document.getElementById('skipBtn');
-const footer = document.getElementById('footer');
-
-function sleep(ms) {
+    ];
+    const linesContainer = document.getElementById('lines');
+    const logo = document.getElementById('logo');
+    const slogan = document.getElementById('slogan');
+    const main = document.getElementById('main');
+    const intro = document.getElementById('intro');
+    const skipBtn = document.getElementById('skipBtn');
+    const footer = document.getElementById('footer');function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
