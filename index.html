@@ -17,123 +17,116 @@
       background: black;
       overflow: hidden;
       color: white;
-    }video.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.skip-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 5px 10px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 90%;
-  max-width: 700px;
-}
-
-#logo {
-  width: 210px;
-  margin: 0 auto;
-  display: none;
-}
-
-.line {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-#slogan {
-  font-size: 32px;
-  margin-top: 30px;
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-}
-
-.main-interface {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  gap: 10px;
-}
-
-.main-logo {
-  width: 175px;
-}
-
-.brand-name {
-  font-size: 28px;
-}
-
-.enter-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid white;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  transition: all 0.5s ease;
-}
-
-.footer {
-  position: fixed;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  color: white;
-}
-
-@media(max-width: 768px) {
-  .line { font-size: 20px; }
-  #slogan { font-size: 24px; }
-  .brand-name { font-size: 22px; }
-  .enter-btn { font-size: 16px; }
-}
-
+    }
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .skip-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 5px 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+      max-width: 700px;
+    }
+    #logo {
+      width: 210px;
+      margin: 0 auto;
+      display: none;
+    }
+    .line {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    #slogan {
+      font-size: 32px;
+      margin-top: 30px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+    .main-interface {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      gap: 10px;
+    }
+    .main-logo {
+      width: 175px;
+    }
+    .brand-name {
+      font-size: 28px;
+    }
+    .enter-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.5s ease;
+    }
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    @media(max-width: 768px) {
+      .line { font-size: 20px; }
+      #slogan { font-size: 24px; }
+      .brand-name { font-size: 22px; }
+      .enter-btn { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
   <video class="bg-video" autoplay muted loop playsinline>
     <source src="bg-video.mp4" type="video/mp4">
-  </video><button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
-
+  </video>
+  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
   <div class="center" id="intro">
     <img id="logo" src="av-logo.png" alt="Logo" />
     <div id="lines"></div>
     <div id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>  <div class="main-interface" id="main">
+  </div>
+  <div class="main-interface" id="main">
     <img class="main-logo" src="av-logo.png" alt="Logo" />
     <div class="brand-name">ARABIANVILLAIN</div>
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
-  </div>  <div class="footer">ARABIANVILLAIN 2025. All Rights Reserved.</div>  <script>
+  </div>
+  <div class="footer" id="footer" style="display: none;">ARABIANVILLAIN 2025. All Rights Reserved.</div>
+  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -142,62 +135,65 @@
       "But we saw you",
       "The cracks",
       "The thoughts you tried to bury",
-      "The rage you renamed \u201ckindness\u201d",
+      "The rage you renamed \"kindness\"",
       "No more masks",
       "No more mercy",
       "It’s time",
       "Unchain what they feared most"
-    ];
+    ];const linesContainer = document.getElementById('lines');
+const logo = document.getElementById('logo');
+const slogan = document.getElementById('slogan');
+const main = document.getElementById('main');
+const intro = document.getElementById('intro');
+const skipBtn = document.getElementById('skipBtn');
+const footer = document.getElementById('footer');
 
-    const linesContainer = document.getElementById('lines');
-    const logo = document.getElementById('logo');
-    const slogan = document.getElementById('slogan');
-    const main = document.getElementById('main');
-    const intro = document.getElementById('intro');
-    const skipBtn = document.getElementById('skipBtn');
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+async function playIntro() {
+  await sleep(1500);
+  logo.style.display = 'block';
+  logo.style.opacity = 0;
+  logo.style.transition = 'opacity 2s';
+  logo.style.opacity = 1;
+  await sleep(2000);
+  logo.style.opacity = 0;
+  await sleep(2000);
+  logo.style.display = 'none';
 
-    async function playIntro() {
-      await sleep(1500);
-      logo.style.display = 'block';
-      logo.style.opacity = 0;
-      logo.style.transition = 'opacity 2s';
-      logo.style.opacity = 1;
-      await sleep(2000);
-      logo.style.opacity = 0;
-      await sleep(2000);
-      logo.style.display = 'none';
+  for (let i = 0; i < lines.length; i++) {
+    const line = document.createElement('div');
+    line.className = 'line';
+    line.textContent = lines[i];
+    linesContainer.appendChild(line);
+    await sleep(100);
+    line.style.opacity = 1;
+    await sleep(1900);
+    line.style.opacity = 0;
+    await sleep(1000);
+    linesContainer.removeChild(line);
+  }
 
-      for (let i = 0; i < lines.length; i++) {
-        const line = document.createElement('div');
-        line.className = 'line';
-        line.textContent = lines[i];
-        linesContainer.appendChild(line);
-        await sleep(100);
-        line.style.opacity = 1;
-        await sleep(1900);
-        line.style.opacity = 0;
-        await sleep(1000);
-        linesContainer.removeChild(line);
-      }
+  slogan.style.opacity = 1;
+  await sleep(3000);
+  skipBtn.style.display = 'none';
+  intro.style.display = 'none';
+  await sleep(2000);
+  main.style.display = 'flex';
+  footer.style.display = 'block';
+}
 
-      slogan.style.opacity = 1;
-      await sleep(3000);
-      skipBtn.style.display = 'none';
-      intro.style.display = 'none';
-      await sleep(2000);
-      main.style.display = 'flex';
-    }
+function skipIntro() {
+  intro.style.display = 'none';
+  main.style.display = 'flex';
+  skipBtn.style.display = 'none';
+  footer.style.display = 'block';
+}
 
-    function skipIntro() {
-      intro.style.display = 'none';
-      main.style.display = 'flex';
-      skipBtn.style.display = 'none';
-    }
+playIntro();
 
-    playIntro();
-  </script></body>
+  </script>
+</body>
 </html>
