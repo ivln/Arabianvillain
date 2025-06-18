@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARABIANVILLAIN</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
@@ -9,130 +9,133 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-    body, html {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Orbitron', sans-serif;
-      background-color: black;
-      color: white;
-    }
-    video#bg-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      display: none;
-    }
-    .center-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-    .logo {
-      width: 210px;
-      margin: 0 auto;
-      opacity: 0;
-      transition: opacity 2s;
-    }
-    .intro-line {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      margin: 0.3em 0;
-      opacity: 0;
-      transition: opacity 1.5s;
-    }
-    .main-slogan {
-      font-size: 2.5rem;
-      margin-top: 1.5em;
-      opacity: 0;
-      transition: opacity 2s;
-    }
-    .final-interface {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-    }
-    .final-logo {
-      width: 175px;
-      margin-bottom: 1rem;
-    }
-    .brand-name {
-      font-size: 2rem;
-      letter-spacing: 2px;
-    }
-    .realmbtn {
-      margin-top: 1.5rem;
-      padding: 0.5em 1.5em;
-      border: 2px solid white;
-      background: transparent;
-      color: white;
-      font-size: 1rem;
-      font-family: 'Orbitron', sans-serif;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 2s;
-    }
-    footer {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9rem;
-      color: white;
-    }
-    #skipBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      padding: 5px 10px;
-      font-family: 'Orbitron', sans-serif;
-      cursor: pointer;
-      z-index: 20;
-    }
+    }body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Orbitron', sans-serif;
+  background: black;
+  overflow: hidden;
+  color: white;
+}
+
+video.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.skip-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+}
+
+#logo {
+  width: 210px;
+  margin: 0 auto;
+  display: none;
+}
+
+.line {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#slogan {
+  font-size: 32px;
+  margin-top: 30px;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.main-interface {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+}
+
+.main-logo {
+  width: 175px;
+}
+
+.brand-name {
+  font-size: 28px;
+}
+
+.enter-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.5s ease;
+}
+
+.footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+}
+
+@media(max-width: 768px) {
+  .line { font-size: 20px; }
+  #slogan { font-size: 24px; }
+  .brand-name { font-size: 22px; }
+  .enter-btn { font-size: 16px; }
+}
+
   </style>
 </head>
-<body>  <video id="bg-video" autoplay muted playsinline>
+<body>
+  <video class="bg-video" autoplay muted loop playsinline>
     <source src="bg-video.mp4" type="video/mp4">
-  </video><button id="skipBtn">Skip</button>
+  </video><button class="skip-btn" onclick="skipIntro()">Skip</button>
 
-  <div class="center-content" id="cinematic">
-    <img src="av-logo.png" class="logo" id="logo" alt="logo">
-    <div id="intro"></div>
-    <div class="main-slogan" id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>  <div class="final-interface" id="mainUI">
-    <img src="av-logo.png" class="final-logo" alt="logo">
+  <div class="center" id="intro">
+    <img id="logo" src="av-logo.png" alt="Logo" />
+    <div id="lines"></div>
+    <div id="slogan">LET THE VILLAIN POSSESS</div>
+  </div>  <div class="main-interface" id="main">
+    <img class="main-logo" src="av-logo.png" alt="Logo" />
     <div class="brand-name">ARABIANVILLAIN</div>
-    <div class="main-slogan">LET THE VILLAIN POSSESS</div>
-    <a href="test.html"><button class="realmbtn" id="realmBtn">IVLN REALM</button></a>
-  </div>  <footer>
-    ARABIANVILLAIN 2025. All Rights Reserved.
-  </footer>  <script>
-    const logo = document.getElementById('logo');
-    const intro = document.getElementById('intro');
-    const slogan = document.getElementById('slogan');
-    const bgVideo = document.getElementById('bg-video');
-    const mainUI = document.getElementById('mainUI');
-    const realmBtn = document.getElementById('realmBtn');
-    const skipBtn = document.getElementById('skipBtn');
-
-    const introLines = [
+    <div id="main-slogan">LET THE VILLAIN POSSESS</div>
+    <a class="enter-btn" href="test.html">IVLN REALM</a>
+  </div>  <div class="footer">ARABIANVILLAIN 2025. All Rights Reserved.</div>  <script>
+    const lines = [
       "You’ve been hiding",
       "Behind smiles",
       "Behind noise",
@@ -147,52 +150,51 @@
       "Unchain what they feared most"
     ];
 
-    function showLogo() {
+    const linesContainer = document.getElementById('lines');
+    const logo = document.getElementById('logo');
+    const slogan = document.getElementById('slogan');
+    const main = document.getElementById('main');
+    const intro = document.getElementById('intro');
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function playIntro() {
+      await sleep(1500);
+      logo.style.display = 'block';
+      logo.style.opacity = 0;
+      logo.style.transition = 'opacity 2s';
       logo.style.opacity = 1;
-      setTimeout(() => {
-        logo.style.opacity = 0;
-        startIntroLines();
-      }, 2000);
-    }
+      await sleep(2000);
+      logo.style.opacity = 0;
+      await sleep(2000);
+      logo.style.display = 'none';
 
-    function startIntroLines() {
-      let i = 0;
-      function showLine() {
-        if (i >= introLines.length) {
-          setTimeout(() => {
-            slogan.style.opacity = 1;
-            setTimeout(() => {
-              cinematicDone();
-            }, 3000);
-          }, 1000);
-          return;
-        }
+      for (let i = 0; i < lines.length; i++) {
         const line = document.createElement('div');
-        line.className = 'intro-line';
-        line.textContent = introLines[i];
-        intro.appendChild(line);
-        setTimeout(() => {
-          line.style.opacity = 1;
-        }, 100);
-        i++;
-        setTimeout(showLine, 1000);
+        line.className = 'line';
+        line.textContent = lines[i];
+        linesContainer.appendChild(line);
+        await sleep(100);
+        line.style.opacity = 1;
+        await sleep(1900);
+        line.style.opacity = 0;
+        await sleep(1000);
+        linesContainer.removeChild(line);
       }
-      showLine();
+
+      slogan.style.opacity = 1;
+      await sleep(3000);
+      intro.style.display = 'none';
+      main.style.display = 'flex';
     }
 
-    function cinematicDone() {
-      document.getElementById('cinematic').style.display = 'none';
-      mainUI.style.display = 'flex';
-      realmBtn.style.opacity = 1;
-      bgVideo.style.display = 'block';
+    function skipIntro() {
+      intro.style.display = 'none';
+      main.style.display = 'flex';
     }
 
-    skipBtn.addEventListener('click', () => {
-      cinematicDone();
-    });
-
-    window.onload = () => {
-      setTimeout(showLogo, 1500);
-    };
+    playIntro();
   </script></body>
 </html>
