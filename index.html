@@ -1,139 +1,122 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARABIAN VILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arabian Villain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html {
-      height: 100%;
-      background: black;
-      color: white;
-      font-family: 'Share Tech Mono', monospace;
-      overflow: hidden;
-    }
-    video.bg-video {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -2;
-    }
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: -1;
-    }
-    .centered {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-    .hidden { opacity: 0; transition: opacity 1s ease; }
-    .visible { opacity: 1; transition: opacity 1s ease; }
-    #main-content {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      padding: 2rem;
-    }
-    #main-content h1 {
-      font-size: 2.5rem;
-      margin: 1rem 0;
-    }
-    #main-content p {
-      margin: 0.5rem 0;
-    }
-    #realm-button {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      background-color: #333;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    #realm-button:hover {
-      background-color: #555;
-    }
-    footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.8rem;
-      color: gray;
-    }
-    img.logo {
-      width: 200px;
-      margin-bottom: 1rem;
-    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Orbitron', sans-serif;
+  background: black;
+  color: white;
+}
+
+video.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.show {
+  opacity: 1 !important;
+}
+
+.final-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.btn {
+  background-color: #333;
+  color: white;
+  padding: 12px 24px;
+  margin-top: 30px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+}
+
   </style>
 </head>
 <body>
-  <video autoplay muted loop class="bg-video" id="bg-video">
+  <!-- فيديو الخلفية -->
+  <video class="bg-video" autoplay muted loop id="bgVideo">
     <source src="background.mp4" type="video/mp4">
-  </video>
-  <div class="overlay"></div>  <div class="centered" id="sequence">
-    <img src="logo.png" class="logo hidden" id="logo">
-    <p class="hidden" id="tagline">A BRAND FOR THE ONES WHO NEVER FIT IN<br>A TRIBUTE TO THE DARK SIDE<br>WITHIN</p>
-    <p class="hidden" id="slogan">LET THE VILLAIN POSSESS</p>
-    <h1 class="hidden" id="brandname">ARABIAN VILLAIN</h1>
-  </div>  <div id="main-content">
-    <img src="logo.png" class="logo">
-    <h1>ARABIAN VILLAIN</h1>
-    <p>A BRAND FOR THE ONES WHO NEVER FIT IN</p>
-    <p>A TRIBUTE TO THE DARK SIDE</p>
-    <p>WITHIN</p>
-    <p style="margin-top: 1rem;">LET THE VILLAIN POSSESS</p>
-    <button id="realm-button" onclick="location.href='test.html'">IVLN REALM</button>
+    Your browser does not support the video tag.
+  </video>  <!-- المراحل السينمائية -->  <div class="center" id="logo" style="font-size: 80px;">🔥</div>
+  <div class="center" id="intro" style="font-size: 18px;">A BRAND FOR THE ONES WHO NEVER FIT IN</div>
+  <div class="center" id="slogan" style="font-size: 18px;">A TRIBUTE TO THE DARK SIDE WITHIN</div>
+  <div class="center" id="name" style="font-size: 40px; letter-spacing: 4px;">ARABIAN VILLAIN</div>  <!-- المرحلة النهائية -->  <div class="final-content" id="finalContent">
+    <img src="logo.png" alt="Logo" style="width: 100px; margin-bottom: 20px;" />
+    <h1 style="font-size: 28px;">ARABIAN VILLAIN</h1>
+    <p style="margin-top: 10px; font-size: 16px;">A BRAND FOR THE ONES WHO NEVER FIT IN<br/>A TRIBUTE TO THE DARK SIDE WITHIN</p>
+    <button class="btn" onclick="location.href='quiz.html'">IVLN REALM</button>
     <footer>© ARABIANVILLAIN 2025. ALL RIGHTS RESERVED.</footer>
-  </div>  <script>
-    const logo = document.getElementById('logo');
-    const tagline = document.getElementById('tagline');
-    const slogan = document.getElementById('slogan');
-    const brandname = document.getElementById('brandname');
-    const sequence = document.getElementById('sequence');
-    const main = document.getElementById('main-content');
+  </div>  <audio id="bgAudio" autoplay loop>
+    <source src="background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>  <script>
+    const steps = ["logo", "intro", "slogan", "name"];
+    let index = 0;
 
-    async function showSequence() {
-      await delay(500);
-      logo.classList.add('visible');
-      await delay(2000);
-      logo.classList.remove('visible');
-
-      await delay(1000);
-      tagline.classList.add('visible');
-      await delay(2500);
-      tagline.classList.remove('visible');
-
-      await delay(1000);
-      slogan.classList.add('visible');
-      await delay(2000);
-      slogan.classList.remove('visible');
-
-      await delay(1000);
-      brandname.classList.add('visible');
-      await delay(2000);
-      brandname.classList.remove('visible');
-
-      await delay(1000);
-      sequence.style.display = 'none';
-      main.style.display = 'flex';
+    function showStep() {
+      if (index < steps.length) {
+        const el = document.getElementById(steps[index]);
+        el.classList.add("show");
+        setTimeout(() => {
+          el.classList.remove("show");
+          index++;
+          showStep();
+        }, 2000);
+      } else {
+        // عرض المحتوى النهائي بعد آخر خطوة
+        document.getElementById("finalContent").style.display = "flex";
+      }
     }
 
-    function delay(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    showSequence();
+    window.onload = function () {
+      showStep();
+    };
   </script></body>
 </html>
