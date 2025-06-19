@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,6 +79,7 @@
       justify-content: center;
       height: 100%;
       text-align: center;
+      position: relative;
     }
     .main-logo {
       max-width: 200px;
@@ -101,8 +101,10 @@
       text-decoration: none;
     }
     .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
       text-align: center;
-      padding: 10px;
       font-size: 0.8rem;
       color: gray;
     }
@@ -112,32 +114,21 @@
   <!-- Start Screen -->
   <div id="startScreen">
     <button onclick="startExperience()">ARABIANVILLAIN</button>
-  </div>
+  </div>  <!-- Audio Elements --><audio id="audio1" src="sound1.mp3"></audio> <audio id="audio2" src="sound2.mp3"></audio>
 
-  <!-- Audio Elements -->
-  <audio id="audio1" src="sound1.mp3"></audio>
-  <audio id="audio2" src="sound2.mp3"></audio>
+  <!-- Skip Button --><button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
 
-  <!-- Skip Button -->
-  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
-
-  <!-- Intro -->
-  <div class="center" id="intro">
+  <!-- Intro -->  <div class="center" id="intro">
     <img id="logo" src="av-logo.png" alt="Logo" />
     <div id="lines"></div>
     <div id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>
-
-  <!-- Main Interface -->
-  <div class="main-interface" id="main">
+  </div>  <!-- Main Interface -->  <div class="main-interface" id="main">
     <img class="main-logo" src="av-logo.png" alt="Logo" />
     <div class="brand-name">ARABIANVILLAIN</div>
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
     <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>
-  </div>
-
-  <script>
+  </div>  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -228,6 +219,5 @@
       audio2.pause();
       audio2.currentTime = 0;
     }
-  </script>
-</body>
+  </script></body>
 </html>
