@@ -5,46 +5,132 @@
   <title>Arabian Villain</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
-    /* ... نفس التنسيقات كما هي ... */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      color: white;
+      font-family: 'Cinzel', serif;
+      overflow: hidden;
+    }
+    #startScreen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    #startScreen button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      font-family: 'Cinzel', serif;
+      color: white;
+      cursor: pointer;
+    }
+    #logo {
+      display: none;
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    .center {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #lines {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 20px;
+      transition: opacity 1s;
+    }
+    .line {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    #slogan {
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+    .skip-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid white;
+      padding: 5px 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .main-interface {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+    .main-logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    .brand-name {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    #main-slogan {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .enter-btn {
+      font-size: 1rem;
+      padding: 10px 20px;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+    }
+    .footer {
+      display: none;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.8rem;
+      color: gray;
+    }
   </style>
 </head>
 <body>
-  <!-- Start Screen -->
   <div id="startScreen">
     <button onclick="startExperience()">ARABIANVILLAIN</button>
-  </div>
+  </div><audio id="audio1" src="sound1.mp3" loop></audio> <audio id="audio2" src="sound2.mp3" loop></audio>
 
-  <!-- Audio Elements -->
-  <audio id="audio1" src="sound1.mp3" loop></audio>
-  <audio id="audio2" src="sound2.mp3" loop></audio>
+<button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
 
-  <!-- Skip Button -->
-  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
-
-  <!-- Intro -->
   <div class="center" id="intro">
     <img id="logo" src="av-logo.png" alt="Logo" />
     <div id="lines"></div>
     <div id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>
-
-  <!-- Main Interface -->
-  <div class="main-interface" id="main">
+  </div>  <div class="main-interface" id="main">
     <img class="main-logo" src="av-logo.png" alt="Logo" />
     <div class="brand-name">ARABIANVILLAIN</div>
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>
-
-  <script>
+  </div>  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
       "Behind noise",
-      "Behind versions of yourself that never truly fit",
+      "Behind versions of yourself that",
+      "never truly fit",
       "But we saw you",
       "The cracks",
       "The thoughts you tried to bury",
@@ -70,15 +156,25 @@
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    function fadeOutAudio(audio) {
+      let fadeInterval = setInterval(() => {
+        if (audio.volume > 0.05) {
+          audio.volume -= 0.05;
+        } else {
+          audio.volume = 0;
+          audio.pause();
+          audio.currentTime = 0;
+          clearInterval(fadeInterval);
+        }
+      }, 200);
+    }
+
     function startExperience() {
       startScreen.style.display = "none";
-
-      // تشغيل الصوتين معًا + التحكم في الصوت
-      audio1.volume = 1.0; // صوت عالي
-      audio2.volume = 0.3; // صوت منخفض
+      audio1.volume = 1;
+      audio2.volume = 1;
       audio1.play();
       audio2.play();
-
       playIntro();
     }
 
@@ -111,11 +207,8 @@
       skipBtn.style.display = 'none';
       intro.style.display = 'none';
 
-      // إيقاف الصوتين عند نهاية الانترو
-      audio1.pause();
-      audio1.currentTime = 0;
-      audio2.pause();
-      audio2.currentTime = 0;
+      fadeOutAudio(audio1);
+      fadeOutAudio(audio2);
 
       await sleep(2000);
       main.style.display = 'flex';
@@ -128,12 +221,8 @@
       skipBtn.style.display = 'none';
       footer.style.display = 'block';
 
-      // إيقاف الصوتين عند الضغط على Skip
-      audio1.pause();
-      audio1.currentTime = 0;
-      audio2.pause();
-      audio2.currentTime = 0;
+      fadeOutAudio(audio1);
+      fadeOutAudio(audio2);
     }
-  </script>
-</body>
+  </script></body>
 </html>
