@@ -1,145 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARABIANVILLAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arabian Villain - Intro</title>
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-    body, html {
-      width: 100%;
-      height: 100%;
-      font-family: 'Cinzel', serif;
-      background: black;
+      background-color: black;
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
       overflow: hidden;
-      color: white;
-    }
-    .skip-btn, .mute-btn {
-      position: fixed;
-      top: 20px;
-      background: transparent;
-      color: white;
-      border: 1px solid white;
-      padding: 5px 10px;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .skip-btn {
-      right: 20px;
-    }
-    .mute-btn {
-      right: 100px;
-    }
-    .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 90%;
-      max-width: 700px;
-    }
-    #logo {
-      width: 210px;
-      margin: 0 auto;
-      display: none;
-    }
-    .line {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    #slogan {
-      font-size: 32px;
-      margin-top: 30px;
-      opacity: 0;
-      transition: opacity 2s ease-in-out;
-    }
-    .main-interface {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      gap: 4px;
-    }
-    .main-logo {
-      width: 175px;
-      margin-bottom: -10px;
-    }
-    .brand-name {
-      font-family: 'Cinzel', serif;
-      font-size: 30px;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      margin-top: -2px;
-    }
-    .enter-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      transition: all 0.5s ease;
-    }
-    .footer {
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: none;
-    }
-    @media(max-width: 768px) {
-      .line { font-size: 20px; }
-      #slogan { font-size: 24px; }
-      .brand-name { font-size: 22px; }
-      .enter-btn { font-size: 16px; }
-    }
+    }#intro, #main, #footer {
+  display: none;
+}
+
+#logo {
+  display: none;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 20vh;
+}
+
+#lines {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 20vh;
+}
+
+.line {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#slogan {
+  opacity: 0;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 5vh;
+  transition: opacity 2s;
+}
+
+#skipBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
   </style>
-</head>
-<body>
-  <!-- Audio Elements -->
-  <audio id="audio1" src="sound1.mp3" autoplay loop></audio>
-  <audio id="audio2" src="sound2.mp3" autoplay loop></audio>
-
-  <!-- Buttons -->
-  <button class="mute-btn" id="muteBtn" onclick="toggleMute()">Mute</button>
-  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
-
-  <!-- Intro -->
-  <div class="center" id="intro">
-    <img id="logo" src="av-logo.png" alt="Logo" />
+</head><body>
+  <audio id="audio1" src="sound1.mp3" loop></audio>
+  <audio id="audio2" src="sound2.mp3" loop></audio>  <div id="intro">
+    <div id="logo">ARABIAN VILLAIN</div>
     <div id="lines"></div>
-    <div id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>
-
-  <!-- Main -->
-  <div class="main-interface" id="main">
-    <img class="main-logo" src="av-logo.png" alt="Logo" />
-    <div class="brand-name">ARABIANVILLAIN</div>
-    <div id="main-slogan">LET THE VILLAIN POSSESS</div>
-    <a class="enter-btn" href="test.html">IVLN REALM</a>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>
-
-  <script>
+    <div id="slogan">Let the Villain Possess</div>
+    <button id="skipBtn" onclick="skipIntro()">Skip</button>
+  </div>  <div id="main">
+    <!-- المحتوى الرئيسي بعد الانترو -->
+    <h1 style="text-align:center; margin-top:20vh;">Welcome to the Darkness</h1>
+  </div>  <div id="footer" style="text-align:center; position:absolute; bottom:20px; width:100%;">
+    <p>Arabian Villain &copy; 2025</p>
+  </div>  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -162,18 +88,10 @@
     const intro = document.getElementById('intro');
     const skipBtn = document.getElementById('skipBtn');
     const footer = document.getElementById('footer');
-    const muteBtn = document.getElementById('muteBtn');
     const audio1 = document.getElementById('audio1');
     const audio2 = document.getElementById('audio2');
 
-    let isMuted = false;
-
-    function toggleMute() {
-      isMuted = !isMuted;
-      audio1.muted = isMuted;
-      audio2.muted = isMuted;
-      muteBtn.textContent = isMuted ? 'Unmute' : 'Mute';
-    }
+    intro.style.display = 'block';
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -206,7 +124,6 @@
       slogan.style.opacity = 1;
       await sleep(3000);
       skipBtn.style.display = 'none';
-      muteBtn.style.display = 'none';
       intro.style.display = 'none';
       await sleep(2000);
       main.style.display = 'flex';
@@ -217,11 +134,16 @@
       intro.style.display = 'none';
       main.style.display = 'flex';
       skipBtn.style.display = 'none';
-      muteBtn.style.display = 'none';
       footer.style.display = 'block';
     }
 
-    playIntro();
-  </script>
-</body>
-</html>
+    let hasStarted = false;
+    document.addEventListener('click', () => {
+      if (!hasStarted) {
+        audio1.play();
+        audio2.play();
+        playIntro();
+        hasStarted = true;
+      }
+    });
+  </script></body></html>
