@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
@@ -105,6 +104,8 @@
       padding: 10px;
       font-size: 0.8rem;
       color: gray;
+      opacity: 0;
+      transition: opacity 1s;
     }
   </style>
 </head>
@@ -153,9 +154,8 @@
     const audio2 = document.getElementById('audio2');
     const startScreen = document.getElementById('startScreen');
 
-    let introEnded = false; // يتحكم في إعادة الصوت أو وقفه
+    let introEnded = false;
 
-    // إعادة تشغيل الصوت إذا انتهى طالما الإنترو لم ينتهِ
     audio1.addEventListener('ended', function () {
       if (!introEnded) audio1.play();
     });
@@ -214,6 +214,9 @@
       main.style.display = 'flex';
       skipBtn.style.display = 'none';
       footer.style.display = 'block';
+      setTimeout(() => {
+        footer.style.opacity = 1;
+      }, 100);
       audio1.pause();
       audio1.currentTime = 0;
       audio2.pause();
