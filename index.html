@@ -19,16 +19,22 @@
       overflow: hidden;
       color: white;
     }
-    .skip-btn {
+    .skip-btn, .sound-btn {
       position: fixed;
       top: 20px;
-      right: 20px;
       background: transparent;
       color: white;
       border: 1px solid white;
       padding: 5px 10px;
       cursor: pointer;
       z-index: 10;
+    }
+    .skip-btn {
+      right: 20px;
+    }
+    .sound-btn {
+      left: 20px;
+      font-size: 18px;
     }
     .center {
       position: absolute;
@@ -109,11 +115,12 @@
 </head>
 <body>
   <!-- Audio Elements -->
-  <audio id="audio1" src="sound1.mp3" autoplay loop></audio>
-  <audio id="audio2" src="sound2.mp3" autoplay loop></audio>
+  <audio id="audio1" src="sound1.mp3" loop></audio>
+  <audio id="audio2" src="sound2.mp3" loop></audio>
 
   <!-- Buttons -->
   <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
+  <button class="sound-btn" id="soundBtn" onclick="toggleSound()">🔇</button>
 
   <!-- Intro -->
   <div class="center" id="intro">
@@ -155,6 +162,24 @@
     const intro = document.getElementById('intro');
     const skipBtn = document.getElementById('skipBtn');
     const footer = document.getElementById('footer');
+    const audio1 = document.getElementById('audio1');
+    const audio2 = document.getElementById('audio2');
+    const soundBtn = document.getElementById('soundBtn');
+    let isSoundOn = false;
+
+    function toggleSound() {
+      if (!isSoundOn) {
+        audio1.play();
+        audio2.play();
+        soundBtn.textContent = '🔊';
+        isSoundOn = true;
+      } else {
+        audio1.pause();
+        audio2.pause();
+        soundBtn.textContent = '🔇';
+        isSoundOn = false;
+      }
+    }
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
