@@ -1,10 +1,12 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
+    /* (نفس الستايل الموجود بدون تعديل) */
     body, html {
       margin: 0;
       padding: 0;
@@ -13,132 +15,133 @@
       color: white;
       font-family: 'Cinzel', serif;
       overflow: hidden;
-    }#startScreen {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-
-#startScreen button {
-  background: none;
-  border: none;
-  font-size: 24px;
-  font-family: 'Cinzel', serif;
-  color: white;
-  cursor: pointer;
-}
-
-#logo {
-  display: none;
-  max-width: 200px;
-  margin-bottom: 20px;
-}
-
-.center {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-#lines {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin-bottom: 20px;
-  transition: opacity 1s;
-}
-
-.line {
-  opacity: 0;
-  transition: opacity 1s;
-}
-
-#slogan {
-  font-size: 1.5rem;
-  opacity: 0;
-  transition: opacity 2s;
-}
-
-.skip-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid white;
-  padding: 5px 10px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.main-interface {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-}
-
-.main-logo {
-  max-width: 200px;
-  margin-bottom: 20px;
-}
-
-.brand-name {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-#main-slogan {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.enter-btn {
-  font-size: 1rem;
-  padding: 10px 20px;
-  border: 1px solid white;
-  color: white;
-  text-decoration: none;
-}
-
-.footer {
-  display: none;
-  text-align: center;
-  padding: 10px;
-  font-size: 0.8rem;
-  color: gray;
-}
-
+    }
+    #startScreen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    #startScreen button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      font-family: 'Cinzel', serif;
+      color: white;
+      cursor: pointer;
+    }
+    #logo {
+      display: none;
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    .center {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    #lines {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 20px;
+      transition: opacity 1s;
+    }
+    .line {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    #slogan {
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+    .skip-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid white;
+      padding: 5px 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .main-interface {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+    .main-logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    .brand-name {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    #main-slogan {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .enter-btn {
+      font-size: 1rem;
+      padding: 10px 20px;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+    }
+    .footer {
+      display: none;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.8rem;
+      color: gray;
+    }
   </style>
 </head>
 <body>
   <!-- Start Screen -->
   <div id="startScreen">
     <button onclick="startExperience()">ARABIANVILLAIN</button>
-  </div>  <!-- Audio Elements --><audio id="audio1" src="sound1.mp3" loop></audio> <audio id="audio2" src="sound2.mp3" loop></audio>
+  </div>
 
-  <!-- Buttons --><button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
+  <!-- Audio Elements -->
+  <audio id="audio1" src="sound1.mp3" loop></audio>
+  <audio id="audio2" src="sound2.mp3" loop></audio>
 
-  <!-- Intro -->  <div class="center" id="intro">
+  <!-- Skip Button -->
+  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
+
+  <!-- Intro -->
+  <div class="center" id="intro">
     <img id="logo" src="av-logo.png" alt="Logo" />
     <div id="lines"></div>
     <div id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>  <!-- Main -->  <div class="main-interface" id="main">
+  </div>
+
+  <!-- Main Interface -->
+  <div class="main-interface" id="main">
     <img class="main-logo" src="av-logo.png" alt="Logo" />
     <div class="brand-name">ARABIANVILLAIN</div>
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
-  </div>  <!-- Footer -->  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>  <script>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>
+
+  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -171,8 +174,7 @@
 
     function startExperience() {
       startScreen.style.display = "none";
-      audio1.play();
-      audio2.play();
+      audio1.play(); // Play first sound
       playIntro();
     }
 
@@ -204,6 +206,12 @@
       await sleep(3000);
       skipBtn.style.display = 'none';
       intro.style.display = 'none';
+
+      // Stop first sound and play second
+      audio1.pause();
+      audio1.currentTime = 0;
+      audio2.play();
+
       await sleep(2000);
       main.style.display = 'flex';
       footer.style.display = 'block';
@@ -214,8 +222,12 @@
       main.style.display = 'flex';
       skipBtn.style.display = 'none';
       footer.style.display = 'block';
-      audio1.play();
+
+      // Skip to main and play second sound only
+      audio1.pause();
+      audio1.currentTime = 0;
       audio2.play();
     }
-  </script></body>
+  </script>
+</body>
 </html>
