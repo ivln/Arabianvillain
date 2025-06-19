@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
@@ -99,13 +101,10 @@
       text-decoration: none;
     }
     .footer {
-      display: none;
       text-align: center;
       padding: 10px;
       font-size: 0.8rem;
       color: gray;
-      opacity: 0;
-      transition: opacity 1s;
     }
   </style>
 </head>
@@ -113,20 +112,32 @@
   <!-- Start Screen -->
   <div id="startScreen">
     <button onclick="startExperience()">ARABIANVILLAIN</button>
-  </div>  <!-- Audio Elements --><audio id="audio1" src="sound1.mp3"></audio> <audio id="audio2" src="sound2.mp3"></audio>
+  </div>
 
-  <!-- Skip Button --><button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
+  <!-- Audio Elements -->
+  <audio id="audio1" src="sound1.mp3"></audio>
+  <audio id="audio2" src="sound2.mp3"></audio>
 
-  <!-- Intro -->  <div class="center" id="intro">
+  <!-- Skip Button -->
+  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
+
+  <!-- Intro -->
+  <div class="center" id="intro">
     <img id="logo" src="av-logo.png" alt="Logo" />
     <div id="lines"></div>
     <div id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>  <!-- Main Interface -->  <div class="main-interface" id="main">
+  </div>
+
+  <!-- Main Interface -->
+  <div class="main-interface" id="main">
     <img class="main-logo" src="av-logo.png" alt="Logo" />
     <div class="brand-name">ARABIANVILLAIN</div>
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
-  </div>  <!-- Footer -->  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>  <script>
+    <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>
+  </div>
+
+  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -149,7 +160,6 @@
     const main = document.getElementById('main');
     const intro = document.getElementById('intro');
     const skipBtn = document.getElementById('skipBtn');
-    const footer = document.getElementById('footer');
     const audio1 = document.getElementById('audio1');
     const audio2 = document.getElementById('audio2');
     const startScreen = document.getElementById('startScreen');
@@ -213,14 +223,11 @@
       intro.style.display = 'none';
       main.style.display = 'flex';
       skipBtn.style.display = 'none';
-      footer.style.display = 'block';
-      setTimeout(() => {
-        footer.style.opacity = 1;
-      }, 100);
       audio1.pause();
       audio1.currentTime = 0;
       audio2.pause();
       audio2.currentTime = 0;
     }
-  </script></body>
+  </script>
+</body>
 </html>
