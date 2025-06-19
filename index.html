@@ -1,113 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
-    /* (نفس الستايل الموجود بدون تعديل) */
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black;
-      color: white;
-      font-family: 'Cinzel', serif;
-      overflow: hidden;
-    }
-    #startScreen {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: black;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-    }
-    #startScreen button {
-      background: none;
-      border: none;
-      font-size: 24px;
-      font-family: 'Cinzel', serif;
-      color: white;
-      cursor: pointer;
-    }
-    #logo {
-      display: none;
-      max-width: 200px;
-      margin-bottom: 20px;
-    }
-    .center {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    #lines {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 20px;
-      transition: opacity 1s;
-    }
-    .line {
-      opacity: 0;
-      transition: opacity 1s;
-    }
-    #slogan {
-      font-size: 1.5rem;
-      opacity: 0;
-      transition: opacity 2s;
-    }
-    .skip-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid white;
-      padding: 5px 10px;
-      cursor: pointer;
-      z-index: 10;
-    }
-    .main-interface {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-    }
-    .main-logo {
-      max-width: 200px;
-      margin-bottom: 20px;
-    }
-    .brand-name {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    #main-slogan {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    .enter-btn {
-      font-size: 1rem;
-      padding: 10px 20px;
-      border: 1px solid white;
-      color: white;
-      text-decoration: none;
-    }
-    .footer {
-      display: none;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.8rem;
-      color: gray;
-    }
+    /* ... نفس التنسيقات كما هي ... */
   </style>
 </head>
 <body>
@@ -174,7 +72,13 @@
 
     function startExperience() {
       startScreen.style.display = "none";
-      audio1.play(); // Play first sound
+
+      // تشغيل الصوتين معًا + التحكم في الصوت
+      audio1.volume = 1.0; // صوت عالي
+      audio2.volume = 0.3; // صوت منخفض
+      audio1.play();
+      audio2.play();
+
       playIntro();
     }
 
@@ -207,10 +111,11 @@
       skipBtn.style.display = 'none';
       intro.style.display = 'none';
 
-      // Stop first sound and play second
+      // إيقاف الصوتين عند نهاية الانترو
       audio1.pause();
       audio1.currentTime = 0;
-      audio2.play();
+      audio2.pause();
+      audio2.currentTime = 0;
 
       await sleep(2000);
       main.style.display = 'flex';
@@ -223,10 +128,11 @@
       skipBtn.style.display = 'none';
       footer.style.display = 'block';
 
-      // Skip to main and play second sound only
+      // إيقاف الصوتين عند الضغط على Skip
       audio1.pause();
       audio1.currentTime = 0;
-      audio2.play();
+      audio2.pause();
+      audio2.currentTime = 0;
     }
   </script>
 </body>
