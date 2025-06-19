@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -113,34 +112,20 @@
   <!-- Start Screen -->
   <div id="startScreen">
     <button onclick="startExperience()">ARABIANVILLAIN</button>
-  </div>
+  </div>  <!-- Audio Elements --><audio id="audio1" src="sound1.mp3"></audio> <audio id="audio2" src="sound2.mp3"></audio>
 
-  <!-- Audio Elements -->
-  <audio id="audio1" src="sound1.mp3"></audio>
-  <audio id="audio2" src="sound2.mp3"></audio>
+  <!-- Skip Button --><button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
 
-  <!-- Skip Button -->
-  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
-
-  <!-- Intro -->
-  <div class="center" id="intro">
+  <!-- Intro -->  <div class="center" id="intro">
     <img id="logo" src="av-logo.png" alt="Logo" />
     <div id="lines"></div>
     <div id="slogan">LET THE VILLAIN POSSESS</div>
-  </div>
-
-  <!-- Main Interface -->
-  <div class="main-interface" id="main">
+  </div>  <!-- Main Interface -->  <div class="main-interface" id="main">
     <img class="main-logo" src="av-logo.png" alt="Logo" />
     <div class="brand-name">ARABIANVILLAIN</div>
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>
-
-  <script>
+  </div>  <!-- Footer -->  <div class="footer" id="footer">arabianvillain 2025. All Rights Reserved.</div>  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -167,6 +152,16 @@
     const audio1 = document.getElementById('audio1');
     const audio2 = document.getElementById('audio2');
     const startScreen = document.getElementById('startScreen');
+
+    let introEnded = false; // يتحكم في إعادة الصوت أو وقفه
+
+    // إعادة تشغيل الصوت إذا انتهى طالما الإنترو لم ينتهِ
+    audio1.addEventListener('ended', function () {
+      if (!introEnded) audio1.play();
+    });
+    audio2.addEventListener('ended', function () {
+      if (!introEnded) audio2.play();
+    });
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -214,6 +209,7 @@
     }
 
     function endIntro() {
+      introEnded = true;
       intro.style.display = 'none';
       main.style.display = 'flex';
       skipBtn.style.display = 'none';
@@ -223,6 +219,5 @@
       audio2.pause();
       audio2.currentTime = 0;
     }
-  </script>
-</body>
+  </script></body>
 </html>
