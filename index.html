@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARABIANVILLAIN</title>  <!-- فونت Cinzel الفخم -->  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">  <style>
+  <title>ARABIANVILLAIN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -72,15 +73,16 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      gap: 6px; /* قللنا المسافة بين العناصر */
+      gap: 6px;
     }
     .main-logo {
       width: 175px;
+      margin-bottom: 2px; /* قللنا المسافة أكثر */
     }
     .brand-name {
       font-family: 'Cinzel', serif;
       font-size: 34px;
-      margin-top: 0px; /* قللنا المسافة بين اللوجو والاسم */
+      margin-top: -10px; /* قرب الاسم أكتر من اللوجو */
       letter-spacing: 2px;
     }
     .enter-btn {
@@ -125,7 +127,8 @@
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="test.html">IVLN REALM</a>
   </div>
-  <div class="footer" id="footer" style="display: none;">arabianvillain 2025. All Rights Reserved.</div>  <script>
+  <div class="footer" id="footer" style="display: none;">arabianvillain 2025. All Rights Reserved.</div>
+  <script>
     const lines = [
       "You’ve been hiding",
       "Behind smiles",
@@ -146,52 +149,52 @@
     const main = document.getElementById('main');
     const intro = document.getElementById('intro');
     const skipBtn = document.getElementById('skipBtn');
-    const footer = document.getElementById('footer');
+    const footer = document.getElementById('footer');function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+async function playIntro() {
+  await sleep(1500);
+  logo.style.display = 'block';
+  logo.style.opacity = 0;
+  logo.style.transition = 'opacity 2s';
+  logo.style.opacity = 1;
+  await sleep(2000);
+  logo.style.opacity = 0;
+  await sleep(2000);
+  logo.style.display = 'none';
 
-    async function playIntro() {
-      await sleep(1500);
-      logo.style.display = 'block';
-      logo.style.opacity = 0;
-      logo.style.transition = 'opacity 2s';
-      logo.style.opacity = 1;
-      await sleep(2000);
-      logo.style.opacity = 0;
-      await sleep(2000);
-      logo.style.display = 'none';
+  for (let i = 0; i < lines.length; i++) {
+    const line = document.createElement('div');
+    line.className = 'line';
+    line.textContent = lines[i];
+    linesContainer.appendChild(line);
+    await sleep(100);
+    line.style.opacity = 1;
+    await sleep(1900);
+    line.style.opacity = 0;
+    await sleep(1000);
+    linesContainer.removeChild(line);
+  }
 
-      for (let i = 0; i < lines.length; i++) {
-        const line = document.createElement('div');
-        line.className = 'line';
-        line.textContent = lines[i];
-        linesContainer.appendChild(line);
-        await sleep(100);
-        line.style.opacity = 1;
-        await sleep(1900);
-        line.style.opacity = 0;
-        await sleep(1000);
-        linesContainer.removeChild(line);
-      }
+  slogan.style.opacity = 1;
+  await sleep(3000);
+  skipBtn.style.display = 'none';
+  intro.style.display = 'none';
+  await sleep(2000);
+  main.style.display = 'flex';
+  footer.style.display = 'block';
+}
 
-      slogan.style.opacity = 1;
-      await sleep(3000);
-      skipBtn.style.display = 'none';
-      intro.style.display = 'none';
-      await sleep(2000);
-      main.style.display = 'flex';
-      footer.style.display = 'block';
-    }
+function skipIntro() {
+  intro.style.display = 'none';
+  main.style.display = 'flex';
+  skipBtn.style.display = 'none';
+  footer.style.display = 'block';
+}
 
-    function skipIntro() {
-      intro.style.display = 'none';
-      main.style.display = 'flex';
-      skipBtn.style.display = 'none';
-      footer.style.display = 'block';
-    }
+playIntro();
 
-    playIntro();
-  </script></body>
+  </script>
+</body>
 </html>
