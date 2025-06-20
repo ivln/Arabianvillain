@@ -182,6 +182,7 @@
 
     function startExperience() {
       startScreen.style.display = "none";
+      audio1.volume = 1;
       audio1.play();
       playIntro();
     }
@@ -222,11 +223,21 @@
 
     function endIntro() {
       introEnded = true;
+
+      // Start fade out
+      let fadeInterval = setInterval(() => {
+        if (audio1.volume > 0.05) {
+          audio1.volume -= 0.05;
+        } else {
+          audio1.pause();
+          audio1.currentTime = 0;
+          clearInterval(fadeInterval);
+        }
+      }, 100);
+
       intro.style.display = 'none';
       main.style.display = 'flex';
       skipBtn.style.display = 'none';
-      audio1.pause();
-      audio1.currentTime = 0;
     }
   </script>
 </body>
