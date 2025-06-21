@@ -1,5 +1,4 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
+<!DOCTYPE html>  <html lang="en">  <head>  
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
   <title>Arabian Villain</title>  
@@ -65,10 +64,10 @@
       position: absolute;  
       top: 20px;  
       right: 20px;  
-      background: rgba(255, 255, 255, 0.1);  
+      background: none;  
+      border: none;  
       color: white;  
-      border: 1px solid white;  
-      padding: 5px 10px;  
+      font-size: 16px;  
       cursor: pointer;  
       z-index: 10;  
     }  
@@ -121,7 +120,7 @@
     <button onclick="startExperience()">ARABIANVILLAIN</button>  
   </div>    <!-- Audio Element -->  <audio id="audio1" src="sound1.mp3"></audio>
 
-  <!-- Skip Button -->  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">Skip</button>
+  <!-- Skip Button -->  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">«</button>
 
   <!-- Intro -->    <div class="center" id="intro">  
     <img id="logo" src="av-logo.png" alt="Logo" />  
@@ -148,8 +147,8 @@
       "No more mercy",  
       "It’s time",  
       "Unchain what they feared most"  
-    ];  
-  
+    ];
+
     const linesContainer = document.getElementById('lines');  
     const logo = document.getElementById('logo');  
     const slogan = document.getElementById('slogan');  
@@ -157,24 +156,24 @@
     const intro = document.getElementById('intro');  
     const skipBtn = document.getElementById('skipBtn');  
     const audio1 = document.getElementById('audio1');  
-    const startScreen = document.getElementById('startScreen');  
-  
+    const startScreen = document.getElementById('startScreen');
+
     let introEnded = false;  
-  
+
     audio1.addEventListener('ended', function () {  
       if (!introEnded) audio1.play();  
-    });  
-  
+    });
+
     function sleep(ms) {  
       return new Promise(resolve => setTimeout(resolve, ms));  
-    }  
-  
+    }
+
     function startExperience() {  
       startScreen.style.display = "none";  
       audio1.play();  
       playIntro();  
-    }  
-  
+    }
+
     async function playIntro() {  
       await sleep(1500);  
       logo.style.display = 'block';  
@@ -184,8 +183,8 @@
       await sleep(2000);  
       logo.style.opacity = 0;  
       await sleep(2000);  
-      logo.style.display = 'none';  
-  
+      logo.style.display = 'none';
+
       for (let i = 0; i < lines.length; i++) {  
         const line = document.createElement('div');  
         line.className = 'line';  
@@ -197,18 +196,18 @@
         line.style.opacity = 0;  
         await sleep(1000);  
         linesContainer.removeChild(line);  
-      }  
-  
+      }
+
       slogan.style.opacity = 1;  
-      await sleep(3000);  
-  
+      await sleep(3000);
+
       endIntro();  
-    }  
-  
+    }
+
     function skipIntro() {  
       endIntro();  
-    }  
-  
+    }
+
     function endIntro() {  
       introEnded = true;  
       intro.style.display = 'none';  
@@ -218,4 +217,4 @@
       audio1.currentTime = 0;  
     }  
   </script>  </body>  
-</html>  
+</html>
