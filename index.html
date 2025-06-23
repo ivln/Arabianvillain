@@ -108,18 +108,20 @@
       margin-bottom: 25px;
     }
     .enter-btn {
-      font-size: 1rem;
+      font-size: 1.1rem;
       padding: 12px 30px;
       color: white;
-      text-decoration: none;
+      background-color: transparent;
       border: 2px solid white;
-      clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
-      transition: all 0.3s ease;
-      display: inline-block;
+      position: relative;
+      clip-path: polygon(10% 0%, 90% 0%, 100% 20%, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0% 20%);
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s, transform 0.2s;
     }
     .enter-btn:hover {
       background-color: white;
       color: black;
+      transform: scale(1.05);
     }
     .footer {
       position: absolute;
@@ -165,18 +167,17 @@
       "No more mercy",
       "It’s time",
       "Unchain what they feared most",
-    ];const linesContainer = document.getElementById('lines');
-const logo = document.getElementById('logo');
-const slogan = document.getElementById('slogan');
-const main = document.getElementById('main');
-const intro = document.getElementById('intro');
-const skipBtn = document.getElementById('skipBtn');
-const audio1 = document.getElementById('audio1');
-const startScreen = document.getElementById('startScreen');
-const blackout = document.getElementById('blackout');
-let introEnded = false;
-
-function sleep(ms) {
+    ];
+    const linesContainer = document.getElementById('lines');
+    const logo = document.getElementById('logo');
+    const slogan = document.getElementById('slogan');
+    const main = document.getElementById('main');
+    const intro = document.getElementById('intro');
+    const skipBtn = document.getElementById('skipBtn');
+    const audio1 = document.getElementById('audio1');
+    const startScreen = document.getElementById('startScreen');
+    const blackout = document.getElementById('blackout');
+    let introEnded = false;function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
