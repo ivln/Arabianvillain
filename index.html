@@ -1,4 +1,5 @@
-<!DOCTYPE html>  <html lang="en">  
+<!DOCTYPE html>  
+<html lang="en">  
 <head>  
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
@@ -128,8 +129,8 @@
   <div id="startScreen">  
     <button onclick="startExperience()">ARABIANVILLAIN</button>  
   </div>  
-  <audio id="audio1" src="soundv.mp3"></audio>
-  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">«</button>
+  <audio id="audio1" src="soundv.mp3"></audio>  
+  <button class="skip-btn" id="skipBtn" onclick="skipIntro()">«</button>  
   <div class="center" id="intro">  
     <img id="logo" src="av-logo.png" alt="Logo" />  
     <div id="lines"></div>  
@@ -145,95 +146,90 @@
   </div>  
   <script>  
     const lines = [  
-      "You’ve been hiding",
-      "Behind smiles",
-      "Behind noise",
-      "Behind versions of yourself",
+      "You’ve been hiding",  
+      "Behind smiles",  
+      "Behind noise",  
+      "Behind versions of yourself",  
       "that never truly fit...",  
-      "But we saw you",
-      "The cracks",
-      "The thoughts you tried to bury",    
-      "The RAGE you kept calling \"kindness\"",
-      "No more masks",
-      "No more mercy",
+      "But we saw you",  
+      "The cracks",  
+      "The thoughts you tried to bury",  
+      "The RAGE you kept calling \"kindness\"",  
+      "No more masks",  
+      "No more mercy",  
       "It’s time",  
       "Unchain what they feared most",  
-    ];const linesContainer = document.getElementById('lines');  
-const logo = document.getElementById('logo');  
-const slogan = document.getElementById('slogan');  
-const main = document.getElementById('main');  
-const intro = document.getElementById('intro');  
-const skipBtn = document.getElementById('skipBtn');  
-const audio1 = document.getElementById('audio1');  
-const startScreen = document.getElementById('startScreen');
-const blackout = document.getElementById('blackout');
+    ];  
+    const linesContainer = document.getElementById('lines');  
+    const logo = document.getElementById('logo');  
+    const slogan = document.getElementById('slogan');  
+    const main = document.getElementById('main');  
+    const intro = document.getElementById('intro');  
+    const skipBtn = document.getElementById('skipBtn');  
+    const audio1 = document.getElementById('audio1');  
+    const startScreen = document.getElementById('startScreen');  
+    const blackout = document.getElementById('blackout');  
+    let introEnded = false;  
 
-let introEnded = false;  
+    function sleep(ms) {  
+      return new Promise(resolve => setTimeout(resolve, ms));  
+    }  
 
-audio1.addEventListener('ended', function () {  
-  if (!introEnded) audio1.play();  
-});
+    function startExperience() {  
+      startScreen.style.display = "none";  
+      audio1.play();  
+      playIntro();  
+    }  
 
-function sleep(ms) {  
-  return new Promise(resolve => setTimeout(resolve, ms));  
-}
+    async function playIntro() {  
+      await sleep(1500);  
+      logo.style.display = 'block';  
+      logo.style.opacity = 0;  
+      logo.style.transition = 'opacity 2s';  
+      logo.style.opacity = 1;  
+      await sleep(2000);  
+      logo.style.opacity = 0;  
+      await sleep(2000);  
+      logo.style.display = 'none';  
 
-function startExperience() {  
-  startScreen.style.display = "none";  
-  audio1.play();  
-  playIntro();  
-}
+      for (let i = 0; i < lines.length; i++) {  
+        const line = document.createElement('div');  
+        line.className = 'line';  
+        line.textContent = lines[i];  
+        linesContainer.appendChild(line);  
+        await sleep(100);  
+        line.style.opacity = 1;  
+        await sleep(1900);  
+        line.style.opacity = 0;  
+        await sleep(1000);  
+        linesContainer.removeChild(line);  
+      }  
 
-async function playIntro() {  
-  await sleep(1500);  
-  logo.style.display = 'block';  
-  logo.style.opacity = 0;  
-  logo.style.transition = 'opacity 2s';  
-  logo.style.opacity = 1;  
-  await sleep(2000);  
-  logo.style.opacity = 0;  
-  await sleep(2000);  
-  logo.style.display = 'none';
+      slogan.style.opacity = 1;  
+      await sleep(3000);  
+      slogan.style.opacity = 0;  
+      await sleep(2000);  
 
-  for (let i = 0; i < lines.length; i++) {  
-    const line = document.createElement('div');  
-    line.className = 'line';  
-    line.textContent = lines[i];  
-    linesContainer.appendChild(line);  
-    await sleep(100);  
-    line.style.opacity = 1;  
-    await sleep(1900);  
-    line.style.opacity = 0;  
-    await sleep(1000);  
-    linesContainer.removeChild(line);  
-  }
+      blackout.style.opacity = 1;  
+      await sleep(2000);  
 
-  slogan.style.opacity = 1;  
-  await sleep(3000);  
-  slogan.style.opacity = 0;
-  await sleep(2000);
+      endIntro();  
+    }  
 
-  blackout.style.opacity = 1;
-  await sleep(2000);
+    function skipIntro() {  
+      endIntro();  
+    }  
 
-  endIntro();  
-}
-
-function skipIntro() {  
-  endIntro();  
-}
-
-function endIntro() {  
-  introEnded = true;  
-  intro.style.display = 'none';  
-  main.style.display = 'flex';  
-  skipBtn.style.display = 'none';  
-  audio1.pause();  
-  audio1.currentTime = 0;
-  blackout.style.opacity = 0;
-  main.style.opacity = 1;
-}
-
+    function endIntro() {  
+      introEnded = true;  
+      intro.style.display = 'none';  
+      main.style.display = 'flex';  
+      skipBtn.style.display = 'none';  
+      audio1.pause();  
+      audio1.currentTime = 0;  
+      blackout.style.opacity = 0;  
+      main.style.opacity = 1;  
+    }  
   </script>  
 </body>  
 </html>
