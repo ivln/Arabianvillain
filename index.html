@@ -108,20 +108,11 @@
       margin-bottom: 25px;
     }
     .enter-btn {
-      font-size: 1.1rem;
-      padding: 12px 30px;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border: 1px solid white;
       color: white;
-      background-color: transparent;
-      border: 2px solid white;
-      position: relative;
-      clip-path: polygon(10% 0%, 90% 0%, 100% 20%, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0% 20%);
       text-decoration: none;
-      transition: background-color 0.3s, color 0.3s, transform 0.2s;
-    }
-    .enter-btn:hover {
-      background-color: white;
-      color: black;
-      transform: scale(1.05);
     }
     .footer {
       position: absolute;
@@ -216,6 +207,7 @@ async function playIntro() {
   slogan.style.opacity = 0;
   await sleep(2000);
 
+  // إيقاف الصوت بعد السلوغن
   audio1.pause();
   audio1.currentTime = 0;
 
