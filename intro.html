@@ -15,6 +15,7 @@
       color: white;
       overflow: hidden;
     }
+
     .center {
       position: absolute;
       top: 50%;
@@ -22,36 +23,32 @@
       transform: translate(-50%, -50%);
       text-align: center;
       transition: opacity 1s ease;
+      z-index: 2;
     }
+
     .hidden {
       opacity: 0;
       pointer-events: none;
     }
+
     .fade-in {
       animation: fadeIn 2s ease forwards;
     }
+
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
-    #video-bg {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -2;
-    }
-    .overlay {
+
+    .black-screen {
       display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: black;
       z-index: 1;
     }
+
     #reveal-btn {
       display: none;
       position: absolute;
@@ -64,52 +61,53 @@
       color: white;
       font-size: 18px;
       cursor: pointer;
-      z-index: 2;
+      z-index: 3;
     }
   </style>
 </head>
 <body>
+  <!-- البداية -->
   <div class="center" id="intro">
     <h2>YOU WERE NEVER ORDINARY</h2>
-    <h3>THE VILLAIN WITHIN WANT TO COME OUT</h3>
+    <h3>THE VILLAIN WITHIN WANTS TO COME OUT</h3>
     <button id="beginBtn" style="display: none;">LET THE POSSESSION BEGIN</button>
   </div>
 
-  <video id="video-bg" autoplay muted loop>
-    <source src="your-video.mp4" type="video/mp4">
-  </video>
+  <!-- الشاشة السوداء -->
+  <div class="black-screen" id="blackScreen"></div>
 
-  <div class="overlay" id="overlay"></div>
+  <!-- زر الاختبار -->
   <button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
 
   <script>
     window.onload = () => {
       const btn = document.getElementById('beginBtn');
       const intro = document.getElementById('intro');
-      const video = document.getElementById('video-bg');
-      const overlay = document.getElementById('overlay');
+      const blackScreen = document.getElementById('blackScreen');
       const reveal = document.getElementById('reveal-btn');
 
+      // بعد 2 ثانية يظهر الزر
       setTimeout(() => {
         btn.style.display = 'inline-block';
         btn.classList.add('fade-in');
       }, 2000);
 
+      // لما يضغط على الزر
       btn.addEventListener('click', () => {
         btn.style.display = 'none';
-        const chapter = document.createElement('h4');
-        chapter.textContent = 'CHAPTER I BEGINS';
-        intro.appendChild(chapter);
 
+        // إخفاء النص بالكامل
         setTimeout(() => {
           intro.classList.add('hidden');
-          video.style.display = 'block';
+          blackScreen.style.display = 'block';
 
+          // بعد 5 ثواني تظهر زر الاختبار
           setTimeout(() => {
-            overlay.style.display = 'block';
+            blackScreen.style.display = 'none';
             reveal.style.display = 'block';
+            reveal.classList.add('fade-in');
           }, 5000);
-        }, 2000);
+        }, 1000); // مهلة خفيفة قبل السواد
       });
     };
   </script>
