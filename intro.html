@@ -32,6 +32,8 @@
   z-index: 2;
   opacity: 0;
   white-space: nowrap;
+  font-size: 3vw;
+  letter-spacing: 2px;
 }
 
 .visible {
@@ -57,21 +59,31 @@
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: black;
-  z-index: 1;
+  z-index: 4;
   display: none;
 }
 
 #phase-btn, #reveal-btn {
-  padding: 10px 20px;
+  padding: 14px 30px;
   background: transparent;
-  border: 1px solid white;
+  border: 2px solid white;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
-  z-index: 3;
+  z-index: 5;
   text-transform: uppercase;
   font-family: 'Cinzel', serif;
   white-space: nowrap;
+  transition: background 0.3s, color 0.3s;
+}
+
+#phase-btn:hover, #reveal-btn:hover {
+  background: white;
+  color: black;
+}
+
+#phaseBtnContainer {
+  z-index: 5;
 }
 
 #reveal-btn {
@@ -103,13 +115,13 @@
   <video id="introVideo" muted>
     <source src="in5.mp4" type="video/mp4" />
     Your browser does not support the video tag.
-  </video>  <div class="black-screen" id="blackScreen"></div>  <!-- Intro Lines -->  <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
-  <div class="center" id="line2"><h2>NOW HE RISES TO LEAD</h2></div>  <!-- Begin Button -->  <div class="center" id="phaseBtnContainer">
+  </video>  <div class="black-screen" id="blackScreen"></div>  <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
+  <div class="center" id="line2"><h2>NOW HE RISES TO LEAD</h2></div>  <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
-  </div>  <!-- Chapter Titles -->  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
-  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>  <!-- Test Button --><button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
+  </div>  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
+  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div><button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
 
-  <!-- Main Content -->  <div id="main-content">
+  <div id="main-content">
     <div class="snap-section" style="background: #111;">
       <h1>اختبار الشخصية هنا</h1>
     </div>
@@ -156,33 +168,35 @@
         phaseContainer.style.display = 'none';
         video.style.display = 'block';
         video.play();
-        video.onended = () => {
+
+        setTimeout(() => {
+          video.style.display = 'none';
           blackScreen.style.display = 'block';
+
           setTimeout(() => {
             blackScreen.style.display = 'none';
             chapter1.classList.add('visible');
+
             setTimeout(() => {
               chapter1.classList.replace('visible', 'hidden');
               setTimeout(() => {
                 chapter1.style.display = 'none';
                 chapterTitle.classList.add('visible');
+
                 setTimeout(() => {
                   chapterTitle.classList.replace('visible', 'hidden');
                   setTimeout(() => {
                     chapterTitle.style.display = 'none';
                     revealBtn.style.display = 'block';
                     revealBtn.classList.add('visible');
-                    setTimeout(() => {
-                      mainContent.style.display = 'block';
-                      mainContent.classList.add('visible');
-                      document.body.style.overflow = 'auto';
-                    }, 2000);
+                    mainContent.style.display = 'block';
+                    document.body.style.overflow = 'auto';
                   }, 2000);
-                }, 3000);
+                }, 2500);
               }, 1000);
-            }, 3000);
-          }, 2000);
-        };
+            }, 2500);
+          }, 1000);
+        }, 10000); // بعد انتهاء الفيديو بدقة
       }, 1000);
     };
   </script></body>
