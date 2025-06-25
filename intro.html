@@ -63,7 +63,7 @@
       transition: background 0.3s, color 0.3s;
     }
     button:hover {
-      background: white;
+      background: #B30000;
       color: black;
     }
     #reveal-btn, #rituals-btn {
@@ -123,62 +123,60 @@
     const phaseContainer = document.getElementById('phaseBtnContainer');
     const chapter1 = document.getElementById('chapter1');
     const chapterTitle = document.getElementById('chapterTitle');
-    const mainContent = document.getElementById('main-content');
-
-    window.onload = () => {
-      line1.classList.add('visible');
+    const mainContent = document.getElementById('main-content');window.onload = () => {
+  line1.classList.add('visible');
+  setTimeout(() => {
+    line1.classList.replace('visible', 'hidden');
+    setTimeout(() => {
+      line1.style.display = 'none';
+      line2.classList.add('visible');
       setTimeout(() => {
-        line1.classList.replace('visible', 'hidden');
+        line2.classList.replace('visible', 'hidden');
         setTimeout(() => {
-          line1.style.display = 'none';
-          line2.classList.add('visible');
-          setTimeout(() => {
-            line2.classList.replace('visible', 'hidden');
-            setTimeout(() => {
-              line2.style.display = 'none';
-              // تم حذف blackScreen بعد الانترو
-              phaseContainer.classList.add('visible');
-            }, 1000);
-          }, 2500);
+          line2.style.display = 'none';
+          phaseContainer.classList.add('visible');
         }, 1000);
-      }, 3000);
-    };
+      }, 2500);
+    }, 1000);
+  }, 3000);
+};
 
-    phaseBtn.onclick = () => {
-      phaseContainer.classList.replace('visible', 'hidden');
+phaseBtn.onclick = () => {
+  phaseContainer.classList.replace('visible', 'hidden');
+  setTimeout(() => {
+    phaseContainer.style.display = 'none';
+    video.style.display = 'block';
+    video.play();
+
+    setTimeout(() => {
+      video.style.display = 'none';
+      blackScreen.style.display = 'block';
+
       setTimeout(() => {
-        phaseContainer.style.display = 'none';
-        video.style.display = 'block';
-        video.play();
+        blackScreen.style.display = 'none';
+        chapter1.classList.add('visible');
 
         setTimeout(() => {
-          video.style.display = 'none';
-          blackScreen.style.display = 'block';
-
+          chapter1.classList.replace('visible', 'hidden');
           setTimeout(() => {
-            blackScreen.style.display = 'none';
-            chapter1.classList.add('visible');
+            chapter1.style.display = 'none';
+            chapterTitle.classList.add('visible');
 
             setTimeout(() => {
-              chapter1.classList.replace('visible', 'hidden');
+              chapterTitle.classList.replace('visible', 'hidden');
               setTimeout(() => {
-                chapter1.style.display = 'none';
-                chapterTitle.classList.add('visible');
-
-                setTimeout(() => {
-                  chapterTitle.classList.replace('visible', 'hidden');
-                  setTimeout(() => {
-                    chapterTitle.style.display = 'none';
-                    mainContent.style.display = 'block';
-                    document.body.style.overflow = 'auto';
-                  }, 2000);
-                }, 2500);
-              }, 1000);
+                chapterTitle.style.display = 'none';
+                mainContent.style.display = 'block';
+                document.body.style.overflow = 'auto';
+              }, 2000);
             }, 2500);
           }, 1000);
-        }, 10000);
+        }, 2500);
       }, 1000);
-    };
+    }, 10000);
+  }, 1000);
+};
+
   </script>
 </body>
 </html>
