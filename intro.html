@@ -31,10 +31,13 @@
       text-align: center;
       z-index: 2;
       opacity: 0;
-      max-width: 600px;
+      max-width: 90%;
       font-size: clamp(16px, 4vw, 36px);
       letter-spacing: 1.5px;
       line-height: 1.2;
+      white-space: nowrap; /* السطر ما ينزلش لتحت */
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .center span { display: inline-block; }
     .visible { animation: fadeIn 2s ease forwards; }
@@ -124,60 +127,61 @@
     const phaseContainer = document.getElementById('phaseBtnContainer');
     const chapter1 = document.getElementById('chapter1');
     const chapterTitle = document.getElementById('chapterTitle');
-    const mainContent = document.getElementById('main-content');window.onload = () => {
-  line1.classList.add('visible');
-  setTimeout(() => {
-    line1.classList.replace('visible', 'hidden');
-    setTimeout(() => {
-      line1.style.display = 'none';
-      line2.classList.add('visible');
+    const mainContent = document.getElementById('main-content');
+
+    window.onload = () => {
+      line1.classList.add('visible');
       setTimeout(() => {
-        line2.classList.replace('visible', 'hidden');
+        line1.classList.replace('visible', 'hidden');
         setTimeout(() => {
-          line2.style.display = 'none';
-          phaseContainer.classList.add('visible');
-        }, 1000);
-      }, 2500);
-    }, 1000);
-  }, 3000);
-};
-
-phaseBtn.onclick = () => {
-  phaseContainer.classList.replace('visible', 'hidden');
-  setTimeout(() => {
-    phaseContainer.style.display = 'none';
-    video.style.display = 'block';
-    video.play();
-
-    setTimeout(() => {
-      video.style.display = 'none';
-      blackScreen.style.display = 'block';
-
-      setTimeout(() => {
-        blackScreen.style.display = 'none';
-        chapter1.classList.add('visible');
-
-        setTimeout(() => {
-          chapter1.classList.replace('visible', 'hidden');
+          line1.style.display = 'none';
+          line2.classList.add('visible');
           setTimeout(() => {
-            chapter1.style.display = 'none';
-            chapterTitle.classList.add('visible');
+            line2.classList.replace('visible', 'hidden');
+            setTimeout(() => {
+              line2.style.display = 'none';
+              phaseContainer.classList.add('visible');
+            }, 1000);
+          }, 2500);
+        }, 1000);
+      }, 3000);
+    };
+
+    phaseBtn.onclick = () => {
+      phaseContainer.classList.replace('visible', 'hidden');
+      setTimeout(() => {
+        phaseContainer.style.display = 'none';
+        video.style.display = 'block';
+        video.play();
+
+        setTimeout(() => {
+          video.style.display = 'none';
+          blackScreen.style.display = 'block';
+
+          setTimeout(() => {
+            blackScreen.style.display = 'none';
+            chapter1.classList.add('visible');
 
             setTimeout(() => {
-              chapterTitle.classList.replace('visible', 'hidden');
+              chapter1.classList.replace('visible', 'hidden');
               setTimeout(() => {
-                chapterTitle.style.display = 'none';
-                mainContent.style.display = 'block';
-                document.body.style.overflow = 'auto';
-              }, 2000);
+                chapter1.style.display = 'none';
+                chapterTitle.classList.add('visible');
+
+                setTimeout(() => {
+                  chapterTitle.classList.replace('visible', 'hidden');
+                  setTimeout(() => {
+                    chapterTitle.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    document.body.style.overflow = 'auto';
+                  }, 2000);
+                }, 2500);
+              }, 1000);
             }, 2500);
           }, 1000);
-        }, 2500);
+        }, 10000);
       }, 1000);
-    }, 10000);
-  }, 1000);
-};
-
+    };
   </script>
 </body>
 </html>
