@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IVLN GATE</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -16,45 +16,52 @@
       overflow: hidden;
     }
 
-    .center {
+    video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 3;
+    }
+
+    .center, .chapter, .section {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      transition: opacity 1s ease;
       z-index: 2;
-    }
-
-    .hidden {
       opacity: 0;
-      pointer-events: none;
     }
 
-    .fade-in {
+    .visible {
       animation: fadeIn 2s ease forwards;
     }
 
+    .hidden {
+      animation: fadeOut 1s ease forwards;
+    }
+
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
     }
 
     .black-screen {
-      display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: black;
       z-index: 1;
+      display: none;
     }
 
-    #reveal-btn {
-      display: none;
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
+    #phase-btn, #reveal-btn {
       padding: 10px 20px;
       background: transparent;
       border: 1px solid white;
@@ -63,53 +70,134 @@
       cursor: pointer;
       z-index: 3;
     }
+
+    #reveal-btn {
+      display: none;
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #main-content {
+      display: none;
+      height: 100vh;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    .snap-section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
-  <!-- البداية -->
-  <div class="center" id="intro">
-    <h2>YOU WERE NEVER ORDINARY</h2>
-    <h3>THE VILLAIN WITHIN WANTS TO COME OUT</h3>
-    <button id="beginBtn" style="display: none;">LET THE POSSESSION BEGIN</button>
+
+  <!-- الفيديو -->
+  <video id="introVideo" autoplay muted>
+    <source src="videoz.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- شاشة سوداء -->
+  <div class="black-screen" id="blackScreen"></div>
+
+  <!-- العبارات -->
+  <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
+  <div class="center" id="line2"><h3>NOW HE RISES TO LEAD</h3></div>
+
+  <!-- زر البداية -->
+  <div class="center" id="phaseBtnContainer">
+    <button id="phase-btn">LET THE POSSESSION BEGINS</button>
   </div>
 
-  <!-- الشاشة السوداء -->
-  <div class="black-screen" id="blackScreen"></div>
+  <!-- العناوين -->
+  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
+  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>
 
   <!-- زر الاختبار -->
   <button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
 
+  <!-- المحتوى التفاعلي -->
+  <div id="main-content">
+    <div class="snap-section" style="background: #111;">
+      <h1>اختبار الشخصية هنا</h1>
+    </div>
+    <div class="snap-section" style="background: #222;">
+      <h1>الصفحة التالية من الموقع</h1>
+    </div>
+  </div>
+
   <script>
-    window.onload = () => {
-      const btn = document.getElementById('beginBtn');
-      const intro = document.getElementById('intro');
-      const blackScreen = document.getElementById('blackScreen');
-      const reveal = document.getElementById('reveal-btn');
+    const video = document.getElementById('introVideo');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const blackScreen = document.getElementById('blackScreen');
+    const phaseBtn = document.getElementById('phase-btn');
+    const phaseContainer = document.getElementById('phaseBtnContainer');
+    const chapter1 = document.getElementById('chapter1');
+    const chapterTitle = document.getElementById('chapterTitle');
+    const revealBtn = document.getElementById('reveal-btn');
+    const mainContent = document.getElementById('main-content');
 
-      // بعد 2 ثانية يظهر الزر
+    video.onended = () => {
+      blackScreen.style.display = 'block';
       setTimeout(() => {
-        btn.style.display = 'inline-block';
-        btn.classList.add('fade-in');
-      }, 2000);
-
-      // لما يضغط على الزر
-      btn.addEventListener('click', () => {
-        btn.style.display = 'none';
-
-        // إخفاء النص بالكامل
+        blackScreen.style.display = 'none';
+        line1.classList.add('visible');
         setTimeout(() => {
-          intro.classList.add('hidden');
-          blackScreen.style.display = 'block';
-
-          // بعد 5 ثواني تظهر زر الاختبار
+          line1.classList.replace('visible', 'hidden');
           setTimeout(() => {
-            blackScreen.style.display = 'none';
-            reveal.style.display = 'block';
-            reveal.classList.add('fade-in');
-          }, 5000);
-        }, 1000); // مهلة خفيفة قبل السواد
-      });
+            line1.style.display = 'none';
+            line2.classList.add('visible');
+            setTimeout(() => {
+              line2.classList.replace('visible', 'hidden');
+              setTimeout(() => {
+                line2.style.display = 'none';
+                phaseContainer.classList.add('visible');
+              }, 1000);
+            }, 2500);
+          }, 1000);
+        }, 2500);
+      }, 2000);
+    };
+
+    phaseBtn.onclick = () => {
+      phaseContainer.classList.replace('visible', 'hidden');
+      setTimeout(() => {
+        phaseContainer.style.display = 'none';
+        chapter1.classList.add('visible');
+        setTimeout(() => {
+          chapter1.classList.replace('visible', 'hidden');
+          setTimeout(() => {
+            chapter1.style.display = 'none';
+            chapterTitle.classList.add('visible');
+            setTimeout(() => {
+              chapterTitle.classList.replace('visible', 'hidden');
+              setTimeout(() => {
+                chapterTitle.style.display = 'none';
+                blackScreen.style.display = 'block';
+                setTimeout(() => {
+                  blackScreen.style.display = 'none';
+                  revealBtn.style.display = 'block';
+                  revealBtn.classList.add('visible');
+                  setTimeout(() => {
+                    mainContent.style.display = 'block';
+                    mainContent.classList.add('visible');
+                    document.body.style.overflow = 'auto';
+                  }, 2000);
+                }, 2000);
+              }, 2000);
+            }, 3000);
+          }, 1000);
+        }, 3000);
+      }, 1000);
     };
   </script>
+
 </body>
 </html>
