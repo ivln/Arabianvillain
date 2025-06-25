@@ -16,12 +16,28 @@
       overflow: hidden;
     }
 
+    #gate-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 5;
+      letter-spacing: 2px;
+    }
+
     video {
       position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
       z-index: 3;
+      display: none;
     }
 
     .center, .chapter, .section {
@@ -97,8 +113,11 @@
 </head>
 <body>
 
+  <!-- زر البداية: THE GATE -->
+  <button id="gate-btn">THE GATE</button>
+
   <!-- الفيديو -->
-  <video id="introVideo" autoplay muted>
+  <video id="introVideo" muted>
     <source src="videoz.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
@@ -143,6 +162,14 @@
     const chapterTitle = document.getElementById('chapterTitle');
     const revealBtn = document.getElementById('reveal-btn');
     const mainContent = document.getElementById('main-content');
+    const gateBtn = document.getElementById('gate-btn');
+
+    // عند الضغط على زر THE GATE
+    gateBtn.onclick = () => {
+      gateBtn.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+    };
 
     video.onended = () => {
       blackScreen.style.display = 'block';
@@ -198,6 +225,5 @@
       }, 1000);
     };
   </script>
-
 </body>
 </html>
