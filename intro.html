@@ -16,21 +16,6 @@
       overflow: hidden;
     }
 
-    #gate-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 32px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 5;
-      letter-spacing: 2px;
-    }
-
     video {
       position: absolute;
       width: 100%;
@@ -113,12 +98,9 @@
 </head>
 <body>
 
-  <!-- زر البداية: THE GATE -->
-  <button id="gate-btn">THE GATE</button>
-
   <!-- الفيديو -->
   <video id="introVideo" muted>
-    <source src="intro2.mp4" type="video/mp4" />
+    <source src="videoz.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
@@ -126,11 +108,11 @@
   <div class="black-screen" id="blackScreen"></div>
 
   <!-- العبارات -->
-  <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
-  <div class="center" id="line2"><h3>NOW HE RISES TO LEAD</h3></div>
+  <div class="center visible" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
+  <div class="center visible" id="line2" style="top: 60%;"><h3>NOW HE RISES TO LEAD</h3></div>
 
   <!-- زر البداية -->
-  <div class="center" id="phaseBtnContainer">
+  <div class="center visible" id="phaseBtnContainer" style="top: 70%;">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
   </div>
 
@@ -162,68 +144,58 @@
     const chapterTitle = document.getElementById('chapterTitle');
     const revealBtn = document.getElementById('reveal-btn');
     const mainContent = document.getElementById('main-content');
-    const gateBtn = document.getElementById('gate-btn');
 
-    // عند الضغط على زر THE GATE
-    gateBtn.onclick = () => {
-      gateBtn.style.display = 'none';
-      video.style.display = 'block';
-      video.play();
-    };
-
-    video.onended = () => {
-      blackScreen.style.display = 'block';
-      setTimeout(() => {
-        blackScreen.style.display = 'none';
-        line1.classList.add('visible');
-        setTimeout(() => {
-          line1.classList.replace('visible', 'hidden');
-          setTimeout(() => {
-            line1.style.display = 'none';
-            line2.classList.add('visible');
-            setTimeout(() => {
-              line2.classList.replace('visible', 'hidden');
-              setTimeout(() => {
-                line2.style.display = 'none';
-                phaseContainer.classList.add('visible');
-              }, 1000);
-            }, 2500);
-          }, 1000);
-        }, 2500);
-      }, 2000);
-    };
-
+    // عند الضغط على زر البداية
     phaseBtn.onclick = () => {
+      line1.classList.replace('visible', 'hidden');
+      line2.classList.replace('visible', 'hidden');
       phaseContainer.classList.replace('visible', 'hidden');
+
       setTimeout(() => {
+        line1.style.display = 'none';
+        line2.style.display = 'none';
         phaseContainer.style.display = 'none';
-        chapter1.classList.add('visible');
-        setTimeout(() => {
-          chapter1.classList.replace('visible', 'hidden');
+
+        video.style.display = 'block';
+        video.play();
+
+        // بعد انتهاء الفيديو
+        video.onended = () => {
+          blackScreen.style.display = 'block';
+
           setTimeout(() => {
-            chapter1.style.display = 'none';
-            chapterTitle.classList.add('visible');
+            blackScreen.style.display = 'none';
+            chapter1.classList.add('visible');
+
             setTimeout(() => {
-              chapterTitle.classList.replace('visible', 'hidden');
+              chapter1.classList.replace('visible', 'hidden');
               setTimeout(() => {
-                chapterTitle.style.display = 'none';
-                blackScreen.style.display = 'block';
+                chapter1.style.display = 'none';
+                chapterTitle.classList.add('visible');
                 setTimeout(() => {
-                  blackScreen.style.display = 'none';
-                  revealBtn.style.display = 'block';
-                  revealBtn.classList.add('visible');
+                  chapterTitle.classList.replace('visible', 'hidden');
                   setTimeout(() => {
-                    mainContent.style.display = 'block';
-                    mainContent.classList.add('visible');
-                    document.body.style.overflow = 'auto';
+                    chapterTitle.style.display = 'none';
+                    blackScreen.style.display = 'block';
+                    setTimeout(() => {
+                      blackScreen.style.display = 'none';
+                      revealBtn.style.display = 'block';
+                      revealBtn.classList.add('visible');
+                      setTimeout(() => {
+                        mainContent.style.display = 'block';
+                        mainContent.classList.add('visible');
+                        document.body.style.overflow = 'auto';
+                      }, 2000);
+                    }, 2000);
                   }, 2000);
-                }, 2000);
-              }, 2000);
+                }, 3000);
+              }, 1000);
             }, 3000);
           }, 1000);
-        }, 3000);
+        };
       }, 1000);
     };
   </script>
+
 </body>
 </html>
