@@ -14,121 +14,100 @@
       color: white;
       overflow: hidden;
       text-transform: uppercase;
-    }video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 3;
-  display: none;
-}
-
-.center, .chapter, .section {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2;
-  opacity: 0;
-  max-width: 90%;
-  font-size: clamp(16px, 4vw, 36px);
-  letter-spacing: 1.5px;
-  line-height: 1.4;
-  white-space: normal;
-}
-
-.visible {
-  animation: fadeIn 2s ease forwards;
-}
-
-.hidden {
-  animation: fadeOut 1s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-.black-screen {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: black;
-  z-index: 4;
-  display: none;
-}
-
-#phase-btn, #reveal-btn {
-  padding: 14px 30px;
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 5;
-  text-transform: uppercase;
-  font-family: 'Cinzel', serif;
-  white-space: nowrap;
-  transition: background 0.3s, color 0.3s;
-}
-
-#phase-btn:hover, #reveal-btn:hover {
-  background: white;
-  color: black;
-}
-
-#phaseBtnContainer {
-  z-index: 5;
-}
-
-#reveal-btn {
-  display: none;
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#main-content {
-  display: none;
-  height: 100vh;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-}
-
-.snap-section {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+    }
+    video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 3;
+      display: none;
+    }
+    .center, .chapter, .section {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      max-width: 90%;
+      font-size: clamp(16px, 4vw, 36px);
+      letter-spacing: 1.5px;
+      line-height: 1.4;
+      white-space: normal;
+    }
+    .center span { display: inline-block; white-space: nowrap; }
+    .visible { animation: fadeIn 2s ease forwards; }
+    .hidden { animation: fadeOut 1s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+    .black-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: black;
+      z-index: 4;
+      display: none;
+    }
+    button {
+      padding: 14px 30px;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 5;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+      white-space: nowrap;
+      transition: background 0.3s, color 0.3s;
+    }
+    button:hover {
+      background: white;
+      color: black;
+    }
+    #reveal-btn, #rituals-btn {
+      display: none;
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #main-content {
+      display: none;
+      height: 100vh;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+    .snap-section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #111;
+    }
+    .snap-section:nth-child(2) {
+      background: #222;
+    }
   </style>
 </head>
 <body>
   <video id="introVideo" muted>
     <source src="in5.mp4" type="video/mp4" />
     Your browser does not support the video tag.
-  </video>  <div class="black-screen" id="blackScreen"></div>  <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
-  <div class="center" id="line2"><h2>NOW HE RISES TO LEAD</h2></div>  <div class="center" id="phaseBtnContainer">
+  </video>  <div class="black-screen" id="blackScreen"></div>  <div class="center" id="line1"><span>HE WAITED IN YOUR SHADOWS LONG ENOUGH</span></div>
+  <div class="center" id="line2"><span>NOW HE RISES TO LEAD</span></div>  <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
   </div>  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
-  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div><button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
-
-  <div id="main-content">
-    <div class="snap-section" style="background: #111;">
-      <h1>اختبار الشخصية هنا</h1>
+  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>  <div id="main-content">
+    <div class="snap-section">
+      <button onclick="alert('هندخلك على صفحة الاختبار')">REVEAL YOUR INNER VILLAIN</button>
     </div>
-    <div class="snap-section" style="background: #222;">
-      <h1>الصفحة التالية من الموقع</h1>
+    <div class="snap-section">
+      <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
   </div>  <script>
     const video = document.getElementById('introVideo');
@@ -139,7 +118,6 @@
     const phaseContainer = document.getElementById('phaseBtnContainer');
     const chapter1 = document.getElementById('chapter1');
     const chapterTitle = document.getElementById('chapterTitle');
-    const revealBtn = document.getElementById('reveal-btn');
     const mainContent = document.getElementById('main-content');
 
     window.onload = () => {
@@ -189,8 +167,6 @@
                   chapterTitle.classList.replace('visible', 'hidden');
                   setTimeout(() => {
                     chapterTitle.style.display = 'none';
-                    revealBtn.style.display = 'block';
-                    revealBtn.classList.add('visible');
                     mainContent.style.display = 'block';
                     document.body.style.overflow = 'auto';
                   }, 2000);
