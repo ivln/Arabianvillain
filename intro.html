@@ -97,32 +97,30 @@
   </style>
 </head>
 <body>
-  <!-- الفيديو -->
   <video id="introVideo" muted>
     <source src="intro2.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
-  <!-- شاشة سوداء -->
   <div class="black-screen" id="blackScreen"></div>
 
-  <!-- العبارات -->
+  <!-- Intro Lines -->
   <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
-  <div class="center" id="line2"><h3>NOW HE RISES TO LEAD</h3></div>
+  <div class="center" id="line2"><h2>NOW HE RISES TO LEAD</h2></div>
 
-  <!-- زر البداية -->
+  <!-- Begin Button -->
   <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
   </div>
 
-  <!-- العناوين -->
+  <!-- Chapter Titles -->
   <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
   <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>
 
-  <!-- زر الاختبار -->
+  <!-- Test Button -->
   <button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
 
-  <!-- المحتوى التفاعلي -->
+  <!-- Main Content -->
   <div id="main-content">
     <div class="snap-section" style="background: #111;">
       <h1>اختبار الشخصية هنا</h1>
@@ -144,7 +142,7 @@
     const revealBtn = document.getElementById('reveal-btn');
     const mainContent = document.getElementById('main-content');
 
-    // بداية الإنترو تلقائيًا (عرض السطرين والزر)
+    // Sequence on load
     window.onload = () => {
       line1.classList.add('visible');
       setTimeout(() => {
@@ -156,20 +154,23 @@
             line2.classList.replace('visible', 'hidden');
             setTimeout(() => {
               line2.style.display = 'none';
-              phaseContainer.classList.add('visible');
+              // Black screen
+              blackScreen.style.display = 'block';
+              setTimeout(() => {
+                blackScreen.style.display = 'none';
+                phaseContainer.classList.add('visible');
+              }, 2000);
             }, 1000);
           }, 2500);
         }, 1000);
-      }, 2500);
+      }, 3000);
     };
 
-    // لما المستخدم يضغط الزر
+    // On Begin button click
     phaseBtn.onclick = () => {
       phaseContainer.classList.replace('visible', 'hidden');
       setTimeout(() => {
         phaseContainer.style.display = 'none';
-
-        // شغل الفيديو
         video.style.display = 'block';
         video.play();
 
@@ -198,7 +199,7 @@
                 }, 3000);
               }, 1000);
             }, 3000);
-          }, 2000); // الشاشة السودا
+          }, 2000);
         };
       }, 1000);
     };
