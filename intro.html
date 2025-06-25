@@ -31,9 +31,11 @@
   text-align: center;
   z-index: 2;
   opacity: 0;
-  white-space: nowrap;
-  font-size: 3vw;
-  letter-spacing: 2px;
+  max-width: 90%;
+  font-size: clamp(16px, 4vw, 36px);
+  letter-spacing: 1.5px;
+  line-height: 1.4;
+  white-space: normal;
 }
 
 .visible {
@@ -196,7 +198,7 @@
               }, 1000);
             }, 2500);
           }, 1000);
-        }, 10000); // بعد انتهاء الفيديو بدقة
+        }, 10000);
       }, 1000);
     };
   </script></body>
