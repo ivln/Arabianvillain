@@ -31,13 +31,12 @@
       text-align: center;
       z-index: 2;
       opacity: 0;
-      max-width: 90%;
+      max-width: 600px;
       font-size: clamp(16px, 4vw, 36px);
       letter-spacing: 1.5px;
-      line-height: 1.4;
-      white-space: normal;
+      line-height: 1.2;
     }
-    .center span { display: inline-block; white-space: nowrap; }
+    .center span { display: inline-block; }
     .visible { animation: fadeIn 2s ease forwards; }
     .hidden { animation: fadeOut 1s ease forwards; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -98,18 +97,24 @@
   <video id="introVideo" muted>
     <source src="in5.mp4" type="video/mp4" />
     Your browser does not support the video tag.
-  </video>  <div class="black-screen" id="blackScreen"></div>  <div class="center" id="line1"><span>HE WAITED IN YOUR SHADOWS LONG ENOUGH</span></div>
-  <div class="center" id="line2"><span>NOW HE RISES TO LEAD</span></div>  <div class="center" id="phaseBtnContainer">
+  </video>
+  <div class="black-screen" id="blackScreen"></div>
+  <div class="center" id="line1"><span>HE WAITED IN YOUR SHADOWS LONG ENOUGH</span></div>
+  <div class="center" id="line2"><span>NOW HE RISES TO LEAD</span></div>
+  <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
-  </div>  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
-  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>  <div id="main-content">
+  </div>
+  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
+  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>
+  <div id="main-content">
     <div class="snap-section">
       <button onclick="alert('هندخلك على صفحة الاختبار')">REVEAL YOUR INNER VILLAIN</button>
     </div>
     <div class="snap-section">
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
-  </div>  <script>
+  </div>
+  <script>
     const video = document.getElementById('introVideo');
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
@@ -131,11 +136,8 @@
             line2.classList.replace('visible', 'hidden');
             setTimeout(() => {
               line2.style.display = 'none';
-              blackScreen.style.display = 'block';
-              setTimeout(() => {
-                blackScreen.style.display = 'none';
-                phaseContainer.classList.add('visible');
-              }, 2000);
+              // تم حذف blackScreen بعد الانترو
+              phaseContainer.classList.add('visible');
             }, 1000);
           }, 2500);
         }, 1000);
@@ -177,5 +179,6 @@
         }, 10000);
       }, 1000);
     };
-  </script></body>
+  </script>
+</body>
 </html>
