@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,123 +13,110 @@
       background: black;
       color: white;
       overflow: hidden;
-    }
+      text-transform: uppercase;
+    }video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3;
+  display: none;
+}
 
-    video {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 3;
-      display: none;
-    }
+.center, .chapter, .section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  white-space: nowrap;
+}
 
-    .center, .chapter, .section {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 2;
-      opacity: 0;
-    }
+.visible {
+  animation: fadeIn 2s ease forwards;
+}
 
-    .visible {
-      animation: fadeIn 2s ease forwards;
-    }
+.hidden {
+  animation: fadeOut 1s ease forwards;
+}
 
-    .hidden {
-      animation: fadeOut 1s ease forwards;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
+.black-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: black;
+  z-index: 1;
+  display: none;
+}
 
-    .black-screen {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: black;
-      z-index: 1;
-      display: none;
-    }
+#phase-btn, #reveal-btn {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 3;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  white-space: nowrap;
+}
 
-    #phase-btn, #reveal-btn {
-      padding: 10px 20px;
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      z-index: 3;
-    }
+#reveal-btn {
+  display: none;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-    #reveal-btn {
-      display: none;
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+#main-content {
+  display: none;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
 
-    #main-content {
-      display: none;
-      height: 100vh;
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll;
-    }
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .snap-section {
-      height: 100vh;
-      scroll-snap-align: start;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
   </style>
 </head>
 <body>
   <video id="introVideo" muted>
     <source src="intro2.mp4" type="video/mp4" />
     Your browser does not support the video tag.
-  </video>
-
-  <div class="black-screen" id="blackScreen"></div>
-
-  <!-- Intro Lines -->
-  <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
-  <div class="center" id="line2"><h2>NOW HE RISES TO LEAD</h2></div>
-
-  <!-- Begin Button -->
-  <div class="center" id="phaseBtnContainer">
+  </video>  <div class="black-screen" id="blackScreen"></div>  <!-- Intro Lines -->  <div class="center" id="line1"><h2>HE WAITED IN YOUR SHADOWS LONG ENOUGH</h2></div>
+  <div class="center" id="line2"><h2>NOW HE RISES TO LEAD</h2></div>  <!-- Begin Button -->  <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
-  </div>
+  </div>  <!-- Chapter Titles -->  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
+  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>  <!-- Test Button --><button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
 
-  <!-- Chapter Titles -->
-  <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
-  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>
-
-  <!-- Test Button -->
-  <button id="reveal-btn">REVEAL YOUR INNER VILLAIN</button>
-
-  <!-- Main Content -->
-  <div id="main-content">
+  <!-- Main Content -->  <div id="main-content">
     <div class="snap-section" style="background: #111;">
       <h1>اختبار الشخصية هنا</h1>
     </div>
     <div class="snap-section" style="background: #222;">
       <h1>الصفحة التالية من الموقع</h1>
     </div>
-  </div>
-
-  <script>
+  </div>  <script>
     const video = document.getElementById('introVideo');
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
@@ -142,7 +128,6 @@
     const revealBtn = document.getElementById('reveal-btn');
     const mainContent = document.getElementById('main-content');
 
-    // Sequence on load
     window.onload = () => {
       line1.classList.add('visible');
       setTimeout(() => {
@@ -154,7 +139,6 @@
             line2.classList.replace('visible', 'hidden');
             setTimeout(() => {
               line2.style.display = 'none';
-              // Black screen
               blackScreen.style.display = 'block';
               setTimeout(() => {
                 blackScreen.style.display = 'none';
@@ -166,14 +150,12 @@
       }, 3000);
     };
 
-    // On Begin button click
     phaseBtn.onclick = () => {
       phaseContainer.classList.replace('visible', 'hidden');
       setTimeout(() => {
         phaseContainer.style.display = 'none';
         video.style.display = 'block';
         video.play();
-
         video.onended = () => {
           blackScreen.style.display = 'block';
           setTimeout(() => {
@@ -203,6 +185,5 @@
         };
       }, 1000);
     };
-  </script>
-</body>
+  </script></body>
 </html>
