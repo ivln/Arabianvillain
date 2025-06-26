@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,116 +14,121 @@
       color: white;
       text-transform: uppercase;
       overflow: hidden;
-    }
+    }.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  max-width: 90%;
+  font-size: clamp(16px, 4vw, 36px);
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 2;
-      opacity: 0;
-      max-width: 90%;
-      font-size: clamp(16px, 4vw, 36px);
-      letter-spacing: 1.5px;
-      line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.visible { animation: fadeIn 2s ease forwards; }
+.hidden { animation: fadeOut 1s ease forwards; }
 
-    .visible { animation: fadeIn 2s ease forwards; }
-    .hidden { animation: fadeOut 1s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
-    @keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
+button {
+  padding: 14px 30px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 5;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  white-space: nowrap;
+  transition: background 0.3s, color 0.3s;
+}
 
-    button {
-      padding: 14px 30px;
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 5;
-      text-transform: uppercase;
-      font-family: 'Cinzel', serif;
-      white-space: nowrap;
-      transition: background 0.3s, color 0.3s;
-    }
+button:hover {
+  background: #B30000;
+  color: black;
+  border-color: #B30000;
+}
 
-    button:hover {
-      background: #B30000;
-      color: black;
-      border-color: #B30000;
-    }
+#main-content {
+  display: none;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  animation: fadeInMain 2s ease forwards;
+  padding-bottom: 150px;
+}
 
-    #main-content {
-      display: none;
-      height: 100vh;
-      overflow-y: auto;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      animation: fadeInMain 2s ease forwards;
-      padding-bottom: 150px;
-    }
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #111;
+}
 
-    .snap-section {
-      height: 100vh;
-      scroll-snap-align: start;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: #111;
-    }
+.snap-section:nth-child(2) { background: #222; }
 
-    .snap-section:nth-child(2) { background: #222; }
+#footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  height: 30px;
+  overflow: hidden;
+  z-index: 10;
+  transition: height 0.3s ease;
+  touch-action: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  animation: none;
+}
 
-    #footer {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: black;
-      color: white;
-      text-align: center;
-      font-size: 18px;
-      height: 30px;
-      overflow: hidden;
-      z-index: 10;
-      transition: height 0.3s ease;
-      touch-action: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
+#footer.fade-in {
+  animation: fadeIn 2s ease forwards;
+}
 
-    #footer.active {
-      height: 150px;
-    }
+#footer.active {
+  height: 150px;
+}
 
-    #footerToggle {
-      background: none;
-      border: none;
-      color: white;
-      font-family: 'Cinzel', serif;
-      font-size: 20px;
-      cursor: pointer;
-      padding: 5px 0;
-    }
+#footerToggle {
+  background: none;
+  border: none;
+  color: white;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px 0;
+}
 
-    #copyright {
-      font-size: 12px;
-      margin-top: auto;
-      margin-bottom: 10px;
-      opacity: 0.6;
-    }
+#copyright {
+  font-size: 12px;
+  margin-top: auto;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
   </style>
 </head>
 <body>
@@ -132,23 +136,17 @@
   <div class="center" id="line2"><span>HE SUMMONED YOU</span></div>
   <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
-  </div>
-
-  <div id="main-content">
+  </div>  <div id="main-content">
     <div class="snap-section">
       <button onclick="location.href='test.html'">REVEAL YOUR INNER VILLAIN</button>
     </div>
     <div class="snap-section">
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
-  </div>
-
-  <div id="footer">
+  </div>  <div id="footer">
     <button id="footerToggle">ARABIANVILLAIN</button>
     <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
-  </div>
-
-  <script>
+  </div>  <script>
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
     const phaseBtn = document.getElementById('phase-btn');
@@ -156,6 +154,9 @@
     const mainContent = document.getElementById('main-content');
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
+
+    // Hide footer initially
+    footer.style.display = 'none';
 
     window.onload = () => {
       line1.classList.add('visible');
@@ -180,8 +181,9 @@
       setTimeout(() => {
         phaseContainer.style.display = 'none';
         mainContent.style.display = 'block';
-        footer.style.display = 'flex';  // Show the footer here
         document.body.style.overflow = 'auto';
+        footer.style.display = 'flex';
+        footer.classList.add('fade-in');
       }, 1000);
     };
 
@@ -222,6 +224,5 @@
     window.addEventListener('touchend', () => {
       isDragging = false;
     });
-  </script>
-</body>
+  </script></body>
 </html>
