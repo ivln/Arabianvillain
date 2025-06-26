@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IVLN GATE</title>
@@ -12,8 +11,8 @@
       font-family: 'Cinzel', serif;
       background: black;
       color: white;
-      overflow: hidden;
       text-transform: uppercase;
+      overflow: hidden;
     }
     video {
       position: absolute;
@@ -23,7 +22,7 @@
       z-index: 3;
       display: none;
     }
-    .center, .chapter, .section {
+    .center, .chapter {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -74,9 +73,8 @@
       height: 100vh;
       scroll-snap-type: y mandatory;
       overflow-y: scroll;
-      animation: fadeInMain 2s ease forwards;
+      transform: rotate(180deg);
     }
-    @keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
     .snap-section {
       height: 100vh;
       scroll-snap-align: start;
@@ -85,6 +83,7 @@
       align-items: center;
       flex-direction: column;
       background: #111;
+      transform: rotate(180deg);
     }
     .snap-section:nth-child(2) { background: #222; }
     #footerToggle {
@@ -103,7 +102,7 @@
     }
     #footer {
       position: fixed;
-      bottom: -150px;
+      bottom: -100px;
       left: 0;
       width: 100%;
       background: #111;
@@ -111,12 +110,15 @@
       text-align: center;
       padding: 20px;
       z-index: 9;
-      transition: bottom 0.4s ease;
+      transition: bottom 0.4s ease, height 0.4s ease;
       font-size: 18px;
       border-top: 2px solid #B30000;
+      height: 100px;
+      overflow: hidden;
     }
     #footer.active {
       bottom: 0;
+      height: 300px;
     }
   </style>
 </head>
@@ -132,16 +134,14 @@
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
   </div>
   <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
-  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>
-  <div id="main-content">
+  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>  <div id="main-content">
     <div class="snap-section">
       <button onclick="location.href='test.html'">REVEAL YOUR INNER VILLAIN</button>
     </div>
     <div class="snap-section">
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
-  </div>
-  <div id="footer">ARABIAN VILLAIN</div>
+  </div>  <div id="footer">ARABIAN VILLAIN</div>
   <button id="footerToggle">^</button>  <script>
     const video = document.getElementById('introVideo');
     const line1 = document.getElementById('line1');
@@ -203,6 +203,7 @@
                     mainContent.style.display = 'block';
                     document.body.style.overflow = 'auto';
                     footerToggle.style.display = 'block';
+                    footer.style.bottom = '-100px'; // Start partially visible
                   }, 2000);
                 }, 2500);
               }, 1000);
@@ -218,7 +219,6 @@
       footerToggle.textContent = footerVisible ? 'v' : '^';
     };
 
-    // Drag to toggle footer
     let startY;
     footerToggle.addEventListener('mousedown', (e) => {
       startY = e.clientY;
