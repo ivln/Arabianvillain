@@ -35,11 +35,10 @@
       font-size: clamp(16px, 4vw, 36px);
       letter-spacing: 1.5px;
       line-height: 1.2;
-      white-space: nowrap; /* السطر ما ينزلش لتحت */
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .center span { display: inline-block; }
     .visible { animation: fadeIn 2s ease forwards; }
     .hidden { animation: fadeOut 1s ease forwards; }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -70,19 +69,14 @@
       color: black;
       border-color: #B30000;
     }
-    #reveal-btn, #rituals-btn {
-      display: none;
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
     #main-content {
       display: none;
       height: 100vh;
       scroll-snap-type: y mandatory;
       overflow-y: scroll;
+      animation: fadeInMain 2s ease forwards;
     }
+    @keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
     .snap-section {
       height: 100vh;
       scroll-snap-align: start;
@@ -92,8 +86,37 @@
       flex-direction: column;
       background: #111;
     }
-    .snap-section:nth-child(2) {
-      background: #222;
+    .snap-section:nth-child(2) { background: #222; }
+    #footerToggle {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      color: white;
+      border: none;
+      font-size: 24px;
+      z-index: 10;
+      cursor: pointer;
+      padding: 8px 16px;
+      transition: transform 0.3s;
+    }
+    #footer {
+      position: fixed;
+      bottom: -150px;
+      left: 0;
+      width: 100%;
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      z-index: 9;
+      transition: bottom 0.4s ease;
+      font-size: 18px;
+      border-top: 2px solid #B30000;
+    }
+    #footer.active {
+      bottom: 0;
     }
   </style>
 </head>
@@ -118,7 +141,8 @@
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
   </div>
-  <script>
+  <div id="footer">ARABIAN VILLAIN</div>
+  <button id="footerToggle">^</button>  <script>
     const video = document.getElementById('introVideo');
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
@@ -128,6 +152,10 @@
     const chapter1 = document.getElementById('chapter1');
     const chapterTitle = document.getElementById('chapterTitle');
     const mainContent = document.getElementById('main-content');
+    const footer = document.getElementById('footer');
+    const footerToggle = document.getElementById('footerToggle');
+
+    let footerVisible = false;
 
     window.onload = () => {
       line1.classList.add('visible');
@@ -174,6 +202,7 @@
                     chapterTitle.style.display = 'none';
                     mainContent.style.display = 'block';
                     document.body.style.overflow = 'auto';
+                    footerToggle.style.display = 'block';
                   }, 2000);
                 }, 2500);
               }, 1000);
@@ -182,6 +211,41 @@
         }, 10000);
       }, 1000);
     };
-  </script>
-</body>
+
+    footerToggle.onclick = () => {
+      footerVisible = !footerVisible;
+      footer.classList.toggle('active');
+      footerToggle.textContent = footerVisible ? 'v' : '^';
+    };
+
+    // Drag to toggle footer
+    let startY;
+    footerToggle.addEventListener('mousedown', (e) => {
+      startY = e.clientY;
+      document.addEventListener('mousemove', onDrag);
+      document.addEventListener('mouseup', stopDrag);
+    });
+
+    function onDrag(e) {
+      if (!startY) return;
+      const diffY = e.clientY - startY;
+      if (diffY < -50) {
+        footer.classList.add('active');
+        footerToggle.textContent = 'v';
+        footerVisible = true;
+        stopDrag();
+      } else if (diffY > 50) {
+        footer.classList.remove('active');
+        footerToggle.textContent = '^';
+        footerVisible = false;
+        stopDrag();
+      }
+    }
+
+    function stopDrag() {
+      document.removeEventListener('mousemove', onDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      startY = null;
+    }
+  </script></body>
 </html>
