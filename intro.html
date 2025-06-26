@@ -31,28 +31,12 @@
   text-overflow: ellipsis;
 }
 
-.visible {
-  animation: fadeIn 2s ease forwards;
-}
+.visible { animation: fadeIn 2s ease forwards; }
+.hidden { animation: fadeOut 1s ease forwards; }
 
-.hidden {
-  animation: fadeOut 1s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes fadeInMain {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
 
 button {
   padding: 14px 30px;
@@ -74,7 +58,11 @@ button:hover {
   border-color: #B30000;
 }
 
-#main-content {
+#phase-btn {
+  pointer-events: none;
+}
+
+#scroll-container {
   display: none;
   height: 100vh;
   overflow-y: auto;
@@ -82,7 +70,6 @@ button:hover {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   animation: fadeInMain 2s ease forwards;
-  padding-bottom: 100px; /* أقل من ارتفاع الفوتر */
 }
 
 .snap-section {
@@ -95,9 +82,7 @@ button:hover {
   background: #111;
 }
 
-.snap-section:nth-child(2) {
-  background: #222;
-}
+.snap-section:nth-child(2) { background: #222; }
 
 #footer {
   display: none;
@@ -147,14 +132,6 @@ button:hover {
   opacity: 0.6;
 }
 
-#phase-btn {
-  pointer-events: none;
-}
-
-#phaseBtnContainer.visible #phase-btn {
-  pointer-events: auto;
-}
-
   </style>
 </head>
 <body>
@@ -162,7 +139,7 @@ button:hover {
   <div class="center" id="line2"><span>HE SUMMONED YOU</span></div>
   <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
-  </div>  <div id="main-content">
+  </div>  <div id="scroll-container">
     <div class="snap-section">
       <button onclick="location.href='test.html'">REVEAL YOUR INNER VILLAIN</button>
     </div>
@@ -177,11 +154,9 @@ button:hover {
     const line2 = document.getElementById('line2');
     const phaseBtn = document.getElementById('phase-btn');
     const phaseContainer = document.getElementById('phaseBtnContainer');
-    const mainContent = document.getElementById('main-content');
+    const scrollContainer = document.getElementById('scroll-container');
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
-
-    footer.style.display = 'none';
 
     window.onload = () => {
       line1.classList.add('visible');
@@ -195,6 +170,7 @@ button:hover {
             setTimeout(() => {
               line2.style.display = 'none';
               phaseContainer.classList.add('visible');
+              phaseBtn.style.pointerEvents = 'auto';
             }, 1000);
           }, 2500);
         }, 1000);
@@ -205,7 +181,7 @@ button:hover {
       phaseContainer.classList.replace('visible', 'hidden');
       setTimeout(() => {
         phaseContainer.style.display = 'none';
-        mainContent.style.display = 'block';
+        scrollContainer.style.display = 'block';
         document.body.style.overflow = 'auto';
         footer.style.display = 'flex';
         footer.classList.add('fade-in');
@@ -241,12 +217,7 @@ button:hover {
       }
     });
 
-    window.addEventListener('mouseup', () => {
-      isDragging = false;
-    });
-
-    window.addEventListener('touchend', () => {
-      isDragging = false;
-    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
   </script></body>
 </html>
