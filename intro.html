@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IVLN GATE</title>
@@ -14,6 +16,7 @@
       text-transform: uppercase;
       overflow: hidden;
     }
+
     video {
       position: absolute;
       width: 100%;
@@ -22,6 +25,7 @@
       z-index: 3;
       display: none;
     }
+
     .center, .chapter {
       position: absolute;
       top: 50%;
@@ -38,10 +42,14 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .visible { animation: fadeIn 2s ease forwards; }
     .hidden { animation: fadeOut 1s ease forwards; }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
+
     .black-screen {
       position: fixed;
       top: 0; left: 0;
@@ -50,6 +58,7 @@
       z-index: 4;
       display: none;
     }
+
     button {
       padding: 14px 30px;
       background: transparent;
@@ -63,11 +72,13 @@
       white-space: nowrap;
       transition: background 0.3s, color 0.3s;
     }
+
     button:hover {
       background: #B30000;
       color: black;
       border-color: #B30000;
     }
+
     #main-content {
       display: none;
       height: 100vh;
@@ -75,75 +86,90 @@
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      display: flex;
-      flex-direction: column-reverse;
+      animation: fadeInMain 2s ease forwards;
+      padding-bottom: 130px; /* مساحة للـ footer */
     }
+
     .snap-section {
       height: 100vh;
-      scroll-snap-align: end;
+      scroll-snap-align: start;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       background: #111;
     }
-    .snap-section:nth-child(2) { background: #222; }#footer {
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  background: black;
-  color: white;
-  text-align: center;
-  padding: 20px 0 10px;
-  font-size: 18px;
-  transition: height 0.4s ease;
-  height: 100px;
-  overflow: hidden;
-  z-index: 10;
-}
-#footer.active {
-  height: 300px;
-}
-#footerToggle {
-  background: none;
-  border: none;
-  color: white;
-  font-family: 'Cinzel', serif;
-  font-size: 24px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-#copyright {
-  font-size: 12px;
-  margin-top: 40px;
-  opacity: 0.6;
-}
 
+    .snap-section:nth-child(2) { background: #222; }
+
+    #footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: black;
+      color: white;
+      text-align: center;
+      font-size: 18px;
+      height: 40px;
+      transition: height 0.4s ease;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    #footer.active {
+      height: 130px;
+    }
+
+    #footerToggle {
+      background: none;
+      border: none;
+      color: white;
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 10px 0;
+    }
+
+    #copyright {
+      font-size: 12px;
+      margin-top: 50px;
+      opacity: 0.6;
+    }
   </style>
 </head>
 <body>
+
   <video id="introVideo" muted>
     <source src="in1.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
+
   <div class="black-screen" id="blackScreen"></div>
+
   <div class="center" id="line1"><span>YOU LOOKED AWAY</span></div>
   <div class="center" id="line2"><span>HE SUMMONED YOU</span></div>
   <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
   </div>
   <div class="chapter" id="chapter1"><h2>CHAPTER I</h2></div>
-  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>  <div id="main-content">
+  <div class="chapter" id="chapterTitle"><h2>THE MARK</h2></div>
+
+  <div id="main-content">
     <div class="snap-section">
       <button onclick="location.href='test.html'">REVEAL YOUR INNER VILLAIN</button>
     </div>
     <div class="snap-section">
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
-  </div>  <div id="footer">
+  </div>
+
+  <div id="footer">
     <button id="footerToggle">ARABIANVILLAIN</button>
     <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
-  </div>  <script>
+  </div>
+
+  <script>
     const video = document.getElementById('introVideo');
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
@@ -201,7 +227,7 @@
                   chapterTitle.classList.replace('visible', 'hidden');
                   setTimeout(() => {
                     chapterTitle.style.display = 'none';
-                    mainContent.style.display = 'flex';
+                    mainContent.style.display = 'block';
                     document.body.style.overflow = 'auto';
                   }, 2000);
                 }, 2500);
@@ -216,5 +242,6 @@
       footerVisible = !footerVisible;
       footer.classList.toggle('active');
     };
-  </script></body>
+  </script>
+</body>
 </html>
