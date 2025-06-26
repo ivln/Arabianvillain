@@ -31,12 +31,28 @@
   text-overflow: ellipsis;
 }
 
-.visible { animation: fadeIn 2s ease forwards; }
-.hidden { animation: fadeOut 1s ease forwards; }
+.visible {
+  animation: fadeIn 2s ease forwards;
+}
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
-@keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
+.hidden {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeInMain {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 button {
   padding: 14px 30px;
@@ -58,7 +74,7 @@ button:hover {
   border-color: #B30000;
 }
 
-#scroll-container {
+#main-content {
   display: none;
   height: 100vh;
   overflow-y: auto;
@@ -66,6 +82,7 @@ button:hover {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   animation: fadeInMain 2s ease forwards;
+  padding-bottom: 100px; /* أقل من ارتفاع الفوتر */
 }
 
 .snap-section {
@@ -78,7 +95,9 @@ button:hover {
   background: #111;
 }
 
-.snap-section:nth-child(2) { background: #222; }
+.snap-section:nth-child(2) {
+  background: #222;
+}
 
 #footer {
   display: none;
@@ -128,6 +147,14 @@ button:hover {
   opacity: 0.6;
 }
 
+#phaseBtnContainer {
+  pointer-events: none;
+}
+
+#phaseBtnContainer.visible {
+  pointer-events: auto;
+}
+
   </style>
 </head>
 <body>
@@ -135,14 +162,16 @@ button:hover {
   <div class="center" id="line2"><span>HE SUMMONED YOU</span></div>
   <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
-  </div>  <div id="scroll-container">
+  </div>
+  <div id="main-content">
     <div class="snap-section">
       <button onclick="location.href='test.html'">REVEAL YOUR INNER VILLAIN</button>
     </div>
     <div class="snap-section">
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
-  </div>  <div id="footer">
+  </div>
+  <div id="footer">
     <button id="footerToggle">ARABIANVILLAIN</button>
     <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
   </div>  <script>
@@ -150,9 +179,11 @@ button:hover {
     const line2 = document.getElementById('line2');
     const phaseBtn = document.getElementById('phase-btn');
     const phaseContainer = document.getElementById('phaseBtnContainer');
-    const scrollContainer = document.getElementById('scroll-container');
+    const mainContent = document.getElementById('main-content');
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
+
+    footer.style.display = 'none';
 
     window.onload = () => {
       line1.classList.add('visible');
@@ -176,7 +207,7 @@ button:hover {
       phaseContainer.classList.replace('visible', 'hidden');
       setTimeout(() => {
         phaseContainer.style.display = 'none';
-        scrollContainer.style.display = 'block';
+        mainContent.style.display = 'block';
         document.body.style.overflow = 'auto';
         footer.style.display = 'flex';
         footer.classList.add('fade-in');
@@ -212,7 +243,12 @@ button:hover {
       }
     });
 
-    window.addEventListener('mouseup', () => { isDragging = false; });
-    window.addEventListener('touchend', () => { isDragging = false; });
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
   </script></body>
 </html>
