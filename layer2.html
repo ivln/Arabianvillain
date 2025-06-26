@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IVLN GATE</title>
@@ -14,24 +13,23 @@
       color: white;
       text-transform: uppercase;
       overflow: hidden;
-    }.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2;
-  opacity: 0;
-  max-width: 90%;
-  font-size: clamp(16px, 4vw, 36px);
-  letter-spacing: 1.5px;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.visible { animation: fadeIn 2s ease forwards; }
+    }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      max-width: 90%;
+      font-size: clamp(16px, 4vw, 36px);
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }.visible { animation: fadeIn 2s ease forwards; }
 .hidden { animation: fadeOut 1s ease forwards; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -82,7 +80,14 @@ button:hover {
   background: #111;
 }
 
-.snap-section:nth-child(2) { background: #222; }
+.snap-section:nth-child(2) {
+  background: #222;
+}
+
+.snap-section:first-child {
+  background: url('testbd') no-repeat center center;
+  background-size: cover;
+}
 
 #footer {
   display: none;
@@ -139,85 +144,88 @@ button:hover {
   <div class="center" id="line2"><span>HE SUMMONED YOU</span></div>
   <div class="center" id="phaseBtnContainer">
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
-  </div>  <div id="scroll-container">
+  </div>
+  <div id="scroll-container">
     <div class="snap-section">
       <button onclick="location.href='test.html'">REVEAL YOUR INNER VILLAIN</button>
     </div>
     <div class="snap-section">
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
-  </div>  <div id="footer">
+  </div>
+  <div id="footer">
     <button id="footerToggle">ARABIANVILLAIN</button>
     <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
-  </div>  <script>
+  </div>
+  <script>
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
     const phaseBtn = document.getElementById('phase-btn');
     const phaseContainer = document.getElementById('phaseBtnContainer');
     const scrollContainer = document.getElementById('scroll-container');
     const footer = document.getElementById('footer');
-    const footerToggle = document.getElementById('footerToggle');
-
-    window.onload = () => {
-      line1.classList.add('visible');
+    const footerToggle = document.getElementById('footerToggle');window.onload = () => {
+  line1.classList.add('visible');
+  setTimeout(() => {
+    line1.classList.replace('visible', 'hidden');
+    setTimeout(() => {
+      line1.style.display = 'none';
+      line2.classList.add('visible');
       setTimeout(() => {
-        line1.classList.replace('visible', 'hidden');
+        line2.classList.replace('visible', 'hidden');
         setTimeout(() => {
-          line1.style.display = 'none';
-          line2.classList.add('visible');
-          setTimeout(() => {
-            line2.classList.replace('visible', 'hidden');
-            setTimeout(() => {
-              line2.style.display = 'none';
-              phaseContainer.classList.add('visible');
-              phaseBtn.style.pointerEvents = 'auto';
-            }, 1000);
-          }, 2500);
+          line2.style.display = 'none';
+          phaseContainer.classList.add('visible');
+          phaseBtn.style.pointerEvents = 'auto';
         }, 1000);
-      }, 3000);
-    };
+      }, 2500);
+    }, 1000);
+  }, 3000);
+};
 
-    phaseBtn.onclick = () => {
-      phaseContainer.classList.replace('visible', 'hidden');
-      setTimeout(() => {
-        phaseContainer.style.display = 'none';
-        scrollContainer.style.display = 'block';
-        document.body.style.overflow = 'auto';
-        footer.style.display = 'flex';
-        footer.classList.add('fade-in');
-      }, 1000);
-    };
+phaseBtn.onclick = () => {
+  phaseContainer.classList.replace('visible', 'hidden');
+  setTimeout(() => {
+    phaseContainer.style.display = 'none';
+    scrollContainer.style.display = 'block';
+    document.body.style.overflow = 'auto';
+    footer.style.display = 'flex';
+    footer.classList.add('fade-in');
+  }, 1000);
+};
 
-    footerToggle.onclick = () => {
-      footer.classList.toggle('active');
-    };
+footerToggle.onclick = () => {
+  footer.classList.toggle('active');
+};
 
-    let startY = 0;
-    let isDragging = false;
+let startY = 0;
+let isDragging = false;
 
-    footer.addEventListener('mousedown', e => {
-      startY = e.clientY;
-      isDragging = true;
-    });
+footer.addEventListener('mousedown', e => {
+  startY = e.clientY;
+  isDragging = true;
+});
 
-    footer.addEventListener('touchstart', e => {
-      startY = e.touches[0].clientY;
-      isDragging = true;
-    });
+footer.addEventListener('touchstart', e => {
+  startY = e.touches[0].clientY;
+  isDragging = true;
+});
 
-    window.addEventListener('mousemove', e => {
-      if (isDragging && startY - e.clientY > 30) {
-        footer.classList.add('active');
-      }
-    });
+window.addEventListener('mousemove', e => {
+  if (isDragging && startY - e.clientY > 30) {
+    footer.classList.add('active');
+  }
+});
 
-    window.addEventListener('touchmove', e => {
-      if (isDragging && startY - e.touches[0].clientY > 30) {
-        footer.classList.add('active');
-      }
-    });
+window.addEventListener('touchmove', e => {
+  if (isDragging && startY - e.touches[0].clientY > 30) {
+    footer.classList.add('active');
+  }
+});
 
-    window.addEventListener('mouseup', () => { isDragging = false; });
-    window.addEventListener('touchend', () => { isDragging = false; });
-  </script></body>
+window.addEventListener('mouseup', () => { isDragging = false; });
+window.addEventListener('touchend', () => { isDragging = false; });
+
+  </script>
+</body>
 </html>
