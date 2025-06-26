@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IVLN GATE</title>
@@ -76,10 +75,12 @@
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column-reverse;
     }
     .snap-section {
       height: 100vh;
-      scroll-snap-align: start;
+      scroll-snap-align: end;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -87,7 +88,9 @@
       background: #111;
     }
     .snap-section:nth-child(2) { background: #222; }#footer {
-  scroll-snap-align: start;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
   background: black;
   color: white;
   text-align: center;
@@ -96,6 +99,7 @@
   transition: height 0.4s ease;
   height: 100px;
   overflow: hidden;
+  z-index: 10;
 }
 #footer.active {
   height: 300px;
@@ -136,10 +140,9 @@
     <div class="snap-section">
       <button onclick="location.href='rituals.html'">RITUALS</button>
     </div>
-    <div id="footer">
-      <button id="footerToggle">ARABIANVILLAIN</button>
-      <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
-    </div>
+  </div>  <div id="footer">
+    <button id="footerToggle">ARABIANVILLAIN</button>
+    <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
   </div>  <script>
     const video = document.getElementById('introVideo');
     const line1 = document.getElementById('line1');
@@ -198,7 +201,7 @@
                   chapterTitle.classList.replace('visible', 'hidden');
                   setTimeout(() => {
                     chapterTitle.style.display = 'none';
-                    mainContent.style.display = 'block';
+                    mainContent.style.display = 'flex';
                     document.body.style.overflow = 'auto';
                   }, 2000);
                 }, 2500);
