@@ -1,70 +1,85 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Choose Your Test</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- الخط الأقرب للي في الصورة -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       background-color: #000;
-      font-family: 'Cinzel', serif;
+      font-family: 'Cormorant Garamond', serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }.container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out 1s forwards;
-  pointer-events: none; /* Disable clicks before animation */
-}
+    }
 
-.container.show {
-  pointer-events: auto; /* Enable clicks after animation */
-}
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 1s forwards;
+      pointer-events: none; /* Disable clicks before animation */
+    }
 
-.btn {
-  padding: 15px 30px;
-  font-size: 20px;
-  background-color: transparent;
-  border: 2px solid #fff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  letter-spacing: 1px;
-}
+    .container.show {
+      pointer-events: auto; /* Enable clicks after animation */
+    }
 
-.btn.dm:hover {
-  background-color: #bfa100; /* Yellow matte */
-  color: #000;
-}
+    .btn {
+      padding: 15px 40px;
+      font-size: 22px;
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+    }
 
-.btn.se:hover {
-  background-color: #002f4b; /* Deep dark blue */
-  color: #fff;
-}
+    /* DESERT MIRROR زر */
+    .btn.dm:hover,
+    .btn.dm:active {
+      background-color: #bfa100;
+      border-color: #bfa100;
+      color: #000;
+    }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
+    /* SEAS ECHO زر */
+    .btn.se:hover,
+    .btn.se:active {
+      background-color: #002f4b;
+      border-color: #002f4b;
+      color: #fff;
+    }
 
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container" id="btnContainer">
     <button class="btn dm" onclick="location.href='dm.html'">DESERT MIRROR</button>
     <button class="btn se" onclick="location.href='se.html'">SEAS ECHO</button>
-  </div>  <script>
+  </div>
+
+  <script>
     window.addEventListener('load', () => {
       const container = document.getElementById('btnContainer');
       setTimeout(() => {
         container.classList.add('show');
       }, 1000);
     });
-  </script></body>
+  </script>
+</body>
 </html>
