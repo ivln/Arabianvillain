@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,46 +13,58 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
+    }.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 1s forwards;
+  pointer-events: none; /* Disable clicks before animation */
+}
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease-in-out 1s forwards;
-    }
+.container.show {
+  pointer-events: auto; /* Enable clicks after animation */
+}
 
-    .btn {
-      padding: 15px 30px;
-      font-size: 20px;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      color: #fff;
-      background-color: #222;
-      letter-spacing: 1px;
-    }
+.btn {
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  letter-spacing: 1px;
+}
 
-    .btn.dm:hover {
-      background-color: #bfa100; /* Yellow matte */
-    }
+.btn.dm:hover {
+  background-color: #bfa100; /* Yellow matte */
+  color: #000;
+}
 
-    .btn.se:hover {
-      background-color: #002f4b; /* Deep dark blue */
-    }
+.btn.se:hover {
+  background-color: #002f4b; /* Deep dark blue */
+  color: #fff;
+}
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="btnContainer">
     <button class="btn dm" onclick="location.href='dm.html'">DESERT MIRROR</button>
     <button class="btn se" onclick="location.href='se.html'">SEAS ECHO</button>
-  </div>
-</body>
+  </div>  <script>
+    window.addEventListener('load', () => {
+      const container = document.getElementById('btnContainer');
+      setTimeout(() => {
+        container.classList.add('show');
+      }, 1000);
+    });
+  </script></body>
 </html>
