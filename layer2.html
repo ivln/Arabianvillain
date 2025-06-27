@@ -80,9 +80,23 @@ button:hover {
   align-items: center;
   flex-direction: column;
   background: #111;
+  position: relative;
+  z-index: 1;
 }
 
 .snap-section:nth-child(2) { background: #222; }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+}
 
 #footer {
   display: none;
@@ -141,21 +155,39 @@ button:hover {
     <button id="phase-btn">LET THE POSSESSION BEGINS</button>
   </div>  <div id="scroll-container">
     <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto">
+        <source src="videos/vid1.mp4" type="video/mp4" />
+      </video>
       <button onclick="location.href='test.html'">REVEAL YOUR INNER VILLAIN</button>
     </div>
     <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto">
+        <source src="videos/vid2.mp4" type="video/mp4" />
+      </video>
       <button onclick="location.href='rituals.html'">EMBRACE YOUR CURSE</button>
     </div>
     <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto">
+        <source src="videos/vid3.mp4" type="video/mp4" />
+      </video>
       <button onclick="location.href='cut.html'">CUT THE CHAINS</button>
     </div>
     <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto">
+        <source src="videos/vid4.mp4" type="video/mp4" />
+      </video>
       <button onclick="location.href='pledge.html'">THE FINAL PLEDGE</button>
     </div>
     <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto">
+        <source src="videos/vid5.mp4" type="video/mp4" />
+      </video>
       <button onclick="location.href='invoke.html'">INVOKE THE POSSESSION</button>
     </div>
     <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto">
+        <source src="videos/vid6.mp4" type="video/mp4" />
+      </video>
       <button onclick="location.href='realm.html'">IVLN REALM</button>
     </div>
   </div>  <div id="footer">
@@ -197,6 +229,11 @@ button:hover {
         document.body.style.overflow = 'auto';
         footer.style.display = 'flex';
         footer.classList.add('fade-in');
+
+        const videos = document.querySelectorAll('.bg-video');
+        videos.forEach(video => {
+          video.play().catch(e => console.log("Play blocked:", e));
+        });
       }, 1000);
     };
 
