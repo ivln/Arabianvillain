@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mirror Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }#startBtn {
+  opacity: 0;
+  border: 2px solid white;
+  padding: 10px 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: opacity 1s ease-in;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
+
+.question {
+  display: none;
+  margin-top: 20px;
+  max-width: 600px;
+}
+
+.question h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.answers label {
+  display: block;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+#nextBtn {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#result {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  max-width: 600px;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <button id="startBtn">THE MIRROR</button>  <audio id="bgMusic" loop>
+    <source src="soundv2.mp3" type="audio/mp3">
+  </audio>  <div id="quizContainer"></div>
+  <button id="nextBtn">جاهز للى بعده !</button>  <div id="result"></div>  <script>
+    const startBtn = document.getElementById('startBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    const quizContainer = document.getElementById('quizContainer');
+    const nextBtn = document.getElementById('nextBtn');
+    const resultBox = document.getElementById('result');
+
+    const questions = [
+      {
+        q: "لما كنت صغير، كنت بتحس إن صوتك ملهوش قيمة؟ ...",
+        a: [
+          "كنت بسكت… وأحط كل الكلام اللي كان نفسي أقوله جوايا.",
+          "كنت بهزر علشان أخلي الجو خفيف… حتى لو من جواي مكسور.",
+          "كنت بانفجر… وأكره الكل، حتى لو ده خلاني لوحدي.",
+          "كنت بضحك معاهم… بس مخي كان بيخطط أرد إمتى وإزاي.",
+          "كنت بدوّن كل تفصيلة… مش علشان أتكلم، علشان أعرف أسيطر بعدين."
+        ]
+      },
+      {
+        q: "مرة حسّيت إنك بتعمل كل حاجة علشان الناس ما تسيبكش؟ ...",
+        a: [
+          "وافقت… وكرهت نفسي بعدها، بس مقدرتش أقول لأ.",
+          "ضحكت، وقلت لنفسي \"أنا قوي عشان بسامح\".",
+          "قررت أقطع… وساعتها كنت عنيف حتى لو مش ده قصدي.",
+          "لعبت اللعبة… وخلّيتهم يحسبوا إني معاهم، بس كنت بقفل من جوايا.",
+          "سِبتهم يتحكموا… مؤقتًا، وأنا ببني طريقتي أتحكم أنا فيهم بيها."
+        ]
+      },
+      {
+        q: "لما حد استغل ضعفك، وسكت… لما حصل كده. إيه اللي حصل جواك فعلًا؟",
+        a: [
+          "حسيت إني مش قادر أتكلم… كأني مش موجود.",
+          "قلت يمكن أنا السبب… وسامحته.",
+          "أقسمت إني مش هسكت تاني، حتى لو هخسر الناس.",
+          "ابتسمت… ورجعت له بنفس الأسلوب بعد شوية.",
+          "قررت أكتم، وأبدأ أنفّذ خطة طويلة، بطيئة… بس بتوجع."
+        ]
+      },
+      {
+        q: "لما الناس بتكون شايفينك \" طيب \"... بس أنت من جواك متأكل...",
+        a: [
+          "بهرب وأعزل نفسي… علشان محدش يشوف اللي جوايا.",
+          "بقنع نفسي إني قوي عشان بكمّل رغم الوجع.",
+          "بقرّر أكسر كل حاجة وأبدأ من جديد حتى لو الدنيا بتولّع.",
+          "بغيّر شكلي… وأبدأ أتحكم في اللي حواليا من غير ما يحسوا.",
+          "بلبس أقوى وش عندي… وأخلّيهم يصدقوا إن مفيش حاجة غلط."
+        ]
+      },
+      {
+        q: "مرة كنت الشخص اللي بيساعد الكل… ولما وقعت، لقيت نفسك لوحدك؟...",
+        a: [
+          "انكمشت… واتعلمت ما أطلبش من حد حاجة.",
+          "برّرت ليهم… يمكن ماكانوش عارفين.",
+          "اتوجعت وصرخت… وسبتهم ومشيت.",
+          "قررت أبقى زيّهم… وأستخدم الناس زي ما استخدموني.",
+          "اتعلمت… وجهزت نفسي أبقى دايمًا فوقهم."
+        ]
+      }
+    ];
+
+    const results = [
+      `YOUR INNER VILLAIN IS\n• NOXEN •\n\n\"طول عمرك كنت بتكتم... لدرجة إنك نسيت صوتك عامل إزاي.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• VELORA •\n\n\"أكبر كذبة قلتها في حياتك… إنك بخير.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• DRAVON •\n\n\"عمرك ما كنت بتدور على مشاكل… بس المشاكل دايمًا كانت بتدور عليك.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• MIREK •\n\n\"إنت مش كذاب… إنت بس بتعرف تحط كل وش في مكانه.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• CAEDROS •\n\n\"كنت ساكت… بس مش غافل.\"\n...`
+    ];
+
+    let currentQ = 0;
+    let answers = [];
+
+    setTimeout(() => startBtn.classList.add('fade-in'), 1000);
+
+    startBtn.addEventListener('click', () => {
+      bgMusic.play();
+      startBtn.style.display = 'none';
+      showQuestion();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) return;
+      answers.push(parseInt(selected.value));
+      localStorage.setItem("quizAnswers", JSON.stringify(answers));
+      currentQ++;
+      if (currentQ < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showQuestion() {
+      const q = questions[currentQ];
+      quizContainer.innerHTML = `
+        <div class="question">
+          <h2>${q.q}</h2>
+          <div class="answers">
+            ${q.a.map((ans, i) => `<label><input type="radio" name="answer" value="${i + 1}"> ${ans}</label>`).join('')}
+          </div>
+        </div>
+      `;
+      nextBtn.style.display = 'block';
+    }
+
+    function showResult() {
+      let count = [0, 0, 0, 0, 0];
+      answers.forEach(i => count[i - 1]++);
+      let max = Math.max(...count);
+      let index = count.indexOf(max);
+      resultBox.innerText = results[index];
+      resultBox.style.display = 'block';
+      quizContainer.innerHTML = '';
+      nextBtn.style.display = 'none';
+    }
+  </script></body>
+</html>
