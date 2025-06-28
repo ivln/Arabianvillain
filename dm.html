@@ -69,10 +69,13 @@
   </style>
 </head>
 <body>
-  <button id="startBtn">THE MIRROR</button>  <audio id="bgMusic" loop>
+  <button id="startBtn">THE MIRROR</button>
+  <audio id="bgMusic" loop>
     <source src="soundv2.mp3" type="audio/mp3">
-  </audio>  <div id="quizContainer"></div>
-  <button id="nextBtn">جاهز للى بعده !</button>  <div id="result"></div>  <script>
+  </audio>
+  <div id="quizContainer"></div>
+  <button id="nextBtn">جاهز للى بعده !</button>
+  <div id="result"></div>  <script>
     const startBtn = document.getElementById('startBtn');
     const bgMusic = document.getElementById('bgMusic');
     const quizContainer = document.getElementById('quizContainer');
@@ -174,6 +177,7 @@
           </div>
         </div>
       `;
+      document.querySelector('.question').style.display = 'block';
       nextBtn.style.display = 'block';
     }
 
