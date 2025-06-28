@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arabian Villain</title>
@@ -94,18 +93,15 @@
       position: relative;
       opacity: 0;
       transition: opacity 2s;
+      background: black;
     }
     .main-logo {
       max-width: 200px;
-      margin-bottom: 10px;
-    }
-    .brand-name {
-      font-size: 2rem;
-      margin-bottom: 25px;
+      margin-bottom: 7px;
     }
     #main-slogan {
-      font-size: 1.2rem;
-      margin-bottom: 25px;
+      font-size: 1.1rem;
+      margin-bottom: 75px;
     }
     .enter-btn {
       font-size: 1rem;
@@ -113,6 +109,7 @@
       border: 1px solid white;
       color: white;
       text-decoration: none;
+      margin-bottom: 75px;
     }
     .footer {
       position: absolute;
@@ -137,8 +134,7 @@
   </div>
   <div class="blackout" id="blackout"></div>
   <div class="main-interface" id="main">
-    <img class="main-logo" src="av-logo.png" alt="Logo" />
-    <div class="brand-name">ARABIANVILLAIN</div>
+    <img class="main-logo" src="av-logo2.jpg" alt="Logo" />
     <div id="main-slogan">LET THE VILLAIN POSSESS</div>
     <a class="enter-btn" href="layer2.html">IVLN GATE</a>
     <div class="footer" id="footer">© 2025 arabianvillain | All Rights Reserved.</div>
@@ -207,7 +203,6 @@ async function playIntro() {
   slogan.style.opacity = 0;
   await sleep(2000);
 
-  // إيقاف الصوت بعد السلوغن
   audio1.pause();
   audio1.currentTime = 0;
 
