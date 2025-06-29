@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Mirror Quiz</title>
   <style>
     body {
@@ -15,87 +16,123 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      overflow: hidden;
       text-align: right;
-      direction: rtl;
-    }#startBtn {
-  opacity: 0;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  font-size: 20px;
-  transition: opacity 2s ease-in;
-  border: none;
-}
+    }
 
-.fade-in {
-  opacity: 1 !important;
-}
+    #startBtn {
+      opacity: 0;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 22px;
+      transition: opacity 2s ease-in;
+      border: none;
+    }
 
-.question {
-  display: none;
-  margin-top: 20px;
-  max-width: 600px;
-  animation: fadeIn 2s ease-in-out;
-}
+    .fade-in {
+      opacity: 1 !important;
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+    .question {
+      display: none;
+      margin-top: 20px;
+      max-width: 600px;
+      animation: fadeScale 1.2s ease-in-out;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+    }
 
-.question h2 {
-  font-size: 16px;
-  margin-bottom: 15px;
-  line-height: 1.6;
-  white-space: pre-line;
-  border-bottom: 1px solid #444;
-  padding-bottom: 10px;
-}
+    @keyframes fadeScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-.answers label {
-  display: block;
-  margin: 8px 0;
-  cursor: pointer;
-  padding: 8px 10px;
-  background-color: #111;
-  border-radius: 5px;
-  transition: background 0.5s ease;
-  font-size: 14px;
-}
+    .question h2 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+      white-space: pre-line;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+    }
 
-.answers label:hover {
-  background-color: #222;
-}
+    .answers label {
+      display: block;
+      margin: 10px 0;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      transition: transform 0.3s ease;
+    }
 
-.answers input[type="radio"] {
-  display: none;
-}
+    .answers label:hover {
+      background: rgba(255, 255, 255, 0.07); /* no hover effect */
+    }
 
-.answers input[type="radio"]:checked + span {
-  color: #0f0;
-  font-weight: bold;
-}
+    .answers input[type="radio"] {
+      display: none;
+    }
 
-#nextBtn {
-  display: none;
-  margin-top: 20px;
-  background: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-}
+    .answers input[type="radio"]:checked + span {
+      color: #00ffcc;
+      font-weight: bold;
+    }
 
-#result {
-  display: none;
-  margin-top: 30px;
-  padding: 20px;
-  max-width: 600px;
-  text-align: center;
-  white-space: pre-line;
-}
+    #nextBtn {
+      display: none;
+      margin-top: 25px;
+      background: none;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
+    #result {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      max-width: 600px;
+      text-align: center;
+      white-space: pre-line;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    #echoAnswer {
+      font-size: 15px;
+      color: #00ffcc;
+      text-align: center;
+      margin-top: 15px;
+      white-space: pre-line;
+      animation: echoPop 0.8s ease-out;
+    }
+
+    @keyframes echoPop {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 <body>
@@ -104,13 +141,17 @@
     <source src="soundv2.mp3" type="audio/mp3">
   </audio>
   <div id="quizContainer"></div>
+  <div id="echoAnswer"></div>
   <button id="nextBtn">جاهز للى بعده !</button>
-  <div id="result"></div>  <script>
+  <div id="result"></div>
+
+  <script>
     const startBtn = document.getElementById('startBtn');
     const bgMusic = document.getElementById('bgMusic');
     const quizContainer = document.getElementById('quizContainer');
     const nextBtn = document.getElementById('nextBtn');
     const resultBox = document.getElementById('result');
+    const echoAnswer = document.getElementById('echoAnswer');
 
     const questions = [
       {
@@ -124,7 +165,7 @@
         ]
       },
       {
-        q: `مرة حسّيت إنك بتعمل كل حاجة علشان الناس ما تسيبكش؟\nلما خفت تقول \"لا\"، لما كنت بتوافق على حاجة مش عايزها، ولما كنت بتغيّر نفسك علشان حد يفضل شايفك \"كويس\"… وقتها اخترت تعمل إيه؟`,
+        q: `مرة حسّيت إنك بتعمل كل حاجة علشان الناس ما تسيبكش؟\nلما خفت تقول "لا"، لما كنت بتوافق على حاجة مش عايزها، ولما كنت بتغيّر نفسك علشان حد يفضل شايفك "كويس"… وقتها اخترت تعمل إيه؟`,
         a: [
           "وافقت… وكرهت نفسي بعدها، بس مقدرتش أقول لأ.",
           "ضحكت، وقلت لنفسي \"أنا قوي عشان بسامح\".",
@@ -144,7 +185,7 @@
         ]
       },
       {
-        q: `لما الناس بتكون شايفينك \"طيب\"…\nبس أنت من جواك متأكل... بتتسحب في علاقات بتخسرك نفسك، بتخاف تقول لأ، وكل مرة بتحاول تهرب بتلاقي نفسك بترجع… إيه اللي بتعمله في اللحظة دي؟`,
+        q: `لما الناس بتكون شايفينك "طيب"…\nبس أنت من جواك متأكل... بتتسحب في علاقات بتخسرك نفسك، بتخاف تقول لأ، وكل مرة بتحاول تهرب بتلاقي نفسك بترجع… إيه اللي بتعمله في اللحظة دي؟`,
         a: [
           "بهرب وأعزل نفسي… علشان محدش يشوف اللي جوايا.",
           "بقنع نفسي إني قوي عشان بكمّل رغم الوجع.",
@@ -166,11 +207,11 @@
     ];
 
     const results = [
-      `YOUR INNER VILLAIN IS\n• NOXEN •\n\n\"طول عمرك كنت بتكتم... لدرجة إنك نسيت صوتك عامل إزاي.\"\n...`,
-      `YOUR INNER VILLAIN IS\n• VELORA •\n\n\"أكبر كذبة قلتها في حياتك… إنك بخير.\"\n...`,
-      `YOUR INNER VILLAIN IS\n• DRAVON •\n\n\"عمرك ما كنت بتدور على مشاكل… بس المشاكل دايمًا كانت بتدور عليك.\"\n...`,
-      `YOUR INNER VILLAIN IS\n• MIREK •\n\n\"إنت مش كذاب… إنت بس بتعرف تحط كل وش في مكانه.\"\n...`,
-      `YOUR INNER VILLAIN IS\n• CAEDROS •\n\n\"كنت ساكت… بس مش غافل.\"\n...`
+      `YOUR INNER VILLAIN IS\n• NOXEN •\n\n"طول عمرك كنت بتكتم... لدرجة إنك نسيت صوتك عامل إزاي."\n...`,
+      `YOUR INNER VILLAIN IS\n• VELORA •\n\n"أكبر كذبة قلتها في حياتك… إنك بخير."\n...`,
+      `YOUR INNER VILLAIN IS\n• DRAVON •\n\n"عمرك ما كنت بتدور على مشاكل… بس المشاكل دايمًا كانت بتدور عليك."\n...`,
+      `YOUR INNER VILLAIN IS\n• MIREK •\n\n"إنت مش كذاب… إنت بس بتعرف تحط كل وش في مكانه."\n...`,
+      `YOUR INNER VILLAIN IS\n• CAEDROS •\n\n"كنت ساكت… بس مش غافل."\n...`
     ];
 
     let currentQ = 0;
@@ -188,7 +229,6 @@
       const selected = document.querySelector('input[name="answer"]:checked');
       if (!selected) return;
       answers.push(parseInt(selected.value));
-      localStorage.setItem("quizAnswers", JSON.stringify(answers));
       currentQ++;
       if (currentQ < questions.length) {
         showQuestion();
@@ -203,12 +243,23 @@
         <div class="question fade">
           <h2>${q.q}</h2>
           <div class="answers">
-            ${q.a.map((ans, i) => `<label><input type="radio" name="answer" value="${i + 1}"><span>${ans}</span></label>`).join('')}
+            ${q.a.map((ans, i) => `
+              <label>
+                <input type="radio" name="answer" value="${i + 1}" onchange="showEcho(this)">
+                <span>${ans}</span>
+              </label>
+            `).join('')}
           </div>
         </div>
       `;
       document.querySelector('.question').style.display = 'block';
       nextBtn.style.display = 'block';
+      echoAnswer.innerHTML = '';
+    }
+
+    function showEcho(input) {
+      const text = input.nextElementSibling.textContent;
+      echoAnswer.innerHTML = `"${text}"`;
     }
 
     function showResult() {
@@ -220,6 +271,8 @@
       resultBox.style.display = 'block';
       quizContainer.innerHTML = '';
       nextBtn.style.display = 'none';
+      echoAnswer.innerHTML = '';
     }
-  </script></body>
+  </script>
+</body>
 </html>
