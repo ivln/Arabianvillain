@@ -120,13 +120,13 @@
   </style>
 </head>
 <body>
-  <button id="startBtn">REVEAL THE SANDS</button>
+  <button id="startBtn">REVEAL THE ECHO</button>
   <audio id="bgMusic" loop>
     <source src="soundv2.mp3" type="audio/mp3">
   </audio>
   <div id="quizContainer"></div>
   <div id="echoAnswer"></div>
-  <button id="nextBtn">KEEP REVEALING</button>
+  <button id="nextBtn">FOLLOW THE ECHO</button>
   <div id="result"></div>
 
   <script>
@@ -139,53 +139,53 @@
 
     const questions = [
       {
-        q: `لما كنت صغير،\nكنت بتحس إن صوتك ملهوش قيمة؟..\nلما كنت بتتكلم وحد يقاطعك، ورأيك بيتسحب من الترابيزة، لما كنت بتضطر تسكت علشان السلام… إيه اللي كنت بتعمله وقتها؟`,
+        q: `When you were a kid،\ndid you feel like your voice had no value?..\nWhen you spoke and someone interrupted you, when your opinion was pulled off the table, when you had to stay silent just for the sake of peace… what did you do at that time?`,
         a: [
-          "كنت بسكت… وأحط كل الكلام اللي كان نفسي أقوله جوايا.",
-          "كنت بهزر علشان أخلي الجو خفيف… حتى لو من جواي مكسور.",
-          "كنت بانفجر… وأكره الكل، حتى لو ده خلاني لوحدي.",
-          "كنت بضحك معاهم… بس مخي كان بيخطط أرد إمتى وإزاي.",
-          "كنت بدوّن كل تفصيلة… مش علشان أتكلم، علشان أعرف أسيطر بعدين."
+          "I stayed silent… and kept all the words I wanted to say inside me.",
+          "I joked to lighten the mood… even if I was broken inside.",
+          "I exploded… and hated everyone, even if that left me alone.",
+          "I laughed with them… but my mind was planning when and how to respond.",
+          "I documented every detail… not to talk, but to know how to take control later."
         ]
       },
       {
-        q: `مرة حسّيت إنك بتعمل كل حاجة علشان الناس ما تسيبكش؟\nلما خفت تقول "لا"، لما كنت بتوافق على حاجة مش عايزها، ولما كنت بتغيّر نفسك علشان حد يفضل شايفك "كويس"… وقتها اخترت تعمل إيه؟`,
+        q: `Have you ever felt like you’re doing everything just so people don’t leave you?\nWhen you were afraid to say "no", when you agreed to something you didn’t want, and when you changed yourself just so someone would keep seeing you as "good"… what did you choose to do then?`,
         a: [
-          "وافقت… وكرهت نفسي بعدها، بس مقدرتش أقول لأ.",
-          "ضحكت، وقلت لنفسي \"أنا قوي عشان بسامح\".",
-          "قررت أقطع… وساعتها كنت عنيف حتى لو مش ده قصدي.",
-          "لعبت اللعبة… وخلّيتهم يحسبوا إني معاهم، بس كنت بقفل من جوايا.",
-          "سِبتهم يتحكموا… مؤقتًا، وأنا ببني طريقتي أتحكم أنا فيهم بيها."
+          "I agreed… and hated myself afterward, but I couldn’t say no.",
+          "I smiled، and told myself \"I’m strong because I forgive\".",
+          "I decided to cut them off… and I was aggressive, even if that wasn’t my intention.",
+          "I played the game… made them think I was with them, but I was shutting down inside.",
+          "I let them control… temporarily, while I built my own way to control them."
         ]
       },
       {
-        q: `لما حد استغل ضعفك، وسكت…\nيمكن حد خد أسرارك، أو ضحك عليك، أو حتى اتكلم عنك في ضهرك وإنت كنت شايف…\nلما حصل كده... إيه اللي حصل جواك فعلًا؟`,
+        q: `When someone took advantage of your weakness, and you stayed silent…\nmaybe someone took your secrets, or made fun of you, or even spoke behind your back and you saw it…\nwhen that happened… what really happened inside you?`,
         a: [
-          "حسيت إني مش قادر أتكلم… كأني مش موجود.",
-          "قلت يمكن أنا السبب… وسامحته.",
-          "أقسمت إني مش هسكت تاني، حتى لو هخسر الناس.",
-          "ابتسمت… ورجعت له بنفس الأسلوب بعد شوية.",
-          "قررت أكتم، وأبدأ أنفّذ خطة طويلة، بطيئة… بس بتوجع."
+          "I felt like I couldn’t speak… like I didn’t exist.",
+          "I said maybe it was my fault… and forgave them.",
+          "I swore I’d never stay silent again, even if it meant losing people.",
+          "I smiled… and got back at them the same way later.",
+          "I decided to stay quiet, and started executing a long, slow plan… but one that hurts."
         ]
       },
       {
-        q: `لما الناس بتكون شايفينك "طيب"…\nبس أنت من جواك متأكل... بتتسحب في علاقات بتخسرك نفسك، بتخاف تقول لأ، وكل مرة بتحاول تهرب بتلاقي نفسك بترجع… إيه اللي بتعمله في اللحظة دي؟`,
+        q: `When people see you as “kind”…\nbut inside you’re worn out… dragged into relationships that make you lose yourself, afraid to say no, and every time you try to escape, you find yourself going back… what do you do in that moment?`,
         a: [
-          "بهرب وأعزل نفسي… علشان محدش يشوف اللي جوايا.",
-          "بقنع نفسي إني قوي عشان بكمّل رغم الوجع.",
-          "بقرّر أكسر كل حاجة وأبدأ من جديد حتى لو الدنيا بتولّع.",
-          "بغيّر شكلي… وأبدأ أتحكم في اللي حواليا من غير ما يحسوا.",
-          "بلبس أقوى وش عندي… وأخلّيهم يصدقوا إن مفيش حاجة غلط."
+          "I run and isolate myself… so no one sees what’s inside me.",
+          "I convince myself I’m strong because I keep going despite the pain.",
+          "I decide to break everything and start over, even if the world is burning.",
+          "I change my appearance… and start controlling those around me without them knowing.",
+          "I wear my strongest mask… and make them believe nothing’s wrong."
         ]
       },
       {
-        q: `مرة كنت الشخص اللي بيساعد الكل…\nولما وقعت، لقيت نفسك لوحدك؟..\nووقتها فهمت إنك كنت وسيلة مش غاية… إيه اللي عملته بعدها؟`,
+        q: `Have you ever been the person who helps everyone…\nand when you fell, you found yourself alone?..\nand at that moment you realized you were a means, not an end… what did you do after that?`,
         a: [
-          "انكمشت… واتعلمت ما أطلبش من حد حاجة.",
-          "برّرت ليهم… يمكن ماكانوش عارفين.",
-          "اتوجعت وصرخت… وسبتهم ومشيت.",
-          "قررت أبقى زيّهم… وأستخدم الناس زي ما استخدموني.",
-          "اتعلمت… وجهزت نفسي أبقى دايمًا فوقهم."
+          "I shrank… and learned to never ask anyone for anything.",
+          "I made excuses for them… maybe they just didn’t know.",
+          "I got hurt and screamed… and left them behind.",
+          "I decided to be like them… and use people the way they used me.",
+          "I learned… and prepared myself to always stay above them."
         ]
       }
     ];
