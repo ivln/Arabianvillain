@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,110 +17,108 @@
       height: 100vh;
       overflow: hidden;
       text-align: right;
-    }
+    }#startBtn {
+  opacity: 0;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 22px;
+  transition: opacity 2s ease-in;
+  border: none;
+}
 
-    #startBtn {
-      opacity: 0;
-      background: transparent;
-      color: white;
-      cursor: pointer;
-      font-size: 22px;
-      transition: opacity 2s ease-in;
-      border: none;
-    }
+.fade-in {
+  opacity: 1 !important;
+}
 
-    .fade-in {
-      opacity: 1 !important;
-    }
+.question {
+  display: none;
+  margin-top: 20px;
+  max-width: 500px;
+  animation: fadeScale 1.2s ease-in-out;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+}
 
-    .question {
-      display: none;
-      margin-top: 20px;
-      max-width: 500px;
-      animation: fadeScale 1.2s ease-in-out;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
-    }
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-    @keyframes fadeScale {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+.question h2 {
+  font-size: 14px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  white-space: pre-line;
+  border-bottom: 1px solid #444;
+  padding-bottom: 8px;
+}
 
-    .question h2 {
-      font-size: 14px;
-      margin-bottom: 12px;
-      line-height: 1.6;
-      white-space: pre-line;
-      border-bottom: 1px solid #444;
-      padding-bottom: 8px;
-    }
+.answers label {
+  display: block;
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  transition: all 0.3s ease;
+}
 
-    .answers label {
-      display: block;
-      margin: 8px 0;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 13px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(6px);
-      color: #fff;
-      transition: all 0.3s ease;
-    }
+.answers input[type="radio"] {
+  display: none;
+}
 
-    .answers input[type="radio"] {
-      display: none;
-    }
+.answers input[type="radio"]:checked + span {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
 
-    .answers input[type="radio"]:checked + span {
-      background: #000;
-      color: #fff;
-      font-weight: bold;
-      display: inline-block;
-      width: 100%;
-      padding: 10px 14px;
-      border-radius: 10px;
-    }
+#nextBtn {
+  display: none;
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
 
-    #nextBtn {
-      display: none;
-      margin-top: 20px;
-      background: none;
-      border: none;
-      color: white;
-      font-weight: bold;
-      font-size: 15px;
-      cursor: pointer;
-    }
+#result {
+  display: none;
+  margin-top: 30px;
+  padding: 15px;
+  max-width: 500px;
+  text-align: center;
+  white-space: pre-line;
+  font-size: 14px;
+  line-height: 1.8;
+}
 
-    #result {
-      display: none;
-      margin-top: 30px;
-      padding: 15px;
-      max-width: 500px;
-      text-align: center;
-      white-space: pre-line;
-      font-size: 14px;
-      line-height: 1.8;
-    }
+#echoAnswer {
+  font-size: 14px;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 15px;
+  white-space: pre-line;
+  animation: echoPop 0.8s ease-out;
+}
 
-    #echoAnswer {
-      font-size: 14px;
-      color: #00ffcc;
-      text-align: center;
-      margin-top: 15px;
-      white-space: pre-line;
-      animation: echoPop 0.8s ease-out;
-    }
-
-    @keyframes echoPop {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+@keyframes echoPop {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
   </style>
 </head>
@@ -133,9 +130,7 @@
   <div id="quizContainer"></div>
   <div id="echoAnswer"></div>
   <button id="nextBtn">جاهز للى بعده !</button>
-  <div id="result"></div>
-
-  <script>
+  <div id="result"></div>  <script>
     const startBtn = document.getElementById('startBtn');
     const bgMusic = document.getElementById('bgMusic');
     const quizContainer = document.getElementById('quizContainer');
@@ -263,6 +258,5 @@
       nextBtn.style.display = 'none';
       echoAnswer.innerHTML = '';
     }
-  </script>
-</body>
+  </script></body>
 </html>
