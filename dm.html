@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,15 +15,16 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      text-align: right;
+      direction: rtl;
     }#startBtn {
   opacity: 0;
-  border: 2px solid white;
-  padding: 10px 20px;
   background: transparent;
   color: white;
   cursor: pointer;
-  font-size: 18px;
-  transition: opacity 1s ease-in;
+  font-size: 20px;
+  transition: opacity 2s ease-in;
+  border: none;
 }
 
 .fade-in {
@@ -34,7 +35,7 @@
   display: none;
   margin-top: 20px;
   max-width: 600px;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 2s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -43,8 +44,8 @@
 }
 
 .question h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 15px;
   line-height: 1.6;
   white-space: pre-line;
   border-bottom: 1px solid #444;
@@ -52,14 +53,14 @@
 }
 
 .answers label {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
+  display: block;
+  margin: 8px 0;
   cursor: pointer;
-  padding: 10px;
+  padding: 8px 10px;
   background-color: #111;
   border-radius: 5px;
-  transition: background 0.3s ease;
+  transition: background 0.5s ease;
+  font-size: 14px;
 }
 
 .answers label:hover {
@@ -67,26 +68,12 @@
 }
 
 .answers input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: #333;
-  border: 2px solid #fff;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  margin-right: 10px;
-  position: relative;
+  display: none;
 }
 
-.answers input[type="radio"]:checked::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: white;
+.answers input[type="radio"]:checked + span {
+  color: #0f0;
+  font-weight: bold;
 }
 
 #nextBtn {
@@ -127,9 +114,7 @@
 
     const questions = [
       {
-        q: `لما كنت صغير،
-كنت بتحس إن صوتك ملهوش قيمة؟..
-لما كنت بتتكلم وحد يقاطعك، ورأيك بيتسحب من الترابيزة، لما كنت بتضطر تسكت علشان السلام… إيه اللي كنت بتعمله وقتها؟`,
+        q: `لما كنت صغير،\nكنت بتحس إن صوتك ملهوش قيمة؟..\nلما كنت بتتكلم وحد يقاطعك، ورأيك بيتسحب من الترابيزة، لما كنت بتضطر تسكت علشان السلام… إيه اللي كنت بتعمله وقتها؟`,
         a: [
           "كنت بسكت… وأحط كل الكلام اللي كان نفسي أقوله جوايا.",
           "كنت بهزر علشان أخلي الجو خفيف… حتى لو من جواي مكسور.",
@@ -139,8 +124,7 @@
         ]
       },
       {
-        q: `مرة حسّيت إنك بتعمل كل حاجة علشان الناس ما تسيبكش؟
-لما خفت تقول "لا"، لما كنت بتوافق على حاجة مش عايزها، ولما كنت بتغيّر نفسك علشان حد يفضل شايفك "كويس"… وقتها اخترت تعمل إيه؟`,
+        q: `مرة حسّيت إنك بتعمل كل حاجة علشان الناس ما تسيبكش؟\nلما خفت تقول \"لا\"، لما كنت بتوافق على حاجة مش عايزها، ولما كنت بتغيّر نفسك علشان حد يفضل شايفك \"كويس\"… وقتها اخترت تعمل إيه؟`,
         a: [
           "وافقت… وكرهت نفسي بعدها، بس مقدرتش أقول لأ.",
           "ضحكت، وقلت لنفسي \"أنا قوي عشان بسامح\".",
@@ -150,9 +134,7 @@
         ]
       },
       {
-        q: `لما حد استغل ضعفك، وسكت…
-يمكن حد خد أسرارك، أو ضحك عليك، أو حتى اتكلم عنك في ضهرك وإنت كنت شايف…
-لما حصل كده... إيه اللي حصل جواك فعلًا؟`,
+        q: `لما حد استغل ضعفك، وسكت…\nيمكن حد خد أسرارك، أو ضحك عليك، أو حتى اتكلم عنك في ضهرك وإنت كنت شايف…\nلما حصل كده... إيه اللي حصل جواك فعلًا؟`,
         a: [
           "حسيت إني مش قادر أتكلم… كأني مش موجود.",
           "قلت يمكن أنا السبب… وسامحته.",
@@ -162,8 +144,7 @@
         ]
       },
       {
-        q: `لما الناس بتكون شايفينك "طيب"…
-بس أنت من جواك متأكل... بتتسحب في علاقات بتخسرك نفسك، بتخاف تقول لأ، وكل مرة بتحاول تهرب بتلاقي نفسك بترجع… إيه اللي بتعمله في اللحظة دي؟`,
+        q: `لما الناس بتكون شايفينك \"طيب\"…\nبس أنت من جواك متأكل... بتتسحب في علاقات بتخسرك نفسك، بتخاف تقول لأ، وكل مرة بتحاول تهرب بتلاقي نفسك بترجع… إيه اللي بتعمله في اللحظة دي؟`,
         a: [
           "بهرب وأعزل نفسي… علشان محدش يشوف اللي جوايا.",
           "بقنع نفسي إني قوي عشان بكمّل رغم الوجع.",
@@ -173,9 +154,7 @@
         ]
       },
       {
-        q: `مرة كنت الشخص اللي بيساعد الكل…
-ولما وقعت، لقيت نفسك لوحدك؟..
-ووقتها فهمت إنك كنت وسيلة مش غاية… إيه اللي عملته بعدها؟`,
+        q: `مرة كنت الشخص اللي بيساعد الكل…\nولما وقعت، لقيت نفسك لوحدك؟..\nووقتها فهمت إنك كنت وسيلة مش غاية… إيه اللي عملته بعدها؟`,
         a: [
           "انكمشت… واتعلمت ما أطلبش من حد حاجة.",
           "برّرت ليهم… يمكن ماكانوش عارفين.",
@@ -187,11 +166,11 @@
     ];
 
     const results = [
-      `YOUR INNER VILLAIN IS\n• NOXEN •\n\n"طول عمرك كنت بتكتم... لدرجة إنك نسيت صوتك عامل إزاي."\n...`,
-      `YOUR INNER VILLAIN IS\n• VELORA •\n\n"أكبر كذبة قلتها في حياتك… إنك بخير."\n...`,
-      `YOUR INNER VILLAIN IS\n• DRAVON •\n\n"عمرك ما كنت بتدور على مشاكل… بس المشاكل دايمًا كانت بتدور عليك."\n...`,
-      `YOUR INNER VILLAIN IS\n• MIREK •\n\n"إنت مش كذاب… إنت بس بتعرف تحط كل وش في مكانه."\n...`,
-      `YOUR INNER VILLAIN IS\n• CAEDROS •\n\n"كنت ساكت… بس مش غافل."\n...`
+      `YOUR INNER VILLAIN IS\n• NOXEN •\n\n\"طول عمرك كنت بتكتم... لدرجة إنك نسيت صوتك عامل إزاي.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• VELORA •\n\n\"أكبر كذبة قلتها في حياتك… إنك بخير.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• DRAVON •\n\n\"عمرك ما كنت بتدور على مشاكل… بس المشاكل دايمًا كانت بتدور عليك.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• MIREK •\n\n\"إنت مش كذاب… إنت بس بتعرف تحط كل وش في مكانه.\"\n...`,
+      `YOUR INNER VILLAIN IS\n• CAEDROS •\n\n\"كنت ساكت… بس مش غافل.\"\n...`
     ];
 
     let currentQ = 0;
@@ -224,7 +203,7 @@
         <div class="question fade">
           <h2>${q.q}</h2>
           <div class="answers">
-            ${q.a.map((ans, i) => `<label><input type="radio" name="answer" value="${i + 1}"> ${ans}</label>`).join('')}
+            ${q.a.map((ans, i) => `<label><input type="radio" name="answer" value="${i + 1}"><span>${ans}</span></label>`).join('')}
           </div>
         </div>
       `;
