@@ -109,7 +109,7 @@ button:hover {
   height: 30px;
   overflow: hidden;
   z-index: 10;
-  transition: height 0.3s ease;
+  transition: height 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
   touch-action: none;
   display: flex;
   flex-direction: column;
@@ -125,6 +125,9 @@ button:hover {
 
 #footer.active {
   height: 225px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 #footerToggle {
