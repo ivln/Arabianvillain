@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Choose Your Test</title>
-  
-  <!-- الخط الأقرب للي في الصورة -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
-
-  <style>
- * {
-  -webkit-tap-highlight-color: transparent;
+  <title>Choose Your Test</title>  <!-- الخط الأقرب للي في الصورة -->  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
     }
     body {
       margin: 0;
       background-color: #000;
       font-family: 'Cinzel', serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -34,21 +30,21 @@
     .container.show {
       pointer-events: auto; /* Enable clicks after animation */
     }
+
     .btn {
       padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
-  color: white;
-  font-size: 16px;
-  border-radius: 25px;
-  font-family: 'Cinzel', serif;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.3s ease;
-  backdrop-filter: blur(2px);
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 25px;
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(2px);
     }
 
-    /* DESERT MIRROR زر */
     .btn.dm:hover,
     .btn.dm:active {
       background-color: #7F6A00;
@@ -56,13 +52,13 @@
       color: #000;
     }
 
-    /* SEAS ECHO زر */
     .btn.se:hover,
     .btn.se:active {
       background-color: #001F33;
       border-color: #001F33;
       color: #fff;
     }
+
     .button:focus {
       outline: none;
     }
@@ -72,21 +68,56 @@
         opacity: 1;
       }
     }
-  </style>
-</head>
+
+    .logo-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .message {
+      position: absolute;
+      bottom: 80px;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
+      line-height: 1.8;
+    }
+
+    .message.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  </style></head>
 <body>
-  <div class="container" id="btnContainer">
+  <!-- زر الصورة -->
+  <img src="av-logo4.png" alt="Toggle Message" class="logo-btn" onclick="toggleMessage()" />  <!-- الرسالة -->  <div class="message" id="messageBox">
+    <div>CHOSE YOUR INTERIOR PATH</div>
+    <div>YOUR SHADE SCREAMING TO GET OUT</div>
+    <div>POSSESSION WAIT'S YOU</div>
+  </div>  <div class="container" id="btnContainer">
     <button class="btn dm" onclick="location.href='index3os.html'">ORACLE SANDS</button>
     <button class="btn se" onclick="location.href='index3bo.html'">BRINE ORACLE</button>
-  </div>
-
-  <script>
+  </div>  <script>
     window.addEventListener('load', () => {
       const container = document.getElementById('btnContainer');
       setTimeout(() => {
         container.classList.add('show');
       }, 1000);
     });
-  </script>
-</body>
+
+    function toggleMessage() {
+      const msg = document.getElementById('messageBox');
+      msg.classList.toggle('show');
+    }
+  </script></body>
 </html>
