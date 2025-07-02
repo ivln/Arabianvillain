@@ -302,18 +302,30 @@ button:hover {
   let inactivityTimeout;
   const overlay = document.getElementById('inactivity-overlay');
 
-  function showOverlay() {
-    overlay.classList.add('active');
-  }
+function handleInactivityStart() {
+  document.querySelectorAll('.bg-video').forEach(video => {
+    video.pause();
+  });
+}
 
-  function hideOverlay() {
-    if (overlay.classList.contains('active')) {
-      overlay.classList.remove('active');
-    }
-    resetInactivityTimer();
-  }
+function handleInactivityEnd() {
+  document.querySelectorAll('.bg-video').forEach(video => {
+    video.play();
+  });
+}
 
-  function resetInactivityTimer() {
+function showOverlay() {
+  overlay.classList.add('active');
+  handleInactivityStart();
+}
+
+function hideOverlay() {
+  if (overlay.classList.contains('active')) {
+    overlay.classList.remove('active');
+    handleInactivityEnd();
+  }
+  resetInactivityTimer();
+}
     clearTimeout(inactivityTimeout);
     inactivityTimeout = setTimeout(showOverlay, 15000); // 15 ثواني
   }
