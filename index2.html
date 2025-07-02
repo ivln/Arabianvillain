@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>IVLN GATE</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -158,7 +158,33 @@ button:hover {
   margin-bottom: 10px;
   opacity: 0.6;
 }
+    .toggle-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
 
+.reveal-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.7s ease, opacity 0.7s ease;
+  opacity: 0;
+  text-align: center;
+  padding: 0 20px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.reveal-text.visible {
+  max-height: 200px; /* adjust as needed */
+  opacity: 1;
+  margin-top: 20px;
+}
   </style>
 </head>
 <body>
@@ -173,36 +199,60 @@ button:hover {
         <source src="vid1.mp4" type="video/mp4" />
       </video>
       <button onclick="location.href='index3.html'">REVEAL YOUR INNER VILLAIN</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="1" />
+<div class="reveal-text" id="reveal-text-1">• HE'S NOT HIDING ANYMORE •<br>• YOUR SHADE IS CLAWING... IT'S WAY •<br>• TO THE SURFACE •
+  
+</div>
     </div>
     <div class="snap-section">
       <video class="bg-video" muted playsinline preload="auto" loop>
         <source src="vid2.mp4" type="video/mp4" />
       </video>
       <button onclick="location.href='rituals.html'">EMBRACE YOUR CURSE</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="2" />
+<div class="reveal-text" id="reveal-text-2">
+  TEXT FOR SECTION 1
+</div>
     </div>
     <div class="snap-section">
       <video class="bg-video" muted playsinline preload="auto" loop>
         <source src="vid3.mp4" type="video/mp4" />
       </video>
       <button onclick="location.href='cut.html'">THE BINDING RITUAL</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="3" />
+<div class="reveal-text" id="reveal-text-3">
+  TEXT FOR SECTION 1
+</div>
     </div>
     <div class="snap-section">
       <video class="bg-video" muted playsinline preload="auto" loop>
         <source src="vid4.mp4" type="video/mp4" />
       </video>
       <button onclick="location.href='pledge.html'">INVOKE THE POSSESSION</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="4" />
+<div class="reveal-text" id="reveal-text-4">
+  TEXT FOR SECTION 1
+</div>
     </div>
     <div class="snap-section">
       <video class="bg-video" muted playsinline preload="auto" loop>
         <source src="vid5.mp4" type="video/mp4" />
       </video>
       <button onclick="location.href='invoke.html'">THE FINAL PLEDGE</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="5" />
+<div class="reveal-text" id="reveal-text-5">
+  TEXT FOR SECTION 1
+</div>
     </div>
     <div class="snap-section">
       <video class="bg-video" muted playsinline preload="auto" loop>
         <source src="videos/vid6.mp4" type="video/mp4" />
       </video>
       <button onclick="location.href='realm.html'">IVLN REALM</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="6" />
+<div class="reveal-text" id="reveal-text-6">
+  TEXT FOR SECTION 1
+</div>
     </div>
   </div>
   <div id="footer">
@@ -234,6 +284,13 @@ button:hover {
     }, 1000);
   }, 3000);
 };
+    document.querySelectorAll('.toggle-icon').forEach(icon => {
+  icon.addEventListener('click', () => {
+    const sectionId = icon.getAttribute('data-section');
+    const textElement = document.getElementById(`reveal-text-${sectionId}`);
+    textElement.classList.toggle('visible');
+  });
+});
 
 phaseBtn.onclick = () => {
   phaseContainer.classList.replace('visible', 'hidden');
