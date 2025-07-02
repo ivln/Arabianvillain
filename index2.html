@@ -170,10 +170,20 @@ button:hover {
 }
 
 .reveal-text {
+  position: absolute;
+  top: 30%; /* دي اللي بتخلي النص يظهر أعلى منتصف الشاشة */
+  left: 50%;
+  transform: translate(-50%, -20%);
+  
+  opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.7s ease, opacity 0.7s ease;
-  opacity: 0;
+
+  transition: 
+    max-height 1.2s ease,
+    opacity 1.2s ease,
+    transform 1.2s ease;
+
   text-align: center;
   padding: 0 20px;
   font-size: 18px;
@@ -181,9 +191,10 @@ button:hover {
 }
 
 .reveal-text.visible {
-  max-height: 200px; /* adjust as needed */
   opacity: 1;
-  margin-top: 20px;
+  max-height: 500px; /* خليها كبيرة عشان تدّي مساحة للانزلاق */
+  transform: translate(-50%, 0); /* يحركه لتحت كأن فيه Slide Down */
+  margin-top: 0;
 }
   </style>
 </head>
