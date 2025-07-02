@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8" />
+<!DOCTYPE html><html lang="en"><head>  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Choose Your Test</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
@@ -17,103 +16,94 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }.container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out 1s forwards;
-  pointer-events: none;
-}
-
-.container.show {
-  pointer-events: auto;
-}
-
-.btn {
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
-  color: white;
-  font-size: 16px;
-  border-radius: 25px;
-  font-family: 'Cinzel', serif;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.3s ease;
-  backdrop-filter: blur(2px);
-}
-
-.btn.dm:hover,
-.btn.dm:active {
-  background-color: #7F6A00;
-  border-color: #7F6A00;
-  color: #000;
-}
-
-.btn.se:hover,
-.btn.se:active {
-  background-color: #001F33;
-  border-color: #001F33;
-  color: #fff;
-}
-
-.button:focus {
-  outline: none;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.logo-btn {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 2;
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out 1.2s forwards;
-}
-
-.message {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, 20px);
-  text-align: center;
-  color: white;
-  font-size: 14px;
-  opacity: 0;
-  transition: opacity 1s ease, transform 1s ease;
-  pointer-events: none;
-  line-height: 1.2;
-  max-width: 500%;
-  word-break: break-word;
-}
-.message.show {
-  opacity: 1;
-  transform: translate(-50%, 0);
-  pointer-events: auto;
-}
-
-.message .line {
-  display: block;
-  white-space: nowrap; /* المهم دي تكون موجودة هنا */
-}
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 1s forwards;
+      pointer-events: none;
+    }
+    .container.show {
+      pointer-events: auto;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 25px;
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(2px);
+    }
+    .btn.dm:hover,
+    .btn.dm:active {
+      background-color: #7F6A00;
+      border-color: #7F6A00;
+      color: #000;
+    }
+    .btn.se:hover,
+    .btn.se:active {
+      background-color: #001F33;
+      border-color: #001F33;
+      color: #fff;
+    }
+    .button:focus {
+      outline: none;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    .logo-btn {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 1.2s forwards;
+    }
+    .message {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      pointer-events: none;
+      line-height: 1.6;
+      max-width: 90vw;
+    }
+    .message.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+      pointer-events: auto;
+    }
+    .message .line {
+      display: block;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
   <!-- زر الصورة -->
   <img src="av-logo4.png" alt="Toggle Message" class="logo-btn" onclick="toggleMessage()" />  <!-- الرسالة -->  <div class="message" id="messageBox">
-    <div>CHOSE YOUR INTERIOR PATH</div>
-    <div>YOUR SHADE SCREAMING TO GET OUT</div>
-    <div>POSSESSION WAIT'S YOU</div>
+    <div class="line">CHOSE YOUR INTERIOR PATH</div>
+    <div class="line">YOUR SHADE SCREAMING TO GET OUT</div>
+    <div class="line">POSSESSION WAIT'S YOU</div>
   </div>  <div class="container" id="btnContainer">
     <button class="btn dm" onclick="location.href='index3os.html'">ORACLE SANDS</button>
     <button class="btn se" onclick="location.href='index3bo.html'">BRINE ORACLE</button>
