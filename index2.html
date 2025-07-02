@@ -199,6 +199,29 @@ button:hover {
   transform: translate(-50%, 0);
   margin-top: 0;
 }
+#inactivity-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  transition: opacity 0.5s ease;
+}
+
+#inactivity-overlay.active {
+  display: flex;
+  opacity: 1;
+}
   </style>
 </head>
 <body>
@@ -272,8 +295,32 @@ button:hover {
   <div id="footer">
     <button id="footerToggle">ARABIANVILLAIN</button>
     <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
+  <div id="inactivity-overlay">
+  <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T... W A I T<br> <br> <br> <br> <br>• SEAL YOUR PRESENCE •<br> </div>
   </div>
-  <script>
+<script>
+  let inactivityTimeout;
+  const overlay = document.getElementById('inactivity-overlay');
+
+  function showOverlay() {
+    overlay.classList.add('active');
+  }
+
+  function hideOverlay() {
+    if (overlay.classList.contains('active')) {
+      overlay.classList.remove('active');
+    }
+    resetInactivityTimer();
+  }
+
+  function resetInactivityTimer() {
+    clearTimeout(inactivityTimeout);
+    inactivityTimeout = setTimeout(showOverlay, 15000); // 15 ثواني
+  }
+  ['mousemove', 'keydown', 'touchstart', 'click'].forEach(event => {
+    document.addEventListener(event, hideOverlay);
+  });
+  resetInactivityTimer();
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
     const phaseBtn = document.getElementById('phase-btn');
