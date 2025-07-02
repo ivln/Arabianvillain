@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Choose Your Test</title>  <!-- الخط الأقرب للي في الصورة -->  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">  <style>
+  <title>Choose Your Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+  <style>
     * {
       -webkit-tap-highlight-color: transparent;
       box-sizing: border-box;
@@ -16,88 +17,92 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
+    }.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 1s forwards;
+  pointer-events: none;
+}
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease-in-out 1s forwards;
-      pointer-events: none; /* Disable clicks before animation */
-    }
+.container.show {
+  pointer-events: auto;
+}
 
-    .container.show {
-      pointer-events: auto; /* Enable clicks after animation */
-    }
+.btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 25px;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease;
+  backdrop-filter: blur(2px);
+}
 
-    .btn {
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 25px;
-      font-family: 'Cinzel', serif;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: 0.3s ease;
-      backdrop-filter: blur(2px);
-    }
+.btn.dm:hover,
+.btn.dm:active {
+  background-color: #7F6A00;
+  border-color: #7F6A00;
+  color: #000;
+}
 
-    .btn.dm:hover,
-    .btn.dm:active {
-      background-color: #7F6A00;
-      border-color: #7F6A00;
-      color: #000;
-    }
+.btn.se:hover,
+.btn.se:active {
+  background-color: #001F33;
+  border-color: #001F33;
+  color: #fff;
+}
 
-    .btn.se:hover,
-    .btn.se:active {
-      background-color: #001F33;
-      border-color: #001F33;
-      color: #fff;
-    }
+.button:focus {
+  outline: none;
+}
 
-    .button:focus {
-      outline: none;
-    }
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
+.logo-btn {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 1.2s forwards;
+}
 
-    .logo-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      z-index: 2;
-    }
+.message {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+  line-height: 1.6;
+  max-width: 80%;
+}
+.message.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
 
-    .message {
-      position: absolute;
-      bottom: 80px;
-      text-align: center;
-      color: white;
-      font-size: 18px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      pointer-events: none;
-      line-height: 1.8;
-    }
-
-    .message.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-  </style></head>
+  </style>
+</head>
 <body>
   <!-- زر الصورة -->
   <img src="av-logo4.png" alt="Toggle Message" class="logo-btn" onclick="toggleMessage()" />  <!-- الرسالة -->  <div class="message" id="messageBox">
