@@ -315,7 +315,7 @@ button:hover {
 
   function resetInactivityTimer() {
     clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(showOverlay, 15000); // 15 ثواني
+    inactivityTimeout = setTimeout(showOverlay, 20000); // 20 ثواني
   }
   ['mousemove', 'keydown', 'touchstart', 'click'].forEach(event => {
     document.addEventListener(event, hideOverlay);
