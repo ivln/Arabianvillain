@@ -15,7 +15,24 @@
       font-family: 'Cinzel', serif;
       overflow: hidden;
     }
-
+    button {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 25px;
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(2px);
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
     #startScreen {
       position: fixed;
       width: 100%;
@@ -26,29 +43,12 @@
       align-items: center;
       justify-content: center;
       z-index: 100;
-      opacity: 0;
-      transition: opacity 2s ease;
     }
-
-    #startScreen.visible {
-      opacity: 1;
-    }
-
-    #startScreen button {
-      background: none;
-      border: none;
-      font-size: 24px;
-      font-family: 'Cinzel', serif;
-      color: white;
-      cursor: pointer;
-    }
-
     #logo {
       display: none;
       max-width: 200px;
       margin-bottom: 20px;
     }
-
     .center {
       height: 100%;
       display: flex;
@@ -57,25 +57,21 @@
       justify-content: center;
       text-align: center;
     }
-
     #lines {
       font-size: 1.2rem;
       max-width: 600px;
       margin-bottom: 20px;
       transition: opacity 1s;
     }
-
     .line {
       opacity: 0;
       transition: opacity 1s;
     }
-
     #slogan {
       font-size: 1.5rem;
       opacity: 0;
       transition: opacity 2s;
     }
-
     .blackout {
       position: fixed;
       top: 0;
@@ -88,7 +84,6 @@
       transition: opacity 1s;
       pointer-events: none;
     }
-
     .skip-btn {
       position: absolute;
       top: 20px;
@@ -100,7 +95,6 @@
       cursor: pointer;
       z-index: 10;
     }
-
     .main-interface {
       display: none;
       flex-direction: column;
@@ -113,35 +107,36 @@
       transition: opacity 2s;
       background: black;
     }
-
     .main-logo {
       max-width: 390px;
       margin-top: 204px;
       margin-bottom: 2px;
     }
-
     #main-slogan {
       font-size: 1rem;
       margin-top: 0px;
       margin-bottom: 99px;
     }
-
     .enter-btn {
       font-size: 1rem;
       padding: 10px 20px;
-      border: 1px solid white;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
       color: white;
-      text-decoration: none;
+      text-transform: uppercase;
+      border-radius: 25px;
+      font-family: 'Cinzel', serif;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(2px);
       margin-top: 0px;
       margin-bottom: 75px;
-      transition: all 0.3s ease;
     }
-
     .enter-btn:hover {
-      background-color: white;
-      color: black;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
     }
-
     .footer {
       position: absolute;
       bottom: 10px;
@@ -186,7 +181,6 @@
       "It’s time",
       "Unchain what they feared most",
     ];
-
     const linesContainer = document.getElementById('lines');
     const logo = document.getElementById('logo');
     const slogan = document.getElementById('slogan');
@@ -260,13 +254,6 @@
       blackout.style.opacity = 0;
       main.style.opacity = 1;
     }
-
-    // تأخير ظهور زر البداية 5 ثواني مع fade-in
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        startScreen.classList.add('visible');
-      }, 5000);
-    });
   </script>
 </body>
 </html>
