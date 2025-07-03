@@ -211,16 +211,47 @@ button:hover {
   position: relative;
 }
 #footerToggle {
-  all: unset;
-  background: none;
-  border: none;
-  color: white;
-  font-family: 'Cinzel', serif;
-  font-size: 20px;
+  position: relative;
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+  border-radius: 10px;
+  box-shadow:
+    0 0 12px rgba(255,255,255,0.6),
+    0 0 24px rgba(255,255,255,0.3),
+    0 0 36px rgba(255,255,255,0.2);
   cursor: pointer;
-  padding: 5px 0;
+  animation: glowPulse 3s ease-in-out infinite;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0.9;
+  z-index: 5;
+  margin: 0 auto;
 }
-
+@keyframes glowPulse {
+  0% {
+    transform: scaleX(1);
+    opacity: 0.7;
+    box-shadow:
+      0 0 8px rgba(255,255,255,0.3),
+      0 0 20px rgba(255,255,255,0.2);
+  }
+  50% {
+    transform: scaleX(1.4);
+    opacity: 1;
+    box-shadow:
+      0 0 18px rgba(255,255,255,0.8),
+      0 0 36px rgba(255,255,255,0.5),
+      0 0 60px rgba(255,255,255,0.3);
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.7;
+    box-shadow:
+      0 0 8px rgba(255,255,255,0.3),
+      0 0 20px rgba(255,255,255,0.2);
+  }
+}
 #copyright {
   font-size: 12px;
   margin-top: auto;
@@ -368,7 +399,7 @@ button:hover {
     </div>
   </div>
 <div id="footer">
-  <button id="footerToggle">ARABIANVILLAIN</button>
+<div id="footerToggle" class="footer-hint-button"></div>
 
   <div id="footer-buttons" class="footer-links">
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
