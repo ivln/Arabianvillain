@@ -212,7 +212,7 @@ button:hover {
 }
 #footerToggle {
   position: absolute;
-  top: 12.5px; /* يخلّي الشعاع يطلع فوق الفوتر ويظهر */
+  top: 12.5px;
   left: 50%;
   transform: translateX(-50%);
   width: 160px;
@@ -220,33 +220,67 @@ button:hover {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 50px;
   cursor: pointer;
+  overflow: visible;
 
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
-              0 0 12px rgba(255, 255, 255, 0.2),
-              0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 -20px 60px rgba(255, 255, 255, 0.15);
 
-  animation: softPulse 3s infinite ease-in-out;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  animation: whiteFlame 6s infinite linear;
+  transition: all 0.3s ease;
 }
 
 #footerToggle:hover {
-  transform: translateX(-50%) scaleX(1.05) scaleY(1.4);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
-              0 0 20px rgba(255, 255, 255, 0.4),
-              0 0 30px rgba(255, 255, 255, 0.3);
+  animation: whiteFlameFast 2s infinite linear;
+  transform: translateX(-50%) scaleX(1.1) scaleY(1.5);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 255, 255, 0.5),
+    0 -40px 100px rgba(255, 255, 255, 0.25);
 }
 
-/* Animation */
-@keyframes softPulse {
-  0%, 100% {
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
-                0 0 12px rgba(255, 255, 255, 0.2),
-                0 0 20px rgba(255, 255, 255, 0.1);
+/* الهالة تتحرك لأعلى باستمرار */
+@keyframes whiteFlame {
+  0% {
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 -20px 60px rgba(255, 255, 255, 0.15);
   }
   50% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
-                0 0 18px rgba(255, 255, 255, 0.4),
-                0 0 26px rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 0 15px rgba(255, 255, 255, 0.8),
+      0 0 30px rgba(255, 255, 255, 0.4),
+      0 -30px 80px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 20px rgba(255, 255, 255, 0.3),
+      0 -20px 60px rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* نفس الفكرة لكن أسرع لما المستخدم يضغط */
+@keyframes whiteFlameFast {
+  0% {
+    box-shadow:
+      0 0 20px rgba(255, 255, 255, 0.9),
+      0 0 40px rgba(255, 255, 255, 0.5),
+      0 -40px 100px rgba(255, 255, 255, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(255, 255, 255, 1),
+      0 0 60px rgba(255, 255, 255, 0.6),
+      0 -60px 120px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow:
+      0 0 20px rgba(255, 255, 255, 0.9),
+      0 0 40px rgba(255, 255, 255, 0.5),
+      0 -40px 100px rgba(255, 255, 255, 0.25);
   }
 }
 #copyright {
