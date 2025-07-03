@@ -418,7 +418,7 @@ button:hover {
   <div id="inactivity-overlay">
   <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T ... W A I T<br> <br> <br> <br>• SEAL YOUR PRESENCE •<br> <br> </div>
   </div>
-<script>
+  <script>
   window.onload = () => {
     let inactivityTimeout;
     const overlay = document.getElementById('inactivity-overlay');
@@ -430,6 +430,10 @@ button:hover {
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
 
+    // أولاً: نخلي الفوتر مخفي تمامًا في البداية
+    footer.style.display = 'none';
+
+    // Overlay – شاشة الخمول
     function showOverlay() {
       overlay.classList.add('active');
     }
@@ -451,7 +455,7 @@ button:hover {
     });
     resetInactivityTimer();
 
-    // التسلسل الزمني للأنيميشن
+    // تسلسل أنيميشن البداية
     line1.classList.add('visible');
     setTimeout(() => {
       line1.classList.replace('visible', 'hidden');
@@ -469,7 +473,7 @@ button:hover {
       }, 1000);
     }, 3000);
 
-    // إظهار نصوص الأقسام
+    // النصوص داخل الأقسام
     document.querySelectorAll('.toggle-icon').forEach(icon => {
       icon.addEventListener('click', () => {
         const sectionId = icon.getAttribute('data-section');
@@ -478,16 +482,24 @@ button:hover {
       });
     });
 
-    // زر المرحلة
+    // لما المستخدم يضغط على زر "المرحلة"
     phaseBtn.onclick = () => {
       phaseContainer.classList.replace('visible', 'hidden');
+
       setTimeout(() => {
         phaseContainer.style.display = 'none';
         scrollContainer.style.display = 'block';
         document.body.style.overflow = 'auto';
-        footer.style.display = 'flex';
-        footer.classList.add('fade-in');
 
+        // نعرض الفوتر بدون مشاكل
+        footer.style.display = 'flex';
+
+        // ندي وقت للـ display يتطبق قبل إضافة الأنيميشن
+        setTimeout(() => {
+          footer.classList.add('fade-in');
+        }, 50);
+
+        // تشغيل الفيديوهات لو فيه
         const videos = document.querySelectorAll('.bg-video');
         videos.forEach(video => {
           video.play().catch(e => console.log("Play blocked:", e));
@@ -495,11 +507,12 @@ button:hover {
       }, 1000);
     };
 
-    // زر التبديل للـ Footer
+    // تفعيل/إلغاء الفوتر عن طريق الزر
     footerToggle.onclick = () => {
-    footer.classList.toggle('active');
-    footer.classList.toggle('fade-in');
-    // السحب لتفعيل الفوتر
+      footer.classList.toggle('active');
+    };
+
+    // السحب لتفعيل الفوتر (Gesture)
     let startY = 0;
     let isDragging = false;
 
@@ -542,6 +555,6 @@ button:hover {
       }
     });
   };
-</script>
-</body>
-  </html>
+  </script>
+ </body>
+</html>
