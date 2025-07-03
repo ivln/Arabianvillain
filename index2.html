@@ -210,21 +210,24 @@ button:hover {
   margin-top: 50px;
   position: relative;
 }
-.beam-button {
+#footerToggle {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
   width: 200px;
   height: 6px;
   background: linear-gradient(90deg, transparent, #ffffff, transparent);
   border-radius: 100px;
-  position: relative;
   cursor: pointer;
   box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff;
   animation: pulseBeam 2s infinite ease-in-out;
   transition: transform 0.3s ease;
-  margin: 50px auto;
 }
 
-.beam-button:hover {
-  transform: scaleX(1.1) scaleY(1.5);
+#footerToggle:hover {
+  transform: translateX(-50%) scaleX(1.1) scaleY(1.5);
   box-shadow: 0 0 30px #ffffff, 0 0 60px #ffffff, 0 0 90px #ffffff;
 }
 
@@ -384,8 +387,9 @@ button:hover {
 </div>
     </div>
   </div>
-<div id="footer">
-  <div id="footerToggle" class="beam-button"></div>
+
+  <div id="footerToggle"></div>
+  <div id="footer">
 
   <div id="footer-buttons" class="footer-links">
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
