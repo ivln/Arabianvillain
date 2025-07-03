@@ -216,37 +216,42 @@ button:hover {
   left: 50%;
   transform: translateX(-50%);
   width: 160px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.8);
+  height: 2px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0)); /* gradient داخلي */
   border-radius: 50px;
   cursor: pointer;
 
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
-              0 0 12px rgba(255, 255, 255, 0.2),
-              0 0 20px rgba(255, 255, 255, 0.1);
+  /* إشعاع ناعم ونابض */
+  box-shadow: 
+    0 0 4px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.2);
 
-  animation: softPulse 3s infinite ease-in-out;
+  animation: softPulse 5s infinite ease-in-out; /* نبض أبطأ */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 #footerToggle:hover {
-  transform: translateX(-50%) scaleX(1.05) scaleY(1.4);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
-              0 0 20px rgba(255, 255, 255, 0.4),
-              0 0 30px rgba(255, 255, 255, 0.3);
+  transform: translateX(-50%) scaleX(1.1) scaleY(1.6);
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 35px rgba(255, 255, 255, 0.3);
 }
 
 /* Animation */
 @keyframes softPulse {
   0%, 100% {
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
-                0 0 12px rgba(255, 255, 255, 0.2),
-                0 0 20px rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 0 4px rgba(255, 255, 255, 0.3),
+      0 0 10px rgba(255, 255, 255, 0.2),
+      0 0 18px rgba(255, 255, 255, 0.1);
   }
   50% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
-                0 0 18px rgba(255, 255, 255, 0.4),
-                0 0 26px rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 0 8px rgba(255, 255, 255, 0.6),
+      0 0 18px rgba(255, 255, 255, 0.4),
+      0 0 30px rgba(255, 255, 255, 0.2);
   }
 }
 #copyright {
