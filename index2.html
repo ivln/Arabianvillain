@@ -212,71 +212,43 @@ button:hover {
 }
 #footerToggle {
   position: absolute;
-  top: 12.5px;
+  top: 12.5px; /* يخلّي الشعاع يطلع فوق الفوتر ويظهر */
   left: 50%;
   transform: translateX(-50%);
   width: 160px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.95);
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 50px;
-  overflow: hidden; /* مهم جدًا عشان نخفي الزيادة */
   cursor: pointer;
 
-  box-shadow: 
-    0 0 4px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
+              0 0 12px rgba(255, 255, 255, 0.2),
+              0 0 20px rgba(255, 255, 255, 0.1);
 
-  animation: softPulse 5s infinite ease-in-out;
+  animation: softPulse 3s infinite ease-in-out;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.eye-pulse {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scaleX(0);
-  animation: eyeOpenClose 6s infinite ease-in-out;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+#footerToggle:hover {
+  transform: translateX(-50%) scaleX(1.05) scaleY(1.4);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+              0 0 20px rgba(255, 255, 255, 0.4),
+              0 0 30px rgba(255, 255, 255, 0.3);
 }
 
-@keyframes eyeOpenClose {
-  0%, 100% {
-    transform: translate(-50%, -50%) scaleX(0.1);
-    opacity: 0.1;
-  }
-  40% {
-    transform: translate(-50%, -50%) scaleX(1.2);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translate(-50%, -50%) scaleX(1.4);
-    opacity: 1;
-  }
-  60% {
-    transform: translate(-50%, -50%) scaleX(1.2);
-    opacity: 0.6;
-  }
-}
-
+/* Animation */
 @keyframes softPulse {
   0%, 100% {
-    box-shadow: 
-      0 0 4px rgba(255, 255, 255, 0.3),
-      0 0 10px rgba(255, 255, 255, 0.2),
-      0 0 18px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
+                0 0 12px rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.1);
   }
   50% {
-    box-shadow: 
-      0 0 8px rgba(255, 255, 255, 0.6),
-      0 0 18px rgba(255, 255, 255, 0.4),
-      0 0 30px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+                0 0 18px rgba(255, 255, 255, 0.4),
+                0 0 26px rgba(255, 255, 255, 0.2);
   }
-}    
+}
 #copyright {
   font-size: 12px;
   margin-top: auto;
@@ -424,9 +396,7 @@ button:hover {
     </div>
   </div>
   <div id="footer">
-  <div id="footerToggle">
-    <div class="eye-pulse"></div>
-  </div>
+  <div id="footerToggle"></div>
 
   <div id="footer-buttons" class="footer-links">
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
@@ -436,25 +406,15 @@ button:hover {
     <button onclick="location.href='F/lore.html'">LORE</button>
     <button onclick="location.href='F/social.html'">SOCIAL</button>
     <!-- الزر الكبير -->
-    <button onclick="location.href='hov.html'" class="big-button">HALL OV VILLAINS</button>
+    <button onclick="location.href='hov.html'" class="big-button">HALL OV VILLAINS</button>                                                                          
     <!-- باقي الأزرار -->
     <button onclick="location.href='nar.html'">NAR</button>
   </div>
-
-  <!-- copyright جوه footer -->
-  <div id="copyright">
-    &copy; 2025 ARABIANVILLAIN | All Rights Reserved
-  </div>
+  <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
 </div>
-
-<div id="inactivity-overlay">
-  <div class="overlay-text">
-    SUMMONED TO BEHOLD?<br>
-    THE PATH<br>
-    WON'T ... W A I T<br><br><br><br>
-    • SEAL YOUR PRESENCE •<br><br>
+  <div id="inactivity-overlay">
+  <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T ... W A I T<br> <br> <br> <br>• SEAL YOUR PRESENCE •<br> <br> </div>
   </div>
-</div>
 <script>
   window.onload = () => {
     let inactivityTimeout;
