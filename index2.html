@@ -217,71 +217,59 @@ button:hover {
   transform: translateX(-50%);
   width: 140px;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.9) 50%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  background-size: 300% 100%;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 100px;
   cursor: pointer;
   overflow: visible;
-  animation: flowRight 4s infinite linear;
-  box-shadow:
-    0 0 12px rgba(255, 255, 255, 0.6),
-    0 0 25px rgba(255, 255, 255, 0.3),
-    0 0 40px rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.7),
+    0 0 40px rgba(255, 255, 255, 0.4),
+    0 0 80px rgba(255, 255, 255, 0.2);
 }
 
-#footerToggle::before {
+#footerToggle::before,
+#footerToggle::after {
   content: "";
   position: absolute;
-  left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 100%;
+  width: 100px;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  opacity: 0.8;
-  filter: blur(6px);
-  animation: pulseGlow 3s infinite ease-in-out;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, transparent 80%);
+  filter: blur(12px);
+  opacity: 0.6;
+  animation: waveOut 3s infinite ease-in-out;
   pointer-events: none;
 }
 
-#footerToggle:hover {
-  animation: flowRightFast 1.5s infinite linear;
-  transform: translateX(-50%) scaleX(1.2);
+#footerToggle::before {
+  left: -110px;
+  animation-delay: 0s;
 }
 
-@keyframes flowRight {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
+#footerToggle::after {
+  right: -110px;
+  animation-delay: 1.5s;
 }
 
-@keyframes flowRightFast {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 200% 0%;
-  }
-}
-
-@keyframes pulseGlow {
+@keyframes waveOut {
   0%, 100% {
-    opacity: 0.3;
-    transform: scaleX(1);
+    transform: translateY(-50%) scaleX(1) scaleY(1);
+    opacity: 0.4;
   }
   50% {
-    opacity: 0.6;
-    transform: scaleX(1.2);
+    transform: translateY(-50%) scaleX(1.6) scaleY(1.3);
+    opacity: 0.8;
   }
+}
+
+#footerToggle:hover {
+  transform: translateX(-50%) scaleX(1.2);
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.9),
+    0 0 60px rgba(255, 255, 255, 0.5),
+    0 0 120px rgba(255, 255, 255, 0.3);
 }
 #copyright {
   font-size: 12px;
