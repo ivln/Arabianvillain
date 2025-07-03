@@ -140,6 +140,35 @@ button:hover {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+    
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.footer-links button {
+  all: unset;
+  color: white;
+  font-size: 16px;
+  font-family: 'Cinzel', serif;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.footer-links button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.big-button {
+  font-size: 20px;
+  padding: 12px 24px;
+  border-width: 2px;
+}
 
 #footerToggle {
   all: unset;
@@ -298,9 +327,27 @@ button:hover {
 </div>
     </div>
   </div>
-  <div id="footer">
-    <button id="footerToggle">ARABIANVILLAIN</button>
-    <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
+<div id="footer">
+  <button id="footerToggle">ARABIANVILLAIN</button>
+
+  <div id="footer-buttons" class="footer-links">
+    <button onclick="location.href='about.html'">ABOUT</button>
+    <button onclick="location.href='contact.html'">CONTACT</button>
+    <button onclick="location.href='faq.html'">FAQ</button>
+    <button onclick="location.href='about.html'">ABOUT</button>
+    <button onclick="location.href='contact.html'">CONTACT</button>
+    <button onclick="location.href='faq.html'">FAQ</button>
+    <!-- الزر الكبير -->
+    <button onclick="location.href='enter.html'" class="big-button">ENTER THE REALM</button>
+    <!-- باقي الأزرار -->
+    <button onclick="location.href='faq.html'">FAQ</button>
+  </div>
+
+  <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
+</div>
+
+  <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
+</div>
   <div id="inactivity-overlay">
   <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T... W A I T<br> <br> <br> <br> <br>• SEAL YOUR PRESENCE •<br> </div>
   </div>
