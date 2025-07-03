@@ -212,9 +212,9 @@ button:hover {
 }
 .footer-toggle-container {
   position: relative;
-  width: fit-content;
-  margin: 0 auto;
-  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #footerToggle {
@@ -243,7 +243,37 @@ button:hover {
   opacity: 0.8;
   animation: pulseGlow 3.5s ease-in-out infinite;
   z-index: 3;
-}  
+}
+@keyframes pulseGlow {
+  0% {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+  50% {
+    transform: translateX(-50%) scaleX(1.5);
+    opacity: 1;
+    box-shadow: 0 0 18px rgba(255,255,255,0.7), 0 0 30px rgba(255,255,255,0.4);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+}   
+#copyright {
+  font-size: 12px;
+  margin-top: auto;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+ .toggle-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+ ation: pulseGlow 3.5s ease-in-out infinite;
+  z-index: 3;
+}
 @keyframes pulseGlow {
   0% {
     transform: translateX(-50%) scaleX(1);
@@ -264,21 +294,7 @@ button:hover {
 #copyright {
   font-size: 12px;
   margin-top: auto;
-  margin-bottom: 10px;
-  opacity: 0.6;
-}
- .toggle-icon {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  z-index: 5;
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.reveal-text {
+  margi.reveal-text {
   position: absolute;
   top: 25%; 
   left: 50%;
