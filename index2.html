@@ -210,6 +210,12 @@ button:hover {
   margin-top: 50px;
   position: relative;
 }
+.footer-toggle-container {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
 
 #footerToggle {
   all: unset;
@@ -220,11 +226,13 @@ button:hover {
   font-size: 20px;
   cursor: pointer;
   padding: 5px 0;
+  z-index: 2;
+  position: relative;
 }
 
 .footer-hint {
   position: absolute;
-  top: -25px;
+  bottom: 100%; /* يخليها تطلع فوق الزر */
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
@@ -235,8 +243,7 @@ button:hover {
   opacity: 0.8;
   animation: pulseGlow 3.5s ease-in-out infinite;
   z-index: 3;
-}
-
+}  
 @keyframes pulseGlow {
   0% {
     transform: translateX(-50%) scaleX(1);
@@ -254,7 +261,6 @@ button:hover {
     box-shadow: 0 0 10px rgba(255,255,255,0.3);
   }
 }
-
 #copyright {
   font-size: 12px;
   margin-top: auto;
@@ -401,9 +407,10 @@ button:hover {
 </div>
     </div>
    </div>
-  <div id="footer">
-<button id="footerToggle">ARABIANVILLAIN</button>
-   <div class="footer-hint"></div>
+<div class="footer-toggle-container">
+  <div class="footer-hint"></div>
+  <button id="footerToggle">ARABIANVILLAIN</button>
+</div>
   <div id="footer-buttons" class="footer-links">
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
     <button onclick="location.href='F/rituals.html'">RITUALS</button>
