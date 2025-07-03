@@ -212,22 +212,21 @@ button:hover {
 }
 #footerToggle {
   position: absolute;
-  top: 12.5px; /* يخلّي الشعاع يطلع فوق الفوتر ويظهر */
+  top: 12.5px;
   left: 50%;
   transform: translateX(-50%);
   width: 160px;
   height: 2px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0)); /* gradient داخلي */
+  background: rgba(255, 255, 255, 0.95); /* لون موحّد ثابت */
   border-radius: 50px;
   cursor: pointer;
 
-  /* إشعاع ناعم ونابض */
   box-shadow: 
     0 0 4px rgba(255, 255, 255, 0.4),
     0 0 10px rgba(255, 255, 255, 0.3),
     0 0 20px rgba(255, 255, 255, 0.2);
 
-  animation: softPulse 5s infinite ease-in-out; /* نبض أبطأ */
+  animation: softPulse 5s infinite ease-in-out;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -239,7 +238,6 @@ button:hover {
     0 0 35px rgba(255, 255, 255, 0.3);
 }
 
-/* Animation */
 @keyframes softPulse {
   0%, 100% {
     box-shadow: 
