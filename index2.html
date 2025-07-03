@@ -214,7 +214,7 @@ button:hover {
   position: absolute;
   top: 12.5px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0); /* بدل translateX */
   width: 140px;
   height: 2px;
   background: rgba(255, 255, 255, 0.95);
@@ -222,7 +222,9 @@ button:hover {
   cursor: pointer;
   overflow: visible;
   box-shadow: 0 0 12px rgba(255,255,255,0.4);
-  animation: glowPulse 4s ease-in-out infinite;
+  animation: 
+    glowPulse 4s ease-in-out infinite,
+    waveVertical 4s ease-in-out infinite;
   transition: all 0.3s ease;
 }
 
@@ -245,13 +247,16 @@ button:hover {
 #footerToggle::before {
   left: -30%;
 }
+
 #footerToggle::after {
   right: -30%;
   animation-delay: 2s;
 }
 
 #footerToggle:hover {
-  animation: glowPulseFast 2s ease-in-out infinite;
+  animation: 
+    glowPulseFast 2s ease-in-out infinite,
+    waveVerticalFast 2s ease-in-out infinite;
 }
 
 #footerToggle:hover::before,
@@ -306,6 +311,25 @@ button:hover {
   50% {
     transform: translateY(-50%) scaleX(1.5);
     opacity: 0.6;
+  }
+}
+
+/* === موجة رأسية على الشعاع نفسه === */
+@keyframes waveVertical {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -4px);
+  }
+}
+
+@keyframes waveVerticalFast {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -6px);
   }
 }
 #copyright {
