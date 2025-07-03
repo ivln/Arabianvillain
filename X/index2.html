@@ -1,1 +1,434 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IVLN GATE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Cinzel', serif;
+      background: black;
+      color: white;
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      max-width: 90%;
+      font-size: clamp(16px, 4vw, 36px);
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }.visible { animation: fadeIn 2s ease forwards; }
+.hidden { animation: fadeOut 1s ease forwards; }
 
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeInMain { from { opacity: 0; } to { opacity: 1; } }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 25px;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.15); 
+  color: white;
+}
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background: #B30000;
+  color: black;
+  border-color: #B30000;
+}
+
+#phase-btn {
+  pointer-events: none;
+}
+
+#scroll-container {
+  display: none;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  animation: fadeInMain 2s ease forwards;
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(17, 17, 17, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.snap-section:nth-child(2) { background: #222; }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+#footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  height: 30px;
+  overflow: hidden;
+  z-index: 10;
+  transition: height 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+  touch-action: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  animation: none;
+}
+
+#footer.fade-in {
+  animation: fadeIn 2s ease forwards;
+}
+
+#footer.active {
+  height: 700px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#footerToggle {
+  all: unset;
+  background: none;
+  border: none;
+  color: white;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+#copyright {
+  font-size: 12px;
+  margin-top: auto;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+ .toggle-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 5;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal-text {
+  position: absolute;
+  top: 25%; 
+  left: 50%;
+  transform: translate(-50%, -20%);
+  
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+
+  transition: 
+    max-height 1.2s ease,
+    opacity 1.2s ease,
+    transform 1.2s ease;
+
+  text-align: center;
+  padding: 0 10px;
+  font-size: 16px;
+  letter-spacing: 1px;
+
+  max-width: 600px;
+  width: 90%;
+}
+
+.reveal-text.visible {
+  opacity: 1;
+  max-height: 500px;
+  transform: translate(-50%, 0);
+  margin-top: 0;
+}
+#inactivity-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  transition: opacity 0.5s ease;
+}
+
+#inactivity-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+* {
+ -webkit-user-select: none; /* Safari */
+ -moz-user-select: none;    /* Firefox */
+ -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Standard */
+ }
+  </style>
+</head>
+<body>
+  <div class="center" id="line1"><span>YOU LOOKED AWAY</span></div>
+  <div class="center" id="line2"><span>HE SUMMONED YOU</span></div>
+  <div class="center" id="phaseBtnContainer">
+    <button id="phase-btn">LET THE POSSESSION BEGINS</button>
+  </div>
+  <div id="scroll-container">
+    <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto" loop>
+        <source src="vid1.mp4" type="video/mp4" />
+      </video>
+      <button onclick="location.href='index3.html'">REVEAL YOUR INNER VILLAIN</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="1" />
+<div class="reveal-text" id="reveal-text-1">• HE'S NOT HIDING ANYMORE •<br>• YOUR SHADE IS CLAWING... IT'S WAY •<br>• TO THE SURFACE •
+  
+</div>
+    </div>
+    <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto" loop>
+        <source src="vid2.mp4" type="video/mp4" />
+      </video>
+      <button onclick="location.href='rituals.html'">EMBRACE YOUR CURSE</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="2" />
+<div class="reveal-text" id="reveal-text-2">
+  TEXT FOR SECTION 1
+</div>
+    </div>
+    <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto" loop>
+        <source src="vid3.mp4" type="video/mp4" />
+      </video>
+      <button onclick="location.href='cut.html'">THE BINDING RITUAL</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="3" />
+<div class="reveal-text" id="reveal-text-3">
+  TEXT FOR SECTION 1
+</div>
+    </div>
+    <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto" loop>
+        <source src="vid4.mp4" type="video/mp4" />
+      </video>
+      <button onclick="location.href='pledge.html'">INVOKE THE POSSESSION</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="4" />
+<div class="reveal-text" id="reveal-text-4">
+  TEXT FOR SECTION 1
+</div>
+    </div>
+    <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto" loop>
+        <source src="vid5.mp4" type="video/mp4" />
+      </video>
+      <button onclick="location.href='invoke.html'">THE FINAL PLEDGE</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="5" />
+<div class="reveal-text" id="reveal-text-5">
+  TEXT FOR SECTION 1
+</div>
+    </div>
+    <div class="snap-section">
+      <video class="bg-video" muted playsinline preload="auto" loop>
+        <source src="videos/vid6.mp4" type="video/mp4" />
+      </video>
+      <button onclick="location.href='realm.html'">IVLN REALM</button>
+      <img src="av-logo3.png" class="toggle-icon" data-section="6" />
+<div class="reveal-text" id="reveal-text-6">
+  TEXT FOR SECTION 1
+</div>
+    </div>
+  </div>
+  <div id="footer">
+    <button id="footerToggle">ARABIANVILLAIN</button>
+    <div id="copyright">&copy; 2025 ARABIANVILLAIN | All Rights Reserved</div>
+  <div id="inactivity-overlay">
+  <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T... W A I T<br> <br> <br> <br> <br>• SEAL YOUR PRESENCE •<br> </div>
+  </div>
+<script>
+  window.onload = () => {
+    let inactivityTimeout;
+    const overlay = document.getElementById('inactivity-overlay');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const phaseBtn = document.getElementById('phase-btn');
+    const phaseContainer = document.getElementById('phaseBtnContainer');
+    const scrollContainer = document.getElementById('scroll-container');
+    const footer = document.getElementById('footer');
+    const footerToggle = document.getElementById('footerToggle');
+
+    function showOverlay() {
+      overlay.classList.add('active');
+    }
+
+    function hideOverlay() {
+      if (overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+      }
+      resetInactivityTimer();
+    }
+
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimeout);
+      inactivityTimeout = setTimeout(showOverlay, 20000); // 20 ثانية
+    }
+
+    ['mousemove', 'keydown', 'touchstart', 'click'].forEach(event => {
+      document.addEventListener(event, hideOverlay);
+    });
+    resetInactivityTimer();
+
+    // التسلسل الزمني للأنيميشن
+    line1.classList.add('visible');
+    setTimeout(() => {
+      line1.classList.replace('visible', 'hidden');
+      setTimeout(() => {
+        line1.style.display = 'none';
+        line2.classList.add('visible');
+        setTimeout(() => {
+          line2.classList.replace('visible', 'hidden');
+          setTimeout(() => {
+            line2.style.display = 'none';
+            phaseContainer.classList.add('visible');
+            phaseBtn.style.pointerEvents = 'auto';
+          }, 1000);
+        }, 2500);
+      }, 1000);
+    }, 3000);
+
+    // إظهار نصوص الأقسام
+    document.querySelectorAll('.toggle-icon').forEach(icon => {
+      icon.addEventListener('click', () => {
+        const sectionId = icon.getAttribute('data-section');
+        const textElement = document.getElementById(`reveal-text-${sectionId}`);
+        textElement.classList.toggle('visible');
+      });
+    });
+
+    // زر المرحلة
+    phaseBtn.onclick = () => {
+      phaseContainer.classList.replace('visible', 'hidden');
+      setTimeout(() => {
+        phaseContainer.style.display = 'none';
+        scrollContainer.style.display = 'block';
+        document.body.style.overflow = 'auto';
+        footer.style.display = 'flex';
+        footer.classList.add('fade-in');
+
+        const videos = document.querySelectorAll('.bg-video');
+        videos.forEach(video => {
+          video.play().catch(e => console.log("Play blocked:", e));
+        });
+      }, 1000);
+    };
+
+    // زر التبديل للـ Footer
+    footerToggle.onclick = () => {
+      footer.classList.toggle('active');
+    };
+
+    // السحب لتفعيل الفوتر
+    let startY = 0;
+    let isDragging = false;
+
+    footer.addEventListener('mousedown', e => {
+      startY = e.clientY;
+      isDragging = true;
+    });
+
+    footer.addEventListener('touchstart', e => {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (isDragging && startY - e.clientY > 30) {
+        footer.classList.add('active');
+      }
+    });
+
+    window.addEventListener('touchmove', e => {
+      if (isDragging && startY - e.touches[0].clientY > 30) {
+        footer.classList.add('active');
+      }
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // تعطيل النسخ والقص والقائمة اليمنى وبعض الاختصارات
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (
+        (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
+        (e.metaKey && e.key === 'c') ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+      }
+    });
+  };
+</script>
+</body>
+  </html>
