@@ -1,1 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BRINE ORACLE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+   * {
+       -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Cinzel Serif', serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      #startBtn {
+        opacity: 0;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        font-size: 22px;
+        font-family: 'Cinzel', serif;
+        transition: opacity 2s ease-in;
+        border: none;
+        letter-spacing: 1.5px;
+        font-weight: 400;
+      }
+      .fade-in {
+        opacity: 1 !important;
+      }
+      .question {
+        display: none;
+        margin-top: 20px;
+        max-width: 500px;
+        animation: fadeScale 1.2s ease-in-out;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 5px 10px;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+      }
+      @keyframes fadeScale {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .question h2 {
+        font-size: 11px;
+        font-weight: 400;
+        margin-bottom: 12px;
+        line-height: 1.2;
+        white-space: pre-line;
+        border-bottom: 1px solid #444;
+        padding-bottom: 8px;
+      }
+      .answers label {
+        display: block;
+        margin: 8px 0;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 11px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(6px);
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+      .answers input[type="radio"] {
+        display: none;
+      }
+      .answers input[type="radio"]:checked + label {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-weight: bold;
+      }
+      #nextBtn {
+        display: none;
+        margin-top: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-weight: 400;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        font-family: 'Cinzel', serif;
+        cursor: pointer;
+      }
+      #result {
+        display: none;
+        margin-top: 2px;
+        padding: 15px;
+        max-width: 500px;
+        text-align: center;
+        white-space: pre-line;
+        font-size: 12px;
+      }
+      .final-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        margin-bottom: 0px;
+        font-family: 'Cinzel', serif;
+        text-decoration: none;
+        letter-spacing: 1.5px;
+        font-weight: 400;
+      }
+      .result-lines {
+        font-size: 16px;
+        font-family: 'Cinzel', serif;
+        line-height: 0.8;
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        letter-spacing: 1.5px;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="startBtn">REVEAL THE ECHO</button>
+    <audio id="bgMusic" loop>
+      <source src="soundv2.mp3" type="audio/mp3">
+    </audio>
+    <div id="quizContainer"></div>
+    <button id="nextBtn">FOLLOW THE ECHO</button>
+    <div id="result"></div>
+    <script>
+      const startBtn = document.getElementById('startBtn');
+      const bgMusic = document.getElementById('bgMusic');
+      const quizContainer = document.getElementById('quizContainer');
+      const nextBtn = document.getElementById('nextBtn');
+      const resultBox = document.getElementById('result');
 
+      const questions = [
+        {
+  q: `As a child…\ndid you ever feel like your voice didn’t matter?\nWhen someone cut you off, dismissed your thoughts,\nor made you stay quiet just to keep the peace…\n?what did you do in those moments`,
+  a: [
+    "I stayed silent… swallowing every word I wanted to scream.",
+    "I cracked a joke… even if I was crumbling inside.",
+    "I lashed out… hated everyone, even if it meant ending up alone.",
+    "I laughed with them… while quietly plotting my response.",
+    "I memorized every detail… not to speak, but to one day take control."
+  ]
+},
+{
+  q: `Have you ever felt like you're doing everything just so people don’t abandon you?\nYou were scared to say “no”, agreed to things you hated, changed yourself just to seem “good”…\n?what did you end up doing`,
+  a: [
+    "I said yes… then hated myself for it, but still couldn’t say no.",
+    "I smiled and told myself: ‘forgiveness makes me stronger’.",
+    "I cut them off… angry and explosive, even if I didn’t mean to be.",
+    "I played along… made them think I was okay, while shutting down inside.",
+    "I let them win… for now, while secretly planning how to take the lead."
+  ]
+},
+{
+  q: `When someone used your softness against you…\nbetrayed your secrets, mocked you, or spoke behind your back… and you saw it all,\n?what happened inside you, really`,
+  a: [
+    "I froze… like I didn’t even exist.",
+    "I blamed myself… and forgave them anyway.",
+    "I promised I’d never stay quiet again… even if it cost me people.",
+    "I smiled… and hit back later, in silence.",
+    "I stayed silent… and began a long, slow revenge that stings deep."
+  ]
+},
+{
+  q: `When they called you “kind”…\nbut inside, you were drained—stuck in relationships that stripped you of yourself.\nYou couldn’t say no. You tried to walk away, but kept going back…\n?what did you do then`,
+  a: [
+    "I vanished… hid myself so no one could see the mess inside.",
+    "I told myself I was strong for carrying the pain quietly.",
+    "I burned it all down… and started from scratch.",
+    "I changed my face… and began silently controlling those around me.",
+    "I wore my strongest mask… and made sure no one suspected a thing."
+  ]
+},
+{
+  q: `Have you always been the one who helps everyone…\nonly to find yourself alone when you fall?\nAnd when you finally realized you were just a convenience, not a priority…\n?what did you choose to become after that`,
+  a: [
+    "I shrank… and vowed to never rely on anyone again.",
+    "I made excuses for them… maybe they just didn’t know how to care.",
+    "I broke… screamed… and walked away.",
+    "I became like them… used people like they used me.",
+    "I evolved… and built myself to rise above them all."
+  ]
+}
+    ];
+
+      const results = ["NOXEN", "VELOR", "DRAVON", "MIREK", "CAEDROS"];
+
+      let currentQ = 0;
+      let answers = [];
+
+      setTimeout(() => startBtn.classList.add('fade-in'), 1000);
+
+      startBtn.addEventListener('click', () => {
+        bgMusic.play();
+        startBtn.style.display = 'none';
+        showQuestion();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const selected = document.querySelector('input[name="answer"]:checked');
+        if (!selected) return;
+        answers.push(parseInt(selected.value));
+        currentQ++;
+        if (currentQ < questions.length) {
+          showQuestion();
+        } else {
+          showResult();
+        }
+      });
+
+      function showQuestion() {
+        const q = questions[currentQ];
+        quizContainer.innerHTML = `
+          <div class="question">
+            <h2>${q.q}</h2>
+            <div class="answers">
+              ${q.a.map((ans, i) => `
+                <input type="radio" name="answer" id="ans${i}" value="${i}">
+                <label for="ans${i}">${ans}</label>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        quizContainer.querySelector('.question').style.display = 'block';
+        nextBtn.style.display = 'block';
+      }
+
+      function showResult() {
+        quizContainer.style.display = 'none';
+        nextBtn.style.display = 'none';
+        const counts = new Array(5).fill(0);
+        answers.forEach(i => counts[i]++);
+        const maxIndex = counts.indexOf(Math.max(...counts));
+        const name = results[maxIndex].toUpperCase();
+        const file = results[maxIndex].toLowerCase() + ".html";
+
+        resultBox.innerHTML = `
+          <a href="${file}"><button class="final-btn">${name}</button></a>
+          <div class="result-lines">
+            A SHADE OF YOUR INNER VILLAIN<br>
+            FEEL HIS NAME TO KNOW HIS STORY<br>
+            ...YOUR STORY
+          </div>
+        `;
+        resultBox.style.display = 'block';
+      }
+    </script>
+  </body>
+</html>
