@@ -151,25 +151,39 @@ button:hover {
 .footer-links button {
   all: unset;
   color: white;
-  font-size: 16px;
+  font-size: 22px;
+  letter-spacing: 1px;
   font-family: 'Cinzel', serif;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid white;
-  cursor: pointer;
+  text-transform: uppercase;
   text-align: center;
-  transition: background 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.footer-links button:hover {
-  background: rgba(255, 255, 255, 0.2);
+.footer-links button::before,
+.footer-links button::after {
+  content: "›";
+  margin: 0 12px;
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+/* إزالة السهمين لبعض الأزرار (RITUALS و HOME مثلاً) */
+.footer-links button:nth-child(2)::before,
+.footer-links button:nth-child(2)::after,
+.footer-links button:nth-child(5)::before,
+.footer-links button:nth-child(5)::after {
+  content: "";
 }
 .big-button {
-  font-size: 20px;
-  padding: 12px 24px;
-  border-width: 2px;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 50px;
+  position: relative;
 }
-
 #footerToggle {
   all: unset;
   background: none;
