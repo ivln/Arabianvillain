@@ -211,19 +211,19 @@ button:hover {
   position: relative;
 }
 #footerToggle {
-  position: fixed;
-  bottom: 0;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 20;
+  margin-top: 20px; /* أو auto لو عايز تنزّله */
   width: 200px;
   height: 6px;
   background: linear-gradient(90deg, transparent, #ffffff, transparent);
   border-radius: 100px;
   cursor: pointer;
-  box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
   animation: pulseBeam 2s infinite ease-in-out;
   transition: transform 0.3s ease;
+  z-index: 20;
 }
 
 #footerToggle:hover {
