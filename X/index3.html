@@ -1,1 +1,151 @@
+<!DOCTYPE html><html lang="en"><head>  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Choose Your Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: 'Cinzel', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 1s forwards;
+      pointer-events: none;
+    }
+    .container.show {
+      pointer-events: auto;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 25px;
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(2px);
+    }
+    .btn.dm:hover,
+    .btn.dm:active {
+      background-color: #7F6A00;
+      border-color: #7F6A00;
+      color: #000;
+    }
+    .btn.se:hover,
+    .btn.se:active {
+      background-color: #001F33;
+      border-color: #001F33;
+      color: #fff;
+    }
+    .button:focus {
+      outline: none;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    .logo-btn {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 1.2s forwards;
+    }
+    .message {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      pointer-events: none;
+      line-height: 1.6;
+      max-width: 90vw;
+    }
+    .message.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+      pointer-events: auto;
+    }
+    .message .line {
+      display: block;
+      white-space: nowrap;
+    }
+   * {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+     user-select: none;         /* Standard */
+   }
+  </style>
+</head>
+<body>
+  <!-- زر الصورة -->
+  <img src="av-logo4.png" alt="Toggle Message" class="logo-btn" onclick="toggleMessage()" />  <!-- الرسالة -->  <div class="message" id="messageBox">
+    <div class="line">• CHOSE YOUR INTERIOR PATH •</div>
+    <div class="line">• YOUR SHADE YEARNING TO EMERGE •</div>
+    <div class="line">• POSSESSION WAIT'S YOU •</div>
+  </div>  <div class="container" id="btnContainer">
+    <button class="btn dm" onclick="location.href='index3os.html'">ORACLE SANDS</button>
+    <button class="btn se" onclick="location.href='index3bo.html'">BRINE ORACLE</button>
+  </div>  <script>
+    window.addEventListener('load', () => {
+      const container = document.getElementById('btnContainer');
+      setTimeout(() => {
+        container.classList.add('show');
+      }, 1000);
+    });
 
+    function toggleMessage() {
+      const msg = document.getElementById('messageBox');
+      msg.classList.toggle('show');
+    }
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+  });
+
+  document.addEventListener('cut', function(e) {
+    e.preventDefault();
+  });
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    // منع Ctrl+C أو Command+C أو Ctrl+U أو F12
+    if (
+      (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
+      (e.metaKey && e.key === 'c') || // للماك
+      e.key === 'F12'
+    ) {
+      e.preventDefault();
+    }
+  });
+</script></body>
+</html>
