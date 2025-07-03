@@ -210,17 +210,34 @@ button:hover {
   margin-top: 50px;
   position: relative;
 }
-#footerToggle {
-  all: unset;
-  background: none;
-  border: none;
-  color: white;
-  font-family: 'Cinzel', serif;
-  font-size: 20px;
+.beam-button {
+  width: 200px;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  border-radius: 100px;
+  position: relative;
   cursor: pointer;
-  padding: 5px 0;
+  box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff;
+  animation: pulseBeam 2s infinite ease-in-out;
+  transition: transform 0.3s ease;
+  margin: 50px auto;
 }
 
+.beam-button:hover {
+  transform: scaleX(1.1) scaleY(1.5);
+  box-shadow: 0 0 30px #ffffff, 0 0 60px #ffffff, 0 0 90px #ffffff;
+}
+
+@keyframes pulseBeam {
+  0%, 100% {
+    opacity: 0.7;
+    box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 30px #ffffff, 0 0 60px #ffffff, 0 0 90px #ffffff;
+  }
+}
 #copyright {
   font-size: 12px;
   margin-top: auto;
@@ -368,7 +385,7 @@ button:hover {
     </div>
   </div>
 <div id="footer">
-  <button id="footerToggle">ARABIANVILLAIN</button>
+  <div id="footerToggle" class="beam-button"></div>
 
   <div id="footer-buttons" class="footer-links">
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
