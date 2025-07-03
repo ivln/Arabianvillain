@@ -211,32 +211,44 @@ button:hover {
   position: relative;
 }
 #footerToggle {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 20;
-  width: 200px;
-  height: 6px;
-  background: radial-gradient(ellipse at center, #ffffff 0%, rgba(255,255,255,0.3) 100%);
-  border-radius: 100px;
+  z-index: 1000;
+  width: 160px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
-  animation: pulseBeam 6s infinite ease-in-out;
-  transition: transform 0.3s ease;
+
+  /* إشعاع ناعم */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5),
+              0 0 12px rgba(255, 255, 255, 0.3),
+              0 0 20px rgba(255, 255, 255, 0.2);
+
+  animation: softPulse 3s infinite ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #footerToggle:hover {
-  transform: translateX(-50%) scaleX(1.05) scaleY(1.2);
-  box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, 0 0 45px #ffffff;
+  transform: translateX(-50%) scaleX(1.05) scaleY(1.4);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+              0 0 20px rgba(255, 255, 255, 0.4),
+              0 0 30px rgba(255, 255, 255, 0.3);
 }
 
-@keyframes pulseBeam {
+/* Animation */
+@keyframes softPulse {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.15);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4),
+                0 0 12px rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.1);
   }
   50% {
-    box-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+                0 0 18px rgba(255, 255, 255, 0.4),
+                0 0 26px rgba(255, 255, 255, 0.2);
   }
 }
 #copyright {
