@@ -147,7 +147,7 @@ button:hover {
   justify-content: space-between; /* يوزع الأزرار بالتساوي */
   margin-top: 65px;/* زوّد القيمة حسب ما تحب */
   margin-bottom: 65px;
-  gap: 50px;
+  gap: 40px;
 }
 
 .footer-links button {
@@ -186,6 +186,15 @@ button:hover {
 .footer-links button:nth-child(7)::after  /* HALL OV VILLAINS */
 {
   content: "";
+}
+.footer-links button:hover::before {
+  transform: translateX(5px); /* يتحرك ناحيه النص */
+  transition: transform 0.3s ease;
+}
+
+.footer-links button:hover::after {
+  transform: translateX(-5px); /* يتحرك ناحيه النص */
+  transition: transform 0.3s ease;
 }
 .big-button {
   font-size: 28px;
