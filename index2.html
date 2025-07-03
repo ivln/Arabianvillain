@@ -333,7 +333,8 @@ button:hover {
     const phaseContainer = document.getElementById('phaseBtnContainer');
     const scrollContainer = document.getElementById('scroll-container');
     const footer = document.getElementById('footer');
-    const footerToggle = document.getElementById('footerToggle');window.onload = () => {
+    const footerToggle = document.getElementById('footerToggle');
+  window.onload = () => {
   line1.classList.add('visible');
   setTimeout(() => {
     line1.classList.replace('visible', 'hidden');
@@ -406,7 +407,7 @@ window.addEventListener('touchmove', e => {
 
 window.addEventListener('mouseup', () => { isDragging = false; });
 window.addEventListener('touchend', () => { isDragging = false; });
-}
+  };
   document.addEventListener('copy', function(e) {
     e.preventDefault();
   });
