@@ -144,8 +144,9 @@ button:hover {
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  justify-content: space-between; /* يوزع الأزرار بالتساوي */
+  height: 80%; /* تملى طول الفوتر بالكامل */
+  width: 100%;
 }
 
 .footer-links button {
@@ -161,19 +162,28 @@ button:hover {
   position: relative;
 }
 
-.footer-links button::before,
-.footer-links button::after {
+.footer-links button::before{
   content: "›";
   margin: 0 12px;
   font-size: 20px;
   opacity: 0.7;
 }
+.footer-links button::after{
+  content: "‹";
+  margin: 0 12px;
+  font-size: 20px;
+  opacity: 0.7;
+}
 
-/* إزالة السهمين لبعض الأزرار (RITUALS و HOME مثلاً) */
 .footer-links button:nth-child(2)::before,
-.footer-links button:nth-child(2)::after,
-.footer-links button:nth-child(5)::before,
-.footer-links button:nth-child(5)::after {
+.footer-links button:nth-child(2)::after, /* RITUALS */
+.footer-links button:nth-child(4)::before,
+.footer-links button:nth-child(4)::after, /* HOME */
+.footer-links button:nth-child(6)::before,
+.footer-links button:nth-child(6)::after, /* SOCIAL */
+.footer-links button:nth-child(7)::before,
+.footer-links button:nth-child(7)::after  /* HALL OV VILLAINS */
+{
   content: "";
 }
 .big-button {
