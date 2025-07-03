@@ -210,6 +210,39 @@ button:hover {
   margin-top: 50px;
   position: relative;
 }
+.footer-hint {
+  width: 80px;
+  height: 2px;
+  background: white;
+  opacity: 0.6;
+  margin: 0 auto;
+  border-radius: 1px;
+  animation: pulseShift 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseShift {
+  0% {
+    transform: scaleX(1) translateX(0);
+    opacity: 0.5;
+  }
+  25% {
+    transform: scaleX(1.2) translateX(3px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1.4) translateX(0);
+    opacity: 1;
+  }
+  75% {
+    transform: scaleX(1.2) translateX(-3px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scaleX(1) translateX(0);
+    opacity: 0.5;
+  }
+}
 #footerToggle {
   all: unset;
   background: none;
@@ -368,7 +401,8 @@ button:hover {
     </div>
   </div>
 <div id="footer">
-  <button id="footerToggle">ARABIANVILLAIN</button>
+<div class="footer-hint"></div>
+<button id="footerToggle">ARABIANVILLAIN</button>
 
   <div id="footer-buttons" class="footer-links">
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
