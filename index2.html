@@ -305,28 +305,9 @@ button:hover {
   <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T... W A I T<br> <br> <br> <br> <br>• SEAL YOUR PRESENCE •<br> </div>
   </div>
 <script>
-  let inactivityTimeout;
-  const overlay = document.getElementById('inactivity-overlay');
-
-  function showOverlay() {
-    overlay.classList.add('active');
-  }
-
-  function hideOverlay() {
-    if (overlay.classList.contains('active')) {
-      overlay.classList.remove('active');
-    }
-    resetInactivityTimer();
-  }
-
-  function resetInactivityTimer() {
-    clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(showOverlay, 20000); // 20 ثواني
-  }
-  ['mousemove', 'keydown', 'touchstart', 'click'].forEach(event => {
-    document.addEventListener(event, hideOverlay);
-  });
-  resetInactivityTimer();
+  window.onload = () => {
+    let inactivityTimeout;
+    const overlay = document.getElementById('inactivity-overlay');
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
     const phaseBtn = document.getElementById('phase-btn');
@@ -334,103 +315,120 @@ button:hover {
     const scrollContainer = document.getElementById('scroll-container');
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
-  window.onload = () => {
-  line1.classList.add('visible');
-  setTimeout(() => {
-    line1.classList.replace('visible', 'hidden');
-    setTimeout(() => {
-      line1.style.display = 'none';
-      line2.classList.add('visible');
-      setTimeout(() => {
-        line2.classList.replace('visible', 'hidden');
-        setTimeout(() => {
-          line2.style.display = 'none';
-          phaseContainer.classList.add('visible');
-          phaseBtn.style.pointerEvents = 'auto';
-        }, 1000);
-      }, 2500);
-    }, 1000);
-  }, 3000);
-};
-    document.querySelectorAll('.toggle-icon').forEach(icon => {
-  icon.addEventListener('click', () => {
-    const sectionId = icon.getAttribute('data-section');
-    const textElement = document.getElementById(`reveal-text-${sectionId}`);
-    textElement.classList.toggle('visible');
-  });
-});
 
-phaseBtn.onclick = () => {
-  phaseContainer.classList.replace('visible', 'hidden');
-  setTimeout(() => {
-    phaseContainer.style.display = 'none';
-    scrollContainer.style.display = 'block';
-    document.body.style.overflow = 'auto';
-    footer.style.display = 'flex';
-    footer.classList.add('fade-in');
-
-    const videos = document.querySelectorAll('.bg-video');
-    videos.forEach(video => {
-      video.play().catch(e => console.log("Play blocked:", e));
-    });
-  }, 1000);
-};
-
-footerToggle.onclick = () => {
-  footer.classList.toggle('active');
-};
-
-let startY = 0;
-let isDragging = false;
-
-footer.addEventListener('mousedown', e => {
-  startY = e.clientY;
-  isDragging = true;
-});
-
-footer.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-  isDragging = true;
-});
-
-window.addEventListener('mousemove', e => {
-  if (isDragging && startY - e.clientY > 30) {
-    footer.classList.add('active');
-  }
-});
-
-window.addEventListener('touchmove', e => {
-  if (isDragging && startY - e.touches[0].clientY > 30) {
-    footer.classList.add('active');
-  }
-});
-
-window.addEventListener('mouseup', () => { isDragging = false; });
-window.addEventListener('touchend', () => { isDragging = false; });
-  };
-  document.addEventListener('copy', function(e) {
-    e.preventDefault();
-  });
-
-  document.addEventListener('cut', function(e) {
-    e.preventDefault();
-  });
-
-  document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-  });
-
-  document.addEventListener('keydown', function(e) {
-    // منع Ctrl+C أو Command+C أو Ctrl+U أو F12
-    if (
-      (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
-      (e.metaKey && e.key === 'c') || // للماك
-      e.key === 'F12'
-    ) {
-      e.preventDefault();
+    function showOverlay() {
+      overlay.classList.add('active');
     }
-  });
-  
+
+    function hideOverlay() {
+      if (overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+      }
+      resetInactivityTimer();
+    }
+
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimeout);
+      inactivityTimeout = setTimeout(showOverlay, 20000); // 20 ثانية
+    }
+
+    ['mousemove', 'keydown', 'touchstart', 'click'].forEach(event => {
+      document.addEventListener(event, hideOverlay);
+    });
+    resetInactivityTimer();
+
+    // التسلسل الزمني للأنيميشن
+    line1.classList.add('visible');
+    setTimeout(() => {
+      line1.classList.replace('visible', 'hidden');
+      setTimeout(() => {
+        line1.style.display = 'none';
+        line2.classList.add('visible');
+        setTimeout(() => {
+          line2.classList.replace('visible', 'hidden');
+          setTimeout(() => {
+            line2.style.display = 'none';
+            phaseContainer.classList.add('visible');
+            phaseBtn.style.pointerEvents = 'auto';
+          }, 1000);
+        }, 2500);
+      }, 1000);
+    }, 3000);
+
+    // إظهار نصوص الأقسام
+    document.querySelectorAll('.toggle-icon').forEach(icon => {
+      icon.addEventListener('click', () => {
+        const sectionId = icon.getAttribute('data-section');
+        const textElement = document.getElementById(`reveal-text-${sectionId}`);
+        textElement.classList.toggle('visible');
+      });
+    });
+
+    // زر المرحلة
+    phaseBtn.onclick = () => {
+      phaseContainer.classList.replace('visible', 'hidden');
+      setTimeout(() => {
+        phaseContainer.style.display = 'none';
+        scrollContainer.style.display = 'block';
+        document.body.style.overflow = 'auto';
+        footer.style.display = 'flex';
+        footer.classList.add('fade-in');
+
+        const videos = document.querySelectorAll('.bg-video');
+        videos.forEach(video => {
+          video.play().catch(e => console.log("Play blocked:", e));
+        });
+      }, 1000);
+    };
+
+    // زر التبديل للـ Footer
+    footerToggle.onclick = () => {
+      footer.classList.toggle('active');
+    };
+
+    // السحب لتفعيل الفوتر
+    let startY = 0;
+    let isDragging = false;
+
+    footer.addEventListener('mousedown', e => {
+      startY = e.clientY;
+      isDragging = true;
+    });
+
+    footer.addEventListener('touchstart', e => {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (isDragging && startY - e.clientY > 30) {
+        footer.classList.add('active');
+      }
+    });
+
+    window.addEventListener('touchmove', e => {
+      if (isDragging && startY - e.touches[0].clientY > 30) {
+        footer.classList.add('active');
+      }
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // تعطيل النسخ والقص والقائمة اليمنى وبعض الاختصارات
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (
+        (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
+        (e.metaKey && e.key === 'c') ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+      }
+    });
+  };
 </script>
 </body>
 </html>
