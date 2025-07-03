@@ -210,46 +210,44 @@ button:hover {
   margin-top: 50px;
   position: relative;
 }
-.footer-hint {
-  width: 80px;
-  height: 2px;
-  background: white;
-  opacity: 0.6;
-  margin: 0 auto;
-  border-radius: 1px;
-  animation: pulseShift 4s ease-in-out infinite;
-  transform-origin: center;
-}
 
-@keyframes pulseShift {
-  0% {
-    transform: scaleX(1) translateX(0);
-    opacity: 0.5;
-  }
-  25% {
-    transform: scaleX(1.2) translateX(3px);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scaleX(1.4) translateX(0);
-    opacity: 1;
-  }
-  75% {
-    transform: scaleX(1.2) translateX(-3px);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scaleX(1) translateX(0);
-    opacity: 0.5;
-  }
-}
 #footerToggle {
   all: unset;
   background: none;
   border: none;
   color: white;
   font-family: 'Cinzel', serif;
-  font-size: 20px;
+  font-s.footer-hint {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(255,255,255,0.6), 0 0 24px rgba(255,255,255,0.3);
+  opacity: 0.8;
+  animation: pulseGlow 3.5s ease-in-out infinite;
+  z-index: 3;
+}
+@keyframes pulseGlow {
+  0% {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+  50% {
+    transform: translateX(-50%) scaleX(1.5);
+    opacity: 1;
+    box-shadow: 0 0 18px rgba(255,255,255,0.7), 0 0 30px rgba(255,255,255,0.4);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+}ize: 20px;
   cursor: pointer;
   padding: 5px 0;
 }
