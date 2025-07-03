@@ -398,9 +398,9 @@ button:hover {
 </div>
     </div>
   </div>
+<div id="footerToggle"></div>
 <div id="footer">
-<div id="footerToggle" class="footer-hint-button"></div>
-
+  
   <div id="footer-buttons" class="footer-links">
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
     <button onclick="location.href='F/rituals.html'">RITUALS</button>
@@ -497,9 +497,8 @@ button:hover {
 
     // زر التبديل للـ Footer
     footerToggle.onclick = () => {
-      footer.classList.toggle('active');
-    };
-
+    footer.classList.toggle('active');
+    footer.classList.toggle('fade-in');
     // السحب لتفعيل الفوتر
     let startY = 0;
     let isDragging = false;
