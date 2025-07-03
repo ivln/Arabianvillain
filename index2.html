@@ -217,14 +217,19 @@ button:hover {
   transform: translateX(-50%);
   width: 160px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.95); /* لون موحّد ثابت */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.2)
+  );
   border-radius: 50px;
   cursor: pointer;
 
   box-shadow: 
-    0 0 4px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(255, 255, 255, 0.2);
+    0 0 6px rgba(255, 255, 255, 0.4),
+    0 0 16px rgba(255, 255, 255, 0.3),
+    0 0 28px rgba(255, 255, 255, 0.2);
 
   animation: softPulse 5s infinite ease-in-out;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -234,8 +239,8 @@ button:hover {
   transform: translateX(-50%) scaleX(1.1) scaleY(1.6);
   box-shadow: 
     0 0 10px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.4),
-    0 0 35px rgba(255, 255, 255, 0.3);
+    0 0 22px rgba(255, 255, 255, 0.4),
+    0 0 38px rgba(255, 255, 255, 0.3);
 }
 
 @keyframes softPulse {
@@ -243,7 +248,7 @@ button:hover {
     box-shadow: 
       0 0 4px rgba(255, 255, 255, 0.3),
       0 0 10px rgba(255, 255, 255, 0.2),
-      0 0 18px rgba(255, 255, 255, 0.1);
+      0 0 20px rgba(255, 255, 255, 0.1);
   }
   50% {
     box-shadow: 
@@ -252,6 +257,7 @@ button:hover {
       0 0 30px rgba(255, 255, 255, 0.2);
   }
 }
+    
 #copyright {
   font-size: 12px;
   margin-top: auto;
