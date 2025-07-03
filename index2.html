@@ -215,34 +215,52 @@ button:hover {
   top: 12.5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 160px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50px;
+  width: 140px;
+  height: 2px; /* أرفع */
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 100px;
   cursor: pointer;
   overflow: visible;
 
+  animation: whiteFlame 5s infinite ease-in-out;
   box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 20px rgba(255, 255, 255, 0.3),
-    0 -20px 60px rgba(255, 255, 255, 0.15);
-
-  animation: whiteFlame 6s infinite linear;
+    0 0 12px rgba(255, 255, 255, 0.6),
+    0 0 25px rgba(255, 255, 255, 0.3),
+    0 -25px 40px rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
 }
 
-#footerToggle:hover {
-  animation: whiteFlameFast 2s infinite linear;
-  transform: translateX(-50%) scaleX(1.1) scaleY(1.5);
-  box-shadow:
-    0 0 20px rgba(255, 255, 255, 0.9),
-    0 0 40px rgba(255, 255, 255, 0.5),
-    0 -40px 100px rgba(255, 255, 255, 0.25);
+#footerToggle::before,
+#footerToggle::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  width: 20px;
+  height: 50px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, transparent 80%);
+  filter: blur(6px);
+  animation: flameWave 4s infinite ease-in-out;
+  transform-origin: bottom center;
+  pointer-events: none;
 }
 
-/* الهالة تتحرك لأعلى باستمرار */
+#footerToggle::before {
+  left: -25px;
+  animation-delay: 0s;
+}
+
+#footerToggle::after {
+  right: -25px;
+  animation-delay: 2s;
+}
+
+#footerToggle:hover {
+  animation: whiteFlameFast 2s infinite ease-in-out;
+  transform: translateX(-50%) scaleX(1.1) scaleY(1.3);
+}
+
 @keyframes whiteFlame {
-  0% {
+  0%, 100% {
     box-shadow:
       0 0 10px rgba(255, 255, 255, 0.6),
       0 0 20px rgba(255, 255, 255, 0.3),
@@ -254,17 +272,10 @@ button:hover {
       0 0 30px rgba(255, 255, 255, 0.4),
       0 -30px 80px rgba(255, 255, 255, 0.2);
   }
-  100% {
-    box-shadow:
-      0 0 10px rgba(255, 255, 255, 0.6),
-      0 0 20px rgba(255, 255, 255, 0.3),
-      0 -20px 60px rgba(255, 255, 255, 0.15);
-  }
 }
 
-/* نفس الفكرة لكن أسرع لما المستخدم يضغط */
 @keyframes whiteFlameFast {
-  0% {
+  0%, 100% {
     box-shadow:
       0 0 20px rgba(255, 255, 255, 0.9),
       0 0 40px rgba(255, 255, 255, 0.5),
@@ -276,11 +287,16 @@ button:hover {
       0 0 60px rgba(255, 255, 255, 0.6),
       0 -60px 120px rgba(255, 255, 255, 0.3);
   }
-  100% {
-    box-shadow:
-      0 0 20px rgba(255, 255, 255, 0.9),
-      0 0 40px rgba(255, 255, 255, 0.5),
-      0 -40px 100px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes flameWave {
+  0%, 100% {
+    transform: scaleY(1) translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleY(1.4) translateY(-10px);
+    opacity: 0.9;
   }
 }
 #copyright {
