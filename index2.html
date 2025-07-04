@@ -238,11 +238,15 @@ button:hover {
     0 0 20px rgba(255, 0, 0, 0.15);
   animation: beamPulse 2s ease-in-out infinite;
   cursor: pointer;
-  transition: all 0.6s ease;
+  transition: all 2.5s ease;
   z-index: 10;
 }
 
-/* الهالة */
+#footerToggle::before,
+#footerToggle::after {
+  transition: all 2.5s ease;
+}
+
 #footerToggle::before {
   content: "";
   position: absolute;
@@ -262,7 +266,6 @@ button:hover {
   border-radius: 9999px;
   pointer-events: none;
   z-index: -1;
-  transition: all 0.6s ease;
 }
 
 #footerToggle::after {
@@ -279,11 +282,10 @@ button:hover {
   animation: pulseCoreOnly 2.5s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
-  transition: all 0.6s ease;
 }
 
-/* عند الضغط – يتحول الأبيض بالكامل */
-#footerToggle:active {
+/* === كلاس التحوّل للأبيض === */
+#footerToggle.white-flash {
   background: radial-gradient(
     ellipse at center 1px,
     rgba(255, 255, 255, 1) 0%,
@@ -293,9 +295,10 @@ button:hover {
   box-shadow:
     0 0 6px rgba(255, 255, 255, 0.3),
     0 0 20px rgba(255, 255, 255, 0.15);
+  transition: all 1s ease;
 }
 
-#footerToggle:active::before {
+#footerToggle.white-flash::before {
   background: radial-gradient(
     ellipse at center,
     rgba(255, 255, 255, 1) 0%,
@@ -303,67 +306,12 @@ button:hover {
     rgba(255, 255, 255, 0.1) 70%,
     transparent 100%
   );
-  animation: haloPulseSlow 0.6s ease-out;
+  transition: all 1s ease;
 }
 
-#footerToggle:active::after {
+#footerToggle.white-flash::after {
   background: rgba(255, 255, 255, 1);
-}
-
-/* ==== أنيميشنات الهالة ==== */
-@keyframes pulseCoreOnly {
-  0%, 100% {
-    opacity: 0.4;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.4);
-  }
-}
-
-@keyframes haloPulseSlow {
-  0% {
-    transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
-    opacity: 0.5;
-    filter: blur(2px);
-  }
-  50% {
-    transform: translate(-50%, -50%) scaleX(1.08) scaleY(0.85);
-    opacity: 0.95;
-    filter: blur(4px);
-  }
-  100% {
-    transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
-    opacity: 0.5;
-    filter: blur(2px);
-  }
-}
-
-/* ==== أنيميشن الشعاع ==== */
-@keyframes beamPulse {
-  0%, 100% {
-    background: radial-gradient(
-      ellipse at center 1px,
-      rgba(255, 0, 0, 1) 0%,
-      rgba(255, 0, 0, 0.4) 55%,
-      transparent 80%
-    );
-    box-shadow:
-      0 0 4px rgba(255, 0, 0, 0.25),
-      0 0 12px rgba(255, 0, 0, 0.1);
-  }
-  50% {
-    background: radial-gradient(
-      ellipse at center 1px,
-      rgba(255, 0, 0, 1) 0%,
-      rgba(255, 0, 0, 0.6) 50%,
-      transparent 80%
-    );
-    box-shadow:
-      0 0 10px rgba(255, 0, 0, 0.6),
-      0 0 24px rgba(255, 0, 0, 0.3);
-  }
+  transition: all 1s ease;
 }
 #copyright {
   font-size: 12px;
