@@ -236,23 +236,24 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 160%;  /* أقرب جداً لحجم الشعاع */
-  height: 6%; /* أقل امتداد طولي */
+  width: 180%;  /* انتشار أفقي واسع */
+  height: 100%; /* نفس ارتفاع الشعاع تقريباً */
   transform: translate(-50%, -50%);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 0.5) 0%,        /* مركز الهالة – واضح */
-    rgba(255, 255, 255, 0.25) 35%,      /* انتقال ناعم */
-    rgba(255, 255, 255, 0.08) 70%,      /* أطراف شفافة */
-    transparent 100%                   /* تلاشي */
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3) 30%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.3) 70%,
+    transparent
   );
+  filter: blur(4px);
+  opacity: 0.8;
   border-radius: inherit;
-  filter: blur(4px); /* تقليل البلور لتثبيت الشكل */
-  opacity: 1;
-  animation: auraPulse 6s ease-in-out infinite;
-  z-index: -1;
+  animation: auraStreakPulse 6s ease-in-out infinite;
   pointer-events: none;
-}
+  z-index: -1;
+} 
 
 /* Hover = نفس التأثير بس أسرع شوية */
 #footerToggle:hover {
@@ -317,24 +318,14 @@ button:hover {
 }
 
 /* ===== نبض الهالة ===== */
-@keyframes auraPulse {
+@keyframes auraStreakPulse {
   0%, 100% {
-    opacity: 0.6;
-    filter: blur(6px);
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scaleX(1);
   }
   50% {
-    opacity: 0.75;
-    filter: blur(7px);
-  }
-}
-@keyframes auraPulseFast {
-  0%, 100% {
-    opacity: 0.65;
-    filter: blur(6.5px);
-  }
-  50% {
-    opacity: 0.8;
-    filter: blur(8px);
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.05);
   }
 }
 #copyright {
