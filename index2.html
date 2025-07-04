@@ -241,19 +241,19 @@ button:hover {
   position: absolute;
   top: 50.5%;
   left: 50%;
-  width: 100px; /* العرض المعدل */
+  width: 100px;
   height: 2px;
   transform: translate(-50%, -50%) scaleY(0.7);
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 0, 0, 1) 0%,       /* مركز ساطع */
-    rgba(255, 0, 0, 0.5) 25%,    /* انتقال تدريجي */
-    rgba(255, 0, 0, 0.1) 70%,    /* قرب الشفافية */
-    transparent 100%            /* أطراف شفافة */
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 0.5) 25%,
+    rgba(255, 0, 0, 0.1) 70%,
+    transparent 100%
   );
   filter: blur(2px);
   border-radius: 9999px;
-  animation: haloLightPulse 3s ease-in-out infinite;
+  animation: haloCenterPulse 3s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
@@ -264,24 +264,22 @@ button:hover {
 }
 
 /* ==== أنيميشنات الهالة ==== */
-@keyframes haloLightPulse {
+@keyframes haloCenterPulse {
   0%, 100% {
-    opacity: 0.4;
     background: radial-gradient(
       ellipse at center,
       rgba(255, 0, 0, 1) 0%,
-      rgba(255, 0, 0, 0.3) 30%,
-      rgba(255, 0, 0, 0.05) 70%,
+      rgba(255, 0, 0, 0.5) 25%,
+      rgba(255, 0, 0, 0.1) 70%,
       transparent 100%
     );
   }
   50% {
-    opacity: 0.85;
     background: radial-gradient(
       ellipse at center,
       rgba(255, 0, 0, 1) 0%,
-      rgba(255, 0, 0, 0.5) 35%,
-      rgba(255, 0, 0, 0.15) 80%,
+      rgba(255, 0, 0, 0.3) 10%,
+      rgba(255, 0, 0, 0.1) 70%,
       transparent 100%
     );
   }
