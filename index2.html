@@ -221,8 +221,8 @@ button:hover {
   height: 3px;
   background: radial-gradient(
     ellipse at center 1px,
-    rgba(255, 0, 0, 1) 0%,           /* أحمر ساطع من المركز */
-    rgba(255, 0, 0, 0.4) 55%,        /* أخف شوية */
+    rgba(255, 0, 0, 1) 0%,           
+    rgba(255, 0, 0, 0.4) 55%,        
     transparent 80%
   );
   border-radius: 1000px / 800%;
@@ -239,10 +239,10 @@ button:hover {
 #footerToggle::before {
   content: "";
   position: absolute;
-  top: 50.8%; /* تم إبعاده قليلًا عن المركز */
+  top: 50.8%;
   left: 50%;
-  width: 185px;                /* أوسع من الشعاع بشوية */
-  height: 2px;                 /* أرفع من الشعاع */
+  width: 185px;
+  height: 2px;
   transform: translate(-50%, -50%);
   background: radial-gradient(
     ellipse at center,
@@ -251,16 +251,17 @@ button:hover {
     rgba(255, 0, 0, 0.05) 80%,
     transparent 100%
   );
-  filter: blur(3px);          /* دمج أفضل */
+  filter: blur(3px);
   border-radius: 9999px;
   animation: mirageWave 2s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
 
-/* عند الضغط */
+/* تأثير الضغط */
 #footerToggle:active {
   animation: beamPulseStrong 0.4s ease-out;
+  transform: translateX(-50%) scaleX(1.005); /* تمدد خفيف جدًا */
 }
 #footerToggle:active::before {
   animation: mirageWaveStrong 0.4s ease-out;
@@ -269,14 +270,26 @@ button:hover {
 /* ==== أنيميشنات الشعاع ==== */
 @keyframes beamPulse {
   0%, 100% {
+    background: radial-gradient(
+      ellipse at center 1px,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 0, 0, 0.4) 55%,
+      transparent 80%
+    );
     box-shadow:
       0 0 4px rgba(255, 0, 0, 0.25),
       0 0 12px rgba(255, 0, 0, 0.1);
   }
   50% {
+    background: radial-gradient(
+      ellipse at center 1px,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 0, 0, 0.6) 50%,
+      transparent 80%
+    );
     box-shadow:
-      0 0 8px rgba(255, 0, 0, 0.5),
-      0 0 18px rgba(255, 0, 0, 0.25);
+      0 0 10px rgba(255, 0, 0, 0.6),
+      0 0 24px rgba(255, 0, 0, 0.3);
   }
 }
 
@@ -288,8 +301,8 @@ button:hover {
   }
   50% {
     box-shadow:
-      0 0 10px rgba(255, 0, 0, 0.6),
-      0 0 30px rgba(255, 0, 0, 0.3);
+      0 0 12px rgba(255, 0, 0, 0.7),
+      0 0 30px rgba(255, 0, 0, 0.35);
   }
   100% {
     box-shadow:
@@ -301,26 +314,26 @@ button:hover {
 /* ==== أنيميشنات الهالة ==== */
 @keyframes mirageWave {
   0%, 100% {
-    transform: translate(-50%, -50%) scaleX(1) scaleY(1) skewX(0deg);
+    transform: translate(-50%, -50%) scaleX(1) scaleY(1);
     opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.04) scaleY(1.2) skewX(0.8deg);
+    transform: translate(-50%, -50%) scaleX(1.04) scaleY(1.2);
     opacity: 0.75;
   }
 }
 
 @keyframes mirageWaveStrong {
   0% {
-    transform: translate(-50%, -50%) scaleX(1) scaleY(1) skewX(0deg);
+    transform: translate(-50%, -50%) scaleX(1) scaleY(1);
     opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.06) scaleY(1.3) skewX(1.5deg);
+    transform: translate(-50%, -50%) scaleX(1.06) scaleY(1.3);
     opacity: 0.85;
   }
   100% {
-    transform: translate(-50%, -50%) scaleX(1) scaleY(1) skewX(0deg);
+    transform: translate(-50%, -50%) scaleX(1) scaleY(1);
     opacity: 0.5;
   }
 }
