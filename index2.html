@@ -216,88 +216,174 @@ button:hover {
   top: 12.5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 180px;
+  width: 160px;
   height: 3px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,0.3) 70%,
+    transparent 100%
+  );
   border-radius: 1000px / 800%;
-  box-shadow: 0 0 10px rgba(255,255,255,0.35), 0 0 40px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.15);
-  animation: beamPulse 2s ease-in-out infinite;
+  box-shadow:
+    0 0 10px rgba(255,255,255,0.35),
+    0 0 40px rgba(255,255,255,0.2),
+    0 0 80px rgba(255,255,255,0.15);
+  animation: beamPulseStrong 6s ease-in-out infinite;
   cursor: pointer;
-  transition: all 0.3s ease;
+  overflow: visible;
+  transition: all 0.4s ease;
   z-index: 10;
 }
 
-/* الهالة شبه السراب: نفس الطول تقريبًا */
 #footerToggle::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 170px;
-  height: 3.3px; /* فقط 1px أطول من الشعاع */
+  width: 102%; /* أوسع بحاجه بسيطة من الشعاع */
+  height: 4px;  /* 3px للشعاع + 1px */
   transform: translate(-50%, -50%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.15));
-  filter: blur(4px);
-  border-radius: 999px;
-  animation: mirageWave 2s ease-in-out infinite;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.15) 25%,
+    rgba(255,80,80,0.35) 50%,
+    rgba(255,255,255,0.15) 75%,
+    transparent
+  );
+  filter: blur(3px);
+  opacity: 0.9;
+  border-radius: inherit;
+  animation: auraStreakPulse 3s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
 
-/* عند الضغط: نبضة قوية */
+/* Hover */
+#footerToggle:hover {
+  animation: beamPulseStrongFast 4s ease-in-out infinite;
+}
+#footerToggle:hover::before {
+  animation: auraStreakPulseFast 2s ease-in-out infinite;
+}
+
+/* Active - عند الضغط */
 #footerToggle:active {
-  animation: beamPulseStrong 0.4s ease-out;
+  animation: beamPulsePressed 0.4s ease;
 }
 #footerToggle:active::before {
-  animation: mirageWaveStrong 0.4s ease-out;
+  animation: auraStreakPulsePressed 0.4s ease;
 }
 
-/* ==== النبض الأساسي ==== */
-@keyframes beamPulse {
-  0%, 100% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
-  }
-  50% {
-    box-shadow: 0 0 12px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.25);
-  }
-}
-
+/* === أنيميشنات الشعاع === */
 @keyframes beamPulseStrong {
-  0% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
-  }
-  50% {
-    box-shadow: 0 0 16px rgba(255,255,255,0.7), 0 0 50px rgba(255,255,255,0.4);
-  }
-  100% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
-  }
-}
-
-/* ==== تأثير السراب الخفيف ==== */
-@keyframes mirageWave {
   0%, 100% {
-    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.6;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.3) 70%,
+      transparent 100%
+    );
+    transform: translateX(-50%) scaleX(1);
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.03) skewX(1deg);
-    opacity: 0.9;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,1) 0%,
+      rgba(255,80,80,0.4) 70%,
+      transparent 100%
+    );
+    transform: translateX(-50%) scaleX(1.03);
   }
 }
 
-@keyframes mirageWaveStrong {
-  0% {
-    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.6;
+@keyframes beamPulseStrongFast {
+  0%, 100% {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.3) 70%,
+      transparent 100%
+    );
+    transform: translateX(-50%) scaleX(1);
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.06) skewX(2deg);
-    opacity: 1;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,1) 0%,
+      rgba(255,80,80,0.5) 70%,
+      transparent 100%
+    );
+    transform: translateX(-50%) scaleX(1.05);
+  }
+}
+
+@keyframes beamPulsePressed {
+  0% {
+    transform: translateX(-50%) scaleX(1);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,1) 0%,
+      rgba(255,50,50,0.3) 70%,
+      transparent 100%
+    );
+  }
+  50% {
+    transform: translateX(-50%) scaleX(1.07);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,1) 0%,
+      rgba(255,0,0,0.5) 70%,
+      transparent 100%
+    );
   }
   100% {
-    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.6;
+    transform: translateX(-50%) scaleX(1);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,0.3) 70%,
+      transparent 100%
+    );
+  }
+}
+
+/* === أنيميشنات الهالة === */
+@keyframes auraStreakPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.05);
+  }
+}
+
+@keyframes auraStreakPulseFast {
+  0%, 100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.08);
+  }
+}
+
+@keyframes auraStreakPulsePressed {
+  0% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.1);
+  }
+  100% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scaleX(1);
   }
 }
 #copyright {
