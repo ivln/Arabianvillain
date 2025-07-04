@@ -219,17 +219,13 @@ button:hover {
   transform: translateX(-50%);
   width: 180px;
   height: 3px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 0, 0, 0.2) 5%,
-    rgba(255, 0, 0, 0.5) 20%,
-    rgba(255, 0, 0, 1) 50%,
-    rgba(255, 0, 0, 0.5) 80%,
-    rgba(255, 0, 0, 0.2) 95%,
-    transparent 100%
+  background: radial-gradient(
+    ellipse at center 1px,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 0.4) 55%,
+    transparent 80%
   );
-  border-radius: 1000px / 100%;
+  border-radius: 1000px / 800%;
   box-shadow:
     0 0 6px rgba(255, 0, 0, 0.3),
     0 0 20px rgba(255, 0, 0, 0.15);
