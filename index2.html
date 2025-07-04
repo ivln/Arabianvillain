@@ -228,17 +228,17 @@ button:hover {
   height: 3px;
   background: radial-gradient(
     ellipse at center 1px,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.4) 55%,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 0.4) 55%,
     transparent 80%
   );
   border-radius: 1000px / 800%;
   box-shadow:
-    0 0 6px rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(255, 255, 255, 0.15);
+    0 0 6px rgba(255, 0, 0, 0.3),
+    0 0 20px rgba(255, 0, 0, 0.15);
   animation: beamPulse 2s ease-in-out infinite;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.6s ease;
   z-index: 10;
 }
 
@@ -253,15 +253,16 @@ button:hover {
   transform: translate(-50%, -50%) scaleY(0.7);
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.5) 25%,
-    rgba(255, 255, 255, 0.1) 70%,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 0.5) 25%,
+    rgba(255, 0, 0, 0.1) 70%,
     transparent 100%
   );
   filter: blur(2px);
   border-radius: 9999px;
   pointer-events: none;
   z-index: -1;
+  transition: all 0.6s ease;
 }
 
 #footerToggle::after {
@@ -272,17 +273,41 @@ button:hover {
   width: 20px;
   height: 4px;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 0, 0, 1);
   border-radius: 50%;
   filter: blur(4px);
   animation: pulseCoreOnly 2.5s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
+  transition: all 0.6s ease;
 }
 
-/* عند الضغط */
+/* عند الضغط – يتحول الأبيض بالكامل */
+#footerToggle:active {
+  background: radial-gradient(
+    ellipse at center 1px,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.4) 55%,
+    transparent 80%
+  );
+  box-shadow:
+    0 0 6px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.15);
+}
+
 #footerToggle:active::before {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.5) 25%,
+    rgba(255, 255, 255, 0.1) 70%,
+    transparent 100%
+  );
   animation: haloPulseSlow 0.6s ease-out;
+}
+
+#footerToggle:active::after {
+  background: rgba(255, 255, 255, 1);
 }
 
 /* ==== أنيميشنات الهالة ==== */
@@ -320,24 +345,24 @@ button:hover {
   0%, 100% {
     background: radial-gradient(
       ellipse at center 1px,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.4) 55%,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 0, 0, 0.4) 55%,
       transparent 80%
     );
     box-shadow:
-      0 0 4px rgba(255, 255, 255, 0.25),
-      0 0 12px rgba(255, 255, 255, 0.1);
+      0 0 4px rgba(255, 0, 0, 0.25),
+      0 0 12px rgba(255, 0, 0, 0.1);
   }
   50% {
     background: radial-gradient(
       ellipse at center 1px,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 0, 0, 0.6) 50%,
       transparent 80%
     );
     box-shadow:
-      0 0 10px rgba(255, 255, 255, 0.6),
-      0 0 24px rgba(255, 255, 255, 0.3);
+      0 0 10px rgba(255, 0, 0, 0.6),
+      0 0 24px rgba(255, 0, 0, 0.3);
   }
 }
 #copyright {
