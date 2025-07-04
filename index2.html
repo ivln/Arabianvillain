@@ -218,64 +218,144 @@ button:hover {
   transform: translateX(-50%);
   width: 160px;
   height: 3px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 1000px;
-  overflow: visible;
-  z-index: 10;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+  border-radius: 1000px / 800%;
+  box-shadow: 0 0 10px rgba(255,255,255,0.35), 0 0 40px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.15);
+  animation: beamPulse 6s ease-in-out infinite, centerGlow 6s ease-in-out infinite;
   cursor: pointer;
-  animation: beamPulseSubtle 5s ease-in-out infinite;
+  overflow: visible;
+  transition: all 0.4s ease;
+  z-index: 10;
 }
 
-/* ==== الهالة الجديدة ==== */
+/* ==== الهالة – شكلها الجديد ==== */
 #footerToggle::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 200px;   /* أوسع من الشعاع */
-  height: 5px;    /* أطول قليلاً من الشعاع */
+  width: 180px; /* أوسع من الشعاع بـ 20px */
+  height: 5px;   /* سمك الهالة الجديد */
   transform: translate(-50%, -50%);
   background: linear-gradient(
     to right,
-    transparent,
-    rgba(255, 255, 255, 0.25) 20%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0.25) 80%,
-    transparent
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.1)
   );
   filter: blur(6px);
-  border-radius: 100px;
-  opacity: 0.8;
-  animation: auraWave 4s ease-in-out infinite;
-  z-index: -1;
+  opacity: 1;
+  border-radius: 999px;
+  animation: auraStreakPulse 6s ease-in-out infinite;
   pointer-events: none;
+  z-index: -1;
 }
 
-/* ==== نبض داخلي خفيف لجسم الشعاع ==== */
-@keyframes beamPulseSubtle {
+/* Hover = نفس التأثير بس أسرع شوية */
+#footerToggle:hover {
+  animation: beamPulseFast 4s ease-in-out infinite, centerGlowFast 4s ease-in-out infinite;
+}
+#footerToggle:hover::before {
+  animation: auraPulseFast 4s ease-in-out infinite;
+}
+
+/* ===== عند الضغط: تبطأ كل التأثيرات ===== */
+#footerToggle:active {
+  animation: beamPulseSlow 10s ease-in-out infinite, centerGlowSlow 10s ease-in-out infinite;
+}
+#footerToggle:active::before {
+  animation: auraPulseSlow 10s ease-in-out infinite;
+}
+
+/* ===== نبض خفيف لجسم الشعاع بالكامل ===== */
+@keyframes beamPulse {
   0%, 100% {
-    box-shadow:
-      0 0 6px rgba(255,255,255,0.2),
-      0 0 12px rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.12);
   }
   50% {
-    box-shadow:
-      0 0 10px rgba(255,255,255,0.3),
-      0 0 20px rgba(255,255,255,0.15);
+    box-shadow: 0 0 20px rgba(255,255,255,0.35), 0 0 60px rgba(255,255,255,0.25), 0 0 100px rgba(255,255,255,0.2);
+  }
+}
+@keyframes beamPulseFast {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255,255,255,0.35), 0 0 50px rgba(255,255,255,0.25), 0 0 90px rgba(255,255,255,0.15);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255,255,255,0.4), 0 0 70px rgba(255,255,255,0.3), 0 0 110px rgba(255,255,255,0.25);
+  }
+}
+@keyframes beamPulseSlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255,255,255,0.25), 0 0 30px rgba(255,255,255,0.15), 0 0 60px rgba(255,255,255,0.1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(255,255,255,0.3), 0 0 50px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.15);
   }
 }
 
-/* ==== نبض للهالة يبدأ من المركز ويمتد للطرفين ==== */
-@keyframes auraWave {
+/* ===== نبض للمركز (مستقل) ===== */
+@keyframes centerGlow {
   0%, 100% {
-    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.02);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.25) 70%, transparent 100%);
+  }
+}
+@keyframes centerGlowFast {
+  0%, 100% {
+    transform: translateX(-50%) scale(1.015);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.03);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.25) 70%, transparent 100%);
+  }
+}
+@keyframes centerGlowSlow {
+  0%, 100% {
+    transform: translateX(-50%) scale(0.99);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.2) 70%, transparent 100%);
+  }
+  50% {
+    transform: translateX(-50%) scale(1);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.15) 70%, transparent 100%);
+  }
+}
+
+/* ===== نبض الهالة ===== */
+@keyframes auraStreakPulse {
+  0%, 100% {
+    opacity: 0.9;
     transform: translate(-50%, -50%) scaleX(1);
   }
   50% {
     opacity: 1;
-    transform: translate(-50%, -50%) scaleX(1.08);
+    transform: translate(-50%, -50%) scaleX(1.07);
   }
 }
+@keyframes auraPulseFast {
+  0%, 100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.2);
+  }
+}
+@keyframes auraPulseSlow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scaleX(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scaleX(1.03);
+  }
+      }
 #copyright {
   font-size: 12px;
   margin-top: auto;
