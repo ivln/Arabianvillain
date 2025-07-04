@@ -479,7 +479,7 @@ button:hover {
   <div id="inactivity-overlay">
   <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T ... W A I T<br> <br> <br>• SEAL YOUR PRESENCE •<br> <br> <br> </div>
   </div>
-<script>
+  <script>
   window.onload = () => {
     let inactivityTimeout;
     const overlay = document.getElementById('inactivity-overlay');
@@ -491,15 +491,13 @@ button:hover {
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
 
-    const videos = document.querySelectorAll('.bg-video'); // 📼 كل فيديوهات الخلفية
+    const videos = document.querySelectorAll('.bg-video');
 
-    // إيقاف الفيديوهات وقت الخمول
     function pauseAllVideos() {
       videos.forEach(video => video.pause());
       console.log("📼 All background videos paused due to inactivity.");
     }
 
-    // تشغيل الفيديوهات وقت التفاعل
     function playAllVideos() {
       videos.forEach(video => video.play().catch(e => console.log("Play blocked:", e)));
       console.log("▶️ All background videos resumed due to activity.");
@@ -507,7 +505,7 @@ button:hover {
 
     function showOverlay() {
       overlay.classList.add('active');
-      pauseAllVideos(); // ⛔ أوقف الفيديوهات عند الخمول
+      pauseAllVideos();
     }
 
     function hideOverlay() {
@@ -515,12 +513,12 @@ button:hover {
         overlay.classList.remove('active');
       }
       resetInactivityTimer();
-      playAllVideos(); // ✅ شغّل الفيديوهات من أول تفاعل
+      playAllVideos();
     }
 
     function resetInactivityTimer() {
       clearTimeout(inactivityTimeout);
-      inactivityTimeout = setTimeout(showOverlay, 30000); // 30 ثانية
+      inactivityTimeout = setTimeout(showOverlay, 30000);
     }
 
     ['mousemove', 'keydown', 'touchstart', 'click'].forEach(event => {
@@ -528,7 +526,7 @@ button:hover {
     });
     resetInactivityTimer();
 
-    // التسلسل الزمني للأنيميشن
+    // Animation Sequence
     line1.classList.add('visible');
     setTimeout(() => {
       line1.classList.replace('visible', 'hidden');
@@ -546,7 +544,7 @@ button:hover {
       }, 1000);
     }, 3000);
 
-    // إظهار نصوص الأقسام
+    // Section Text Reveal
     document.querySelectorAll('.toggle-icon').forEach(icon => {
       icon.addEventListener('click', () => {
         const sectionId = icon.getAttribute('data-section');
@@ -555,7 +553,7 @@ button:hover {
       });
     });
 
-    // زر المرحلة
+    // Phase Button
     phaseBtn.onclick = () => {
       phaseContainer.classList.replace('visible', 'hidden');
       setTimeout(() => {
@@ -565,16 +563,22 @@ button:hover {
         footer.style.display = 'flex';
         footer.classList.add('fade-in');
 
-        playAllVideos(); // ✅ شغّل الفيديوهات عند بداية المرحلة
+        playAllVideos();
       }, 1000);
     };
 
-    // زر التبديل للـ Footer
+    // Footer Toggle Basic Show/Hide
     footerToggle.onclick = () => {
       footer.classList.toggle('active');
+
+      // تأثير الشعاع والهالة
+      footerToggle.classList.add('white-flash');
+      setTimeout(() => {
+        footerToggle.classList.remove('white-flash');
+      }, 1000); // يفضل بعدها تأثير الرجوع البطيء للـ red يتم عبر CSS transition
     };
 
-    // السحب لتفعيل الفوتر
+    // Footer Drag
     let startY = 0;
     let isDragging = false;
 
@@ -610,7 +614,7 @@ button:hover {
       isDragging = false;
     });
 
-    // تعطيل النسخ والقص والقائمة اليمنى وبعض الاختصارات
+    // Disable copying & dev tools
     document.addEventListener('copy', e => e.preventDefault());
     document.addEventListener('cut', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
@@ -624,6 +628,6 @@ button:hover {
       }
     });
   };
-</script>
+  </script>
 </body>
 </html>
