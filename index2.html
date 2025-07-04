@@ -240,22 +240,22 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 180px;           /* عرض الهالة أكبر */
-  height: 3.6px;          /* ارتفاع أكبر شويه */
+  width: 180px;
+  height: 3.3px;
   transform: translate(-50%, -50%);
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.12)
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.05) 80%,
+    transparent 100%
   );
-  filter: blur(3px);
-  border-radius: 999px;
+  filter: blur(2px);
+  border-radius: 9999px;
   animation: mirageWave 2s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
-
 /* عند الضغط */
 #footerToggle:active {
   animation: beamPulseStrong 0.4s ease-out;
