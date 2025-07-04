@@ -515,8 +515,23 @@ button:hover {
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
 
+    const videos = document.querySelectorAll('.bg-video'); // 📼 كل فيديوهات الخلفية
+
+    // إيقاف الفيديوهات وقت الخمول
+    function pauseAllVideos() {
+      videos.forEach(video => video.pause());
+      console.log("📼 All background videos paused due to inactivity.");
+    }
+
+    // تشغيل الفيديوهات وقت التفاعل
+    function playAllVideos() {
+      videos.forEach(video => video.play().catch(e => console.log("Play blocked:", e)));
+      console.log("▶️ All background videos resumed due to activity.");
+    }
+
     function showOverlay() {
       overlay.classList.add('active');
+      pauseAllVideos(); // ⛔ أوقف الفيديوهات عند الخمول
     }
 
     function hideOverlay() {
@@ -524,6 +539,7 @@ button:hover {
         overlay.classList.remove('active');
       }
       resetInactivityTimer();
+      playAllVideos(); // ✅ شغّل الفيديوهات من أول تفاعل
     }
 
     function resetInactivityTimer() {
@@ -573,68 +589,65 @@ button:hover {
         footer.style.display = 'flex';
         footer.classList.add('fade-in');
 
-        const videos = document.querySelectorAll('.bg-video');
-        videos.forEach(video => {
-          video.play().catch(e => console.log("Play blocked:", e));
-        });
+        playAllVideos(); // ✅ شغّل الفيديوهات عند بداية المرحلة
       }, 1000);
     };
-// زر التبديل للـ Footer
-footerToggle.onclick = () => {
-  footer.classList.toggle('active');
-};
 
-// السحب لتفعيل الفوتر
-let startY = 0;
-let isDragging = false;
+    // زر التبديل للـ Footer
+    footerToggle.onclick = () => {
+      footer.classList.toggle('active');
+    };
 
-footer.addEventListener('mousedown', e => {
-  startY = e.clientY;
-  isDragging = true;
-});
+    // السحب لتفعيل الفوتر
+    let startY = 0;
+    let isDragging = false;
 
-footer.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-  isDragging = true;
-});
+    footer.addEventListener('mousedown', e => {
+      startY = e.clientY;
+      isDragging = true;
+    });
 
-// ✅ هنا حطينا الأحداث على window علشان تشتغل في كل مكان
-window.addEventListener('mousemove', e => {
-  if (isDragging && startY - e.clientY > 30) {
-    footer.classList.add('active');
-    isDragging = false; // عشان ما يتفعلش أكتر من مرة
-  }
-});
+    footer.addEventListener('touchstart', e => {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+    });
 
-window.addEventListener('touchmove', e => {
-  if (isDragging && startY - e.touches[0].clientY > 30) {
-    footer.classList.add('active');
-    isDragging = false;
-  }
-});
+    window.addEventListener('mousemove', e => {
+      if (isDragging && startY - e.clientY > 30) {
+        footer.classList.add('active');
+        isDragging = false;
+      }
+    });
 
-window.addEventListener('mouseup', () => {
-  isDragging = false;
-});
+    window.addEventListener('touchmove', e => {
+      if (isDragging && startY - e.touches[0].clientY > 30) {
+        footer.classList.add('active');
+        isDragging = false;
+      }
+    });
 
-window.addEventListener('touchend', () => {
-  isDragging = false;
-});
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
 
-// تعطيل النسخ والقص والقائمة اليمنى وبعض الاختصارات
-document.addEventListener('copy', e => e.preventDefault());
-document.addEventListener('cut', e => e.preventDefault());
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-  if (
-    (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
-    (e.metaKey && e.key === 'c') ||
-    e.key === 'F12'
-  ) {
-    e.preventDefault();
-    }
-   });
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // تعطيل النسخ والقص والقائمة اليمنى وبعض الاختصارات
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (
+        (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
+        (e.metaKey && e.key === 'c') ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+      }
+    });
   };
 </script>
 </body>
-        </html>
+</html>
