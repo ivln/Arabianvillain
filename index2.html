@@ -218,33 +218,45 @@ button:hover {
   transform: translateX(-50%);
   width: 180px;
   height: 3px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+  background: radial-gradient(
+    ellipse at center 1px,  /* رفع المركز لأعلى شوية */
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,0.3) 55%,
+    transparent 80%
+  );
   border-radius: 1000px / 800%;
-  box-shadow: 0 0 10px rgba(255,255,255,0.35), 0 0 40px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.15);
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.25),
+    0 0 20px rgba(255,255,255,0.15);
   animation: beamPulse 2s ease-in-out infinite;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
 }
 
-/* الهالة شبه السراب: نفس الطول تقريبًا */
+/* الهالة */
 #footerToggle::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 170px;
-  height: 3.3px; /* فقط 1px أطول من الشعاع */
+  height: 3.3px;
   transform: translate(-50%, -50%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.15));
-  filter: blur(4px);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.12)
+  );
+  filter: blur(3px); /* أقل شويه */
   border-radius: 999px;
   animation: mirageWave 2s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
 
-/* عند الضغط: نبضة قوية */
+/* عند الضغط */
 #footerToggle:active {
   animation: beamPulseStrong 0.4s ease-out;
 }
@@ -252,52 +264,61 @@ button:hover {
   animation: mirageWaveStrong 0.4s ease-out;
 }
 
-/* ==== النبض الأساسي ==== */
+/* ==== أنيميشنات محسنة ==== */
 @keyframes beamPulse {
   0%, 100% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
+    box-shadow:
+      0 0 4px rgba(255,255,255,0.2),
+      0 0 12px rgba(255,255,255,0.1);
   }
   50% {
-    box-shadow: 0 0 12px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.25);
+    box-shadow:
+      0 0 8px rgba(255,255,255,0.35),
+      0 0 18px rgba(255,255,255,0.2);
   }
 }
 
 @keyframes beamPulseStrong {
   0% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
+    box-shadow:
+      0 0 4px rgba(255,255,255,0.2),
+      0 0 12px rgba(255,255,255,0.1);
   }
   50% {
-    box-shadow: 0 0 16px rgba(255,255,255,0.7), 0 0 50px rgba(255,255,255,0.4);
+    box-shadow:
+      0 0 10px rgba(255,255,255,0.5),
+      0 0 30px rgba(255,255,255,0.3);
   }
   100% {
-    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
+    box-shadow:
+      0 0 4px rgba(255,255,255,0.2),
+      0 0 12px rgba(255,255,255,0.1);
   }
 }
 
-/* ==== تأثير السراب الخفيف ==== */
 @keyframes mirageWave {
   0%, 100% {
     transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.6;
+    opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.03) skewX(1deg);
-    opacity: 0.9;
+    transform: translate(-50%, -50%) scaleX(1.02) skewX(0.8deg);
+    opacity: 0.75;
   }
 }
 
 @keyframes mirageWaveStrong {
   0% {
     transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.6;
+    opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.06) skewX(2deg);
-    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.04) skewX(1.5deg);
+    opacity: 0.85;
   }
   100% {
     transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.6;
+    opacity: 0.5;
   }
 }
 #copyright {
