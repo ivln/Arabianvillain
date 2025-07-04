@@ -241,23 +241,22 @@ button:hover {
   position: absolute;
   top: 50.8%;
   left: 50%;
-  width: 60px;
-  height: 2px;
-  transform: translate(-50%, -50%);
+  width: 140px;                 /* طول الهالة */
+  height: 2px;                  /* عرض رفيع جدًا */
+  transform: translate(-50%, -50%) scaleY(0.6);  /* تصغير رأسي بسيط لزيادة النحافة */
   background: radial-gradient(
-  ellipse at center,
-  rgba(255, 0, 0, 0.85) 0%,     /* مركز ساطع */
-  rgba(255, 0, 0, 0.2) 25%,     /* يبدأ يخف */
-  rgba(255, 0, 0, 0.05) 60%,    /* شبه شفاف عند الأطراف */
-  transparent 100%              /* مدبب تمامًا */
-);
-  filter: blur(3px);
+    ellipse at center,
+    rgba(255, 0, 0, 1) 0%,       /* مركز فائق السطوع */
+    rgba(255, 0, 0, 0.35) 25%,   /* تدرج ناعم */
+    rgba(255, 0, 0, 0.08) 60%,   /* يكاد يختفي */
+    transparent 100%            /* شفاف بالكامل عند الأطراف */
+  );
+  filter: blur(2px);            /* ضبابية خفيفة للاندماج */
   border-radius: 9999px;
   animation: mirageWave 2s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
-
 /* تأثير الضغط */
 #footerToggle:active {
   animation: beamPulseStrong 0.4s ease-out;
