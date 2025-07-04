@@ -240,8 +240,8 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 170px;
-  height: 3.3px;
+  width: 180px;           /* عرض الهالة أكبر */
+  height: 3.6px;          /* ارتفاع أكبر شويه */
   transform: translate(-50%, -50%);
   background: linear-gradient(
     to right,
@@ -249,7 +249,7 @@ button:hover {
     rgba(255, 255, 255, 0.6),
     rgba(255, 255, 255, 0.12)
   );
-  filter: blur(3px); /* أقل شويه */
+  filter: blur(3px);
   border-radius: 999px;
   animation: mirageWave 2s ease-in-out infinite;
   pointer-events: none;
@@ -264,7 +264,7 @@ button:hover {
   animation: mirageWaveStrong 0.4s ease-out;
 }
 
-/* ==== أنيميشنات محسنة ==== */
+/* ==== أنيميشنات الشعاع ==== */
 @keyframes beamPulse {
   0%, 100% {
     box-shadow:
@@ -296,28 +296,29 @@ button:hover {
   }
 }
 
+/* ==== أنيميشنات الهالة ==== */
 @keyframes mirageWave {
   0%, 100% {
-    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
+    transform: translate(-50%, -50%) scaleX(1) scaleY(1) skewX(0deg);
     opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.02) skewX(0.8deg);
+    transform: translate(-50%, -50%) scaleX(1.04) scaleY(1.2) skewX(0.8deg);
     opacity: 0.75;
   }
 }
 
 @keyframes mirageWaveStrong {
   0% {
-    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
+    transform: translate(-50%, -50%) scaleX(1) scaleY(1) skewX(0deg);
     opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.04) skewX(1.5deg);
+    transform: translate(-50%, -50%) scaleX(1.06) scaleY(1.3) skewX(1.5deg);
     opacity: 0.85;
   }
   100% {
-    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
+    transform: translate(-50%, -50%) scaleX(1) scaleY(1) skewX(0deg);
     opacity: 0.5;
   }
 }
