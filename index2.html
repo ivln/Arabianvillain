@@ -216,11 +216,11 @@ button:hover {
   left: 50%;
   transform: translateX(-50%);
   width: 140px;
-  height: 3px; /* ارتفاع أقل لشعور الشعاع */
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.2) 80%, transparent 100%);
-  border-radius: 1000px / 800%; /* رفع الأطراف لأقصى درجة */
+  height: 3px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
+  border-radius: 1000px / 800%;
   box-shadow:
-    0 0 10px rgba(255,255,255,0.3),
+    0 0 10px rgba(255,255,255,0.35),
     0 0 40px rgba(255,255,255,0.2),
     0 0 80px rgba(255,255,255,0.15);
   animation: beamPulse 6s ease-in-out infinite;
@@ -230,19 +230,19 @@ button:hover {
   z-index: 10;
 }
 
-/* الهالة الضوئية – نفس شكل الشعاع وجزء لا يتجزأ منه */
+/* الهالة – أصغر وأفتح */
 #footerToggle::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 100%;
+  width: 90%; /* تصغير الحجم */
+  height: 90%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, transparent 70%);
   border-radius: 1000px / 800%;
-  filter: blur(14px);
-  opacity: 0.6;
+  filter: blur(8px); /* أقل blur للهالة */
+  opacity: 0.75; /* أفتح من قبل */
   animation: auraPulse 6s ease-in-out infinite;
   z-index: -1;
   pointer-events: none;
@@ -255,33 +255,31 @@ button:hover {
   animation: auraPulseFast 4s ease-in-out infinite;
 }
 
-/* ===== نبض ناعم بطيء جدًا ===== */
 @keyframes beamPulse {
   0%, 100% {
     box-shadow:
-      0 0 10px rgba(255,255,255,0.25),
+      0 0 10px rgba(255,255,255,0.3),
       0 0 40px rgba(255,255,255,0.2),
       0 0 80px rgba(255,255,255,0.12);
   }
   50% {
     box-shadow:
-      0 0 20px rgba(255,255,255,0.3),
+      0 0 20px rgba(255,255,255,0.35),
       0 0 60px rgba(255,255,255,0.25),
       0 0 100px rgba(255,255,255,0.2);
   }
 }
 
-/* ===== نفس التأثير لكن أسرع عند Hover ===== */
 @keyframes beamPulseFast {
   0%, 100% {
     box-shadow:
-      0 0 12px rgba(255,255,255,0.3),
+      0 0 12px rgba(255,255,255,0.35),
       0 0 50px rgba(255,255,255,0.25),
       0 0 90px rgba(255,255,255,0.15);
   }
   50% {
     box-shadow:
-      0 0 24px rgba(255,255,255,0.35),
+      0 0 24px rgba(255,255,255,0.4),
       0 0 70px rgba(255,255,255,0.3),
       0 0 110px rgba(255,255,255,0.25);
   }
@@ -290,21 +288,21 @@ button:hover {
 @keyframes auraPulse {
   0%, 100% {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 0.5;
+    opacity: 0.7;
   }
   50% {
     transform: translate(-50%, -50%) scale(1.05);
-    opacity: 0.7;
+    opacity: 0.85;
   }
 }
 @keyframes auraPulseFast {
   0%, 100% {
     transform: translate(-50%, -50%) scale(1.05);
-    opacity: 0.6;
+    opacity: 0.75;
   }
   50% {
     transform: translate(-50%, -50%) scale(1.1);
-    opacity: 0.8;
+    opacity: 0.9;
   }
 }
 #copyright {
