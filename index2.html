@@ -236,18 +236,19 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120%; /* أصغر من الشعاع بشوية بسيطة */
-  height: 220%; /* ارتفاع بسيط لتكون وميض خفيف حوله */
+  width: 105%;  /* أقرب جداً لحجم الشعاع */
+  height: 130%; /* أقل امتداد طولي */
   transform: translate(-50%, -50%);
   background: radial-gradient(
     ellipse at center,
-    rgba(255,255,255,0.25) 0%,
-    rgba(255,255,255,0.1) 50%,
-    transparent 80%
+    rgba(255, 255, 255, 0.5) 0%,        /* مركز الهالة – واضح */
+    rgba(255, 255, 255, 0.25) 35%,      /* انتقال ناعم */
+    rgba(255, 255, 255, 0.08) 70%,      /* أطراف شفافة */
+    transparent 100%                   /* تلاشي */
   );
   border-radius: inherit;
-  filter: blur(4px); /* Blur أنعم عشان تكون وميض مش كتلة */
-  opacity: 0.5;
+  filter: blur(4px); /* تقليل البلور لتثبيت الشكل */
+  opacity: 1;
   animation: auraPulse 6s ease-in-out infinite;
   z-index: -1;
   pointer-events: none;
