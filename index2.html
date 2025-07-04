@@ -234,19 +234,15 @@ button:hover {
   );
   border-radius: 1000px / 800%;
   box-shadow:
-    0 0 6px rgba(255, 0, 0, 0.3),
-    0 0 20px rgba(255, 0, 0, 0.15);
+    0 0 6px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.15);
   animation: beamPulse 2s ease-in-out infinite;
   cursor: pointer;
-  transition: all 2.5s ease;
+  transition: all 0.3s ease;
   z-index: 10;
 }
 
-#footerToggle::before,
-#footerToggle::after {
-  transition: all 2.5s ease;
-}
-
+/* الهالة */
 #footerToggle::before {
   content: "";
   position: absolute;
@@ -257,9 +253,9 @@ button:hover {
   transform: translate(-50%, -50%) scaleY(0.7);
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 0, 0, 1) 0%,
-    rgba(255, 0, 0, 0.5) 25%,
-    rgba(255, 0, 0, 0.1) 70%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.5) 25%,
+    rgba(255, 255, 255, 0.1) 70%,
     transparent 100%
   );
   filter: blur(2px);
@@ -267,7 +263,6 @@ button:hover {
   pointer-events: none;
   z-index: -1;
 }
-
 #footerToggle::after {
   content: "";
   position: absolute;
@@ -283,35 +278,64 @@ button:hover {
   pointer-events: none;
   z-index: -1;
 }
-
-/* === كلاس التحوّل للأبيض === */
-#footerToggle.white-flash {
-  background: radial-gradient(
-    ellipse at center 1px,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.4) 55%,
-    transparent 80%
-  );
-  box-shadow:
-    0 0 6px rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(255, 255, 255, 0.15);
-  transition: all 1s ease;
+/* عند الضغط */
+#footerToggle:active::before {
+  animation: haloPulseSlow 0.6s ease-out;
 }
 
-#footerToggle.white-flash::before {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.5) 25%,
-    rgba(255, 255, 255, 0.1) 70%,
-    transparent 100%
-  );
-  transition: all 1s ease;
+/* ==== أنيميشنات الهالة ==== */
+@keyframes pulseCoreOnly {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+}
+@keyframes haloPulseSlow {
+  0% {
+    transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+  50% {
+    transform: translate(-50%, -50%) scaleX(1.08) scaleY(0.85);
+    opacity: 0.95;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
+    opacity: 0.5;
+    filter: blur(2px);
+  }
 }
 
-#footerToggle.white-flash::after {
-  background: rgba(255, 255, 255, 1);
-  transition: all 1s ease;
+/* ==== أنيميشن الشعاع ==== */
+@keyframes beamPulse {
+  0%, 100% {
+    background: radial-gradient(
+      ellipse at center 1px,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 0, 0, 0.4) 55%,
+      transparent 80%
+    );
+    box-shadow:
+      0 0 4px rgba(255, 0, 0, 0.25),
+      0 0 12px rgba(255, 0, 0, 0.1);
+  }
+  50% {
+    background: radial-gradient(
+      ellipse at center 1px,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 0, 0, 0.6) 50%,
+      transparent 80%
+    );
+    box-shadow:
+      0 0 10px rgba(255, 0, 0, 0.6),
+      0 0 24px rgba(255, 0, 0, 0.3);
+  }
 }
 #copyright {
   font-size: 12px;
@@ -466,9 +490,9 @@ button:hover {
     <button onclick="location.href='F/emulate.html'">EMULATE</button>
     <button onclick="location.href='F/rituals.html'">RITUALS</button>
     <button onclick="location.href='F/shades.html'">SHADES</button>
-    <button onclick="location.href='F/home.html'">RECKONING</button>
+    <button onclick="location.href='F/home.html'">HOME</button>
     <button onclick="location.href='F/lore.html'">LORE</button>
-    <button onclick="location.href='F/social.html'">TAPROOT</button>
+    <button onclick="location.href='F/social.html'">SOCIAL</button>
     <!-- الزر الكبير -->
     <button onclick="location.href='hov.html'" class="big-button">HALL OV VILLAINS</button>                                                                          
     <!-- باقي الأزرار -->
@@ -479,7 +503,7 @@ button:hover {
   <div id="inactivity-overlay">
   <div class="overlay-text">SUMMONED TO BEHOLD?<br>THE PATH<br>WON'T ... W A I T<br> <br> <br>• SEAL YOUR PRESENCE •<br> <br> <br> </div>
   </div>
-  <script>
+<script>
   window.onload = () => {
     let inactivityTimeout;
     const overlay = document.getElementById('inactivity-overlay');
@@ -491,13 +515,15 @@ button:hover {
     const footer = document.getElementById('footer');
     const footerToggle = document.getElementById('footerToggle');
 
-    const videos = document.querySelectorAll('.bg-video');
+    const videos = document.querySelectorAll('.bg-video'); // 📼 كل فيديوهات الخلفية
 
+    // إيقاف الفيديوهات وقت الخمول
     function pauseAllVideos() {
       videos.forEach(video => video.pause());
       console.log("📼 All background videos paused due to inactivity.");
     }
 
+    // تشغيل الفيديوهات وقت التفاعل
     function playAllVideos() {
       videos.forEach(video => video.play().catch(e => console.log("Play blocked:", e)));
       console.log("▶️ All background videos resumed due to activity.");
@@ -505,7 +531,7 @@ button:hover {
 
     function showOverlay() {
       overlay.classList.add('active');
-      pauseAllVideos();
+      pauseAllVideos(); // ⛔ أوقف الفيديوهات عند الخمول
     }
 
     function hideOverlay() {
@@ -513,12 +539,12 @@ button:hover {
         overlay.classList.remove('active');
       }
       resetInactivityTimer();
-      playAllVideos();
+      playAllVideos(); // ✅ شغّل الفيديوهات من أول تفاعل
     }
 
     function resetInactivityTimer() {
       clearTimeout(inactivityTimeout);
-      inactivityTimeout = setTimeout(showOverlay, 30000);
+      inactivityTimeout = setTimeout(showOverlay, 30000); // 30 ثانية
     }
 
     ['mousemove', 'keydown', 'touchstart', 'click'].forEach(event => {
@@ -526,7 +552,7 @@ button:hover {
     });
     resetInactivityTimer();
 
-    // Animation Sequence
+    // التسلسل الزمني للأنيميشن
     line1.classList.add('visible');
     setTimeout(() => {
       line1.classList.replace('visible', 'hidden');
@@ -544,7 +570,7 @@ button:hover {
       }, 1000);
     }, 3000);
 
-    // Section Text Reveal
+    // إظهار نصوص الأقسام
     document.querySelectorAll('.toggle-icon').forEach(icon => {
       icon.addEventListener('click', () => {
         const sectionId = icon.getAttribute('data-section');
@@ -553,7 +579,7 @@ button:hover {
       });
     });
 
-    // Phase Button
+    // زر المرحلة
     phaseBtn.onclick = () => {
       phaseContainer.classList.replace('visible', 'hidden');
       setTimeout(() => {
@@ -563,22 +589,16 @@ button:hover {
         footer.style.display = 'flex';
         footer.classList.add('fade-in');
 
-        playAllVideos();
+        playAllVideos(); // ✅ شغّل الفيديوهات عند بداية المرحلة
       }, 1000);
     };
 
-    // Footer Toggle Basic Show/Hide
+    // زر التبديل للـ Footer
     footerToggle.onclick = () => {
       footer.classList.toggle('active');
-
-      // تأثير الشعاع والهالة
-      footerToggle.classList.add('white-flash');
-      setTimeout(() => {
-        footerToggle.classList.remove('white-flash');
-      }, 1000); // يفضل بعدها تأثير الرجوع البطيء للـ red يتم عبر CSS transition
     };
 
-    // Footer Drag
+    // السحب لتفعيل الفوتر
     let startY = 0;
     let isDragging = false;
 
@@ -614,7 +634,7 @@ button:hover {
       isDragging = false;
     });
 
-    // Disable copying & dev tools
+    // تعطيل النسخ والقص والقائمة اليمنى وبعض الاختصارات
     document.addEventListener('copy', e => e.preventDefault());
     document.addEventListener('cut', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
@@ -628,6 +648,6 @@ button:hover {
       }
     });
   };
-  </script>
+</script>
 </body>
 </html>
