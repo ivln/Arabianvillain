@@ -220,15 +220,15 @@ button:hover {
   width: 180px;
   height: 3px;
   background: radial-gradient(
-    ellipse at center 1px,  /* رفع المركز لأعلى شوية */
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,0.3) 55%,
+    ellipse at center 1px,
+    rgba(255, 0, 0, 1) 0%,           /* أحمر ساطع من المركز */
+    rgba(255, 0, 0, 0.4) 55%,        /* أخف شوية */
     transparent 80%
   );
   border-radius: 1000px / 800%;
   box-shadow:
-    0 0 6px rgba(255,255,255,0.25),
-    0 0 20px rgba(255,255,255,0.15);
+    0 0 6px rgba(255, 0, 0, 0.3),
+    0 0 20px rgba(255, 0, 0, 0.15);
   animation: beamPulse 2s ease-in-out infinite;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -239,24 +239,25 @@ button:hover {
 #footerToggle::before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 50.8%; /* تم إبعاده قليلًا عن المركز */
   left: 50%;
-  width: 180px;
-  height: 3.3px;
+  width: 185px;                /* أوسع من الشعاع بشوية */
+  height: 2px;                 /* أرفع من الشعاع */
   transform: translate(-50%, -50%);
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0.05) 80%,
+    rgba(255, 0, 0, 0.6) 0%,
+    rgba(255, 0, 0, 0.25) 50%,
+    rgba(255, 0, 0, 0.05) 80%,
     transparent 100%
   );
-  filter: blur(2px);
+  filter: blur(3px);          /* دمج أفضل */
   border-radius: 9999px;
   animation: mirageWave 2s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
+
 /* عند الضغط */
 #footerToggle:active {
   animation: beamPulseStrong 0.4s ease-out;
@@ -269,31 +270,31 @@ button:hover {
 @keyframes beamPulse {
   0%, 100% {
     box-shadow:
-      0 0 4px rgba(255,255,255,0.2),
-      0 0 12px rgba(255,255,255,0.1);
+      0 0 4px rgba(255, 0, 0, 0.25),
+      0 0 12px rgba(255, 0, 0, 0.1);
   }
   50% {
     box-shadow:
-      0 0 8px rgba(255,255,255,0.35),
-      0 0 18px rgba(255,255,255,0.2);
+      0 0 8px rgba(255, 0, 0, 0.5),
+      0 0 18px rgba(255, 0, 0, 0.25);
   }
 }
 
 @keyframes beamPulseStrong {
   0% {
     box-shadow:
-      0 0 4px rgba(255,255,255,0.2),
-      0 0 12px rgba(255,255,255,0.1);
+      0 0 4px rgba(255, 0, 0, 0.25),
+      0 0 12px rgba(255, 0, 0, 0.1);
   }
   50% {
     box-shadow:
-      0 0 10px rgba(255,255,255,0.5),
-      0 0 30px rgba(255,255,255,0.3);
+      0 0 10px rgba(255, 0, 0, 0.6),
+      0 0 30px rgba(255, 0, 0, 0.3);
   }
   100% {
     box-shadow:
-      0 0 4px rgba(255,255,255,0.2),
-      0 0 12px rgba(255,255,255,0.1);
+      0 0 4px rgba(255, 0, 0, 0.25),
+      0 0 12px rgba(255, 0, 0, 0.1);
   }
 }
 
