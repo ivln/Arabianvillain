@@ -210,6 +210,7 @@ button:hover {
   margin-top: 50px;
   position: relative;
 }
+/* ==== جسم الشعاع ==== */
 #footerToggle {
   position: absolute;
   top: 12.5px;
@@ -217,115 +218,62 @@ button:hover {
   transform: translateX(-50%);
   width: 160px;
   height: 3px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
-  border-radius: 1000px / 800%;
-  box-shadow:
-    0 0 10px rgba(255,255,255,0.35),
-    0 0 40px rgba(255,255,255,0.2),
-    0 0 80px rgba(255,255,255,0.15);
-  animation: beamPulse 6s ease-in-out infinite, centerGlow 6s ease-in-out infinite;
-  cursor: pointer;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 1000px;
   overflow: visible;
-  transition: all 0.4s ease;
   z-index: 10;
+  cursor: pointer;
+  animation: beamPulseSubtle 5s ease-in-out infinite;
 }
 
-/* الهالة – نفس شكل الشعاع وجواه بدقة */
+/* ==== الهالة الجديدة ==== */
 #footerToggle::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50%;  /* انتشار أفقي واسع */
-  height: 100%; /* نفس ارتفاع الشعاع تقريباً */
+  width: 200px;   /* أوسع من الشعاع */
+  height: 5px;    /* أطول قليلاً من الشعاع */
   transform: translate(-50%, -50%);
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255, 255, 255, 0.3) 30%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.3) 70%,
+    rgba(255, 255, 255, 0.25) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.25) 80%,
     transparent
   );
-  filter: blur(4px);
+  filter: blur(6px);
+  border-radius: 100px;
   opacity: 0.8;
-  border-radius: inherit;
-  animation: auraStreakPulse 6s ease-in-out infinite;
-  pointer-events: none;
+  animation: auraWave 4s ease-in-out infinite;
   z-index: -1;
-} 
-
-/* Hover = نفس التأثير بس أسرع شوية */
-#footerToggle:hover {
-  animation: beamPulseFast 4s ease-in-out infinite, centerGlowFast 4s ease-in-out infinite;
-}
-#footerToggle:hover::before {
-  animation: auraPulseFast 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
-/* ===== نبض خفيف لجسم الشعاع بالكامل ===== */
-@keyframes beamPulse {
+/* ==== نبض داخلي خفيف لجسم الشعاع ==== */
+@keyframes beamPulseSubtle {
   0%, 100% {
+    box-shadow:
+      0 0 6px rgba(255,255,255,0.2),
+      0 0 12px rgba(255,255,255,0.1);
+  }
+  50% {
     box-shadow:
       0 0 10px rgba(255,255,255,0.3),
-      0 0 40px rgba(255,255,255,0.2),
-      0 0 80px rgba(255,255,255,0.12);
-  }
-  50% {
-    box-shadow:
-      0 0 20px rgba(255,255,255,0.35),
-      0 0 60px rgba(255,255,255,0.25),
-      0 0 100px rgba(255,255,255,0.2);
+      0 0 20px rgba(255,255,255,0.15);
   }
 }
 
-@keyframes beamPulseFast {
+/* ==== نبض للهالة يبدأ من المركز ويمتد للطرفين ==== */
+@keyframes auraWave {
   0%, 100% {
-    box-shadow:
-      0 0 12px rgba(255,255,255,0.35),
-      0 0 50px rgba(255,255,255,0.25),
-      0 0 90px rgba(255,255,255,0.15);
-  }
-  50% {
-    box-shadow:
-      0 0 24px rgba(255,255,255,0.4),
-      0 0 70px rgba(255,255,255,0.3),
-      0 0 110px rgba(255,255,255,0.25);
-  }
-}
-
-/* ===== نبض للمركز (مستقل) ===== */
-@keyframes centerGlow {
-  0%, 100% {
-    transform: translateX(-50%) scale(1);
-    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
-  }
-  50% {
-    transform: translateX(-50%) scale(1.02);
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.25) 70%, transparent 100%);
-  }
-}
-
-@keyframes centerGlowFast {
-  0%, 100% {
-    transform: translateX(-50%) scale(1.015);
-    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
-  }
-  50% {
-    transform: translateX(-50%) scale(1.03);
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.25) 70%, transparent 100%);
-  }
-}
-
-/* ===== نبض الهالة ===== */
-@keyframes auraStreakPulse {
-  0%, 100% {
-    opacity: 0.7;
+    opacity: 0.6;
     transform: translate(-50%, -50%) scaleX(1);
   }
   50% {
     opacity: 1;
-    transform: translate(-50%, -50%) scaleX(1.05);
+    transform: translate(-50%, -50%) scaleX(1.08);
   }
 }
 #copyright {
