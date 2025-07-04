@@ -221,103 +221,83 @@ button:hover {
   background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3) 70%, transparent 100%);
   border-radius: 1000px / 800%;
   box-shadow: 0 0 10px rgba(255,255,255,0.35), 0 0 40px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.15);
-  animation: beamPulse 5s ease-in-out infinite, mirageShift 4s ease-in-out infinite;
+  animation: beamPulse 1.2s ease-in-out infinite;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   z-index: 10;
-  overflow: visible;
 }
 
-/* الهالة بتموّج أفقياً زي السراب */
+/* الهالة شبه السراب: نفس الطول تقريبًا */
 #footerToggle::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 180px;
-  height: 6px;
+  width: 162px;
+  height: 4px; /* فقط 1px أطول من الشعاع */
   transform: translate(-50%, -50%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.05));
-  filter: blur(8px);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.15));
+  filter: blur(4px);
   border-radius: 999px;
-  animation: mirageWave 3s ease-in-out infinite;
+  animation: mirageWave 1.2s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
 
-/* ==== عند الضغط: السراب أبطأ وأكثر تموّجًا ==== */
+/* عند الضغط: نبضة قوية */
 #footerToggle:active {
-  animation: beamPulseSlow 10s ease-in-out infinite, mirageShiftSlow 6s ease-in-out infinite;
+  animation: beamPulseStrong 0.4s ease-out;
 }
 #footerToggle:active::before {
-  animation: mirageWaveSlow 6s ease-in-out infinite;
+  animation: mirageWaveStrong 0.4s ease-out;
 }
 
-/* ==== Keyframes ==== */
-
-/* شعاع ينبض كالعادة */
+/* ==== النبض الأساسي ==== */
 @keyframes beamPulse {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.12);
+    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
   }
   50% {
-    box-shadow: 0 0 20px rgba(255,255,255,0.35), 0 0 60px rgba(255,255,255,0.25), 0 0 100px rgba(255,255,255,0.2);
-  }
-}
-@keyframes beamPulseSlow {
-  0%, 100% {
-    box-shadow: 0 0 8px rgba(255,255,255,0.25), 0 0 30px rgba(255,255,255,0.15), 0 0 60px rgba(255,255,255,0.1);
-  }
-  50% {
-    box-shadow: 0 0 16px rgba(255,255,255,0.3), 0 0 50px rgba(255,255,255,0.2), 0 0 80px rgba(255,255,255,0.15);
+    box-shadow: 0 0 12px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.25);
   }
 }
 
-/* الهالة بتموّج زي سراب */
+@keyframes beamPulseStrong {
+  0% {
+    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(255,255,255,0.7), 0 0 50px rgba(255,255,255,0.4);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(255,255,255,0.25), 0 0 20px rgba(255,255,255,0.15);
+  }
+}
+
+/* ==== تأثير السراب الخفيف ==== */
 @keyframes mirageWave {
   0%, 100% {
     transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.7;
-  }
-  25% {
-    transform: translate(-50%, -50%) scaleX(1.05) skewX(2deg);
-    opacity: 0.85;
+    opacity: 0.6;
   }
   50% {
-    transform: translate(-50%, -50%) scaleX(1.08) skewX(-2deg);
-    opacity: 0.95;
-  }
-  75% {
     transform: translate(-50%, -50%) scaleX(1.03) skewX(1deg);
-    opacity: 0.8;
-  }
-}
-@keyframes mirageWaveSlow {
-  0%, 100% {
-    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(-50%, -50%) scaleX(1.05) skewX(2deg);
-    opacity: 0.7;
+    opacity: 0.9;
   }
 }
 
-/* تأثير خفيف على الشعاع نفسه بيميل بسيط كأن فيه حرارة بتتشوه */
-@keyframes mirageShift {
-  0%, 100% {
-    transform: translateX(-50%) skewX(0deg);
+@keyframes mirageWaveStrong {
+  0% {
+    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
+    opacity: 0.6;
   }
   50% {
-    transform: translateX(-50%) skewX(1.5deg);
+    transform: translate(-50%, -50%) scaleX(1.06) skewX(2deg);
+    opacity: 1;
   }
-}
-@keyframes mirageShiftSlow {
-  0%, 100% {
-    transform: translateX(-50%) skewX(0deg);
-  }
-  50% {
-    transform: translateX(-50%) skewX(3deg);
+  100% {
+    transform: translate(-50%, -50%) scaleX(1) skewX(0deg);
+    opacity: 0.6;
   }
 }
 #copyright {
