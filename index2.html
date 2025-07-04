@@ -216,14 +216,14 @@ button:hover {
   left: 50%;
   transform: translateX(-50%);
   width: 140px;
-  height: 12px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.35) 60%, transparent 100%);
-  border-radius: 100px / 50%;
+  height: 4px; /* تم تقليل الارتفاع */
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 45%, transparent 100%);
+  border-radius: 1000px / 300%; /* رفع الأطراف جدًا */
   animation: softPulse 6s ease-in-out infinite;
   box-shadow:
-    0 0 6px rgba(255,255,255,0.2),
-    0 0 12px rgba(255,255,255,0.25),
-    0 0 24px rgba(255,255,255,0.1);
+    0 0 8px rgba(255,255,255,0.15),
+    0 0 20px rgba(255,255,255,0.25),
+    0 0 40px rgba(255,255,255,0.1);
   pointer-events: auto;
   cursor: pointer;
   transition: animation 0.3s ease;
@@ -231,18 +231,18 @@ button:hover {
   overflow: visible;
 }
 
-/* الهالة اللي بتخرج من الشعاع نفسه */
+/* الهالة – تم دمجها أكتر ورفع شفافيتها */
 #footerToggle::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 240px;
-  height: 80px;
+  width: 220px;
+  height: 40px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 70%);
-  filter: blur(16px);
-  opacity: 0.5;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.18) 0%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0.55;
   border-radius: 50%;
   animation: glowAura 6s ease-in-out infinite;
   pointer-events: none;
@@ -257,60 +257,60 @@ button:hover {
   animation: glowAuraFast 4s ease-in-out infinite;
 }
 
-/* ===== نبض بطيء جداً للشعاع نفسه ===== */
+/* ===== نبض ناعم وبطيء للجسم ===== */
 @keyframes softPulse {
   0%, 100% {
     box-shadow:
-      0 0 6px rgba(255,255,255,0.2),
-      0 0 12px rgba(255,255,255,0.25),
-      0 0 24px rgba(255,255,255,0.1);
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.35) 60%, transparent 100%);
+      0 0 6px rgba(255,255,255,0.15),
+      0 0 14px rgba(255,255,255,0.25),
+      0 0 28px rgba(255,255,255,0.1);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 45%, transparent 100%);
   }
   50% {
     box-shadow:
-      0 0 12px rgba(255,255,255,0.3),
-      0 0 20px rgba(255,255,255,0.3),
-      0 0 36px rgba(255,255,255,0.15);
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 60%, transparent 100%);
+      0 0 14px rgba(255,255,255,0.3),
+      0 0 26px rgba(255,255,255,0.3),
+      0 0 48px rgba(255,255,255,0.15);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
   }
 }
 
-/* نبض أسرع قليلاً عند hover */
+/* ===== عند Hover فرق بسيط جداً في النبض ===== */
 @keyframes softPulseFast {
   0%, 100% {
     box-shadow:
-      0 0 6px rgba(255,255,255,0.2),
-      0 0 12px rgba(255,255,255,0.25),
-      0 0 24px rgba(255,255,255,0.1);
+      0 0 8px rgba(255,255,255,0.2),
+      0 0 18px rgba(255,255,255,0.3),
+      0 0 36px rgba(255,255,255,0.15);
   }
   50% {
     box-shadow:
-      0 0 14px rgba(255,255,255,0.4),
-      0 0 28px rgba(255,255,255,0.3),
-      0 0 48px rgba(255,255,255,0.2);
+      0 0 18px rgba(255,255,255,0.4),
+      0 0 30px rgba(255,255,255,0.35),
+      0 0 56px rgba(255,255,255,0.2);
   }
 }
 
-/* ===== تموج الهالة الناعمة ===== */
+/* ===== تموج خفيف للهالة الدمجية ===== */
 @keyframes glowAura {
   0%, 100% {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 0.4;
+    opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.1);
-    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 0.7;
   }
 }
 
 @keyframes glowAuraFast {
   0%, 100% {
     transform: translate(-50%, -50%) scale(1.05);
-    opacity: 0.5;
+    opacity: 0.6;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.8;
   }
 }
 #copyright {
