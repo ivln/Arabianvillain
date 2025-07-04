@@ -106,16 +106,17 @@ button:hover {
   pointer-events: none;
   opacity: 0.15;
 }
+
 #footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: transparent;
+  background: transparent; /* شفاف تمامًا قبل التفعيل */
   color: white;
   text-align: center;
   font-size: 18px;
-  height: 45px;
+  height: 40px;
   overflow: hidden;
   z-index: 10;
   transition: height 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease, opacity 0.3s ease;
@@ -125,7 +126,6 @@ button:hover {
   align-items: center;
   justify-content: flex-start;
   opacity: 0;
-  pointer-events: auto; /* ✅ لازم تكون هنا */
   animation: none;
 }
 
@@ -136,19 +136,18 @@ button:hover {
 #footer.active {
   height: 700px;
   background: linear-gradient(
-  to bottom,    
-  rgba(0, 0, 0, 0.0) 0%,
-  rgba(0, 0, 0, 0.2) 25%,
-  rgba(0, 0, 0, 0.5) 50%,
-  rgba(0, 0, 0, 0.7) 75%,
-  rgba(0, 0, 0, 0.9) 100%
+    to bottom,
+    rgba(0, 0, 0, 0.0) 0%,
+    rgba(0, 0, 0, 0.2) 25%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 75%,
+    rgba(0, 0, 0, 0.9) 100%
   );
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   opacity: 1;
-  pointer-events: auto; /* ✅ يتفاعل بعد التفعيل فقط */
+  pointer-events: auto;
 }
-
   @media (max-width: 768px) {
 #footer.active {
   height: 84vh;
@@ -158,8 +157,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* يوزع الأزرار بالتساوي */
-  margin-top: 120px;/* زوّد القيمة حسب ما تحب */
-  margin-bottom: 30px;
+  margin-top: 90px;/* زوّد القيمة حسب ما تحب */
+  margin-bottom: 40px;
   gap: 40px;
 }
 
@@ -222,7 +221,7 @@ button:hover {
 /* ==== جسم الشعاع ==== */
 #footerToggle {
   position: absolute;
-  top: 30px;
+  top: 35px;
   left: 50%;
   transform: translateX(-50%);
   width: 180px;
@@ -242,9 +241,7 @@ button:hover {
   transition: all 0.3s ease;
   z-index: 10;
 }
-#footerToggle:active {
-  transform: translateX(-50%) scale(1.05);
-}
+
 /* الهالة */
 #footerToggle::before {
   content: "";
@@ -340,16 +337,6 @@ button:hover {
       0 0 24px rgba(255, 0, 0, 0.3);
   }
 }
-    @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: scaleY(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-      }
 #copyright {
   font-size: 12px;
   margin-top: auto;
@@ -650,4 +637,4 @@ document.addEventListener('keydown', e => {
   };
 </script>
 </body>
-</html>
+        </html>
