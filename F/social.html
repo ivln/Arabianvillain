@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -12,6 +13,7 @@
       -ms-user-select: none !important;
       user-select: none !important;
     }
+
     body {
       margin: 0;
       padding: 0;
@@ -38,75 +40,109 @@
     }
 
     .pulse-container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 100vh;
-      width: 100vw;
       display: flex;
-      align-items: center;
       justify-content: center;
-      z-index: 10;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      position: relative;
     }
 
     .pulse {
-      position: relative;
-      width: 180px;
-      height: 3px;
-      background: radial-gradient(
-        ellipse at center 1px,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0.4) 55%,
-        transparent 80%
-      );
-      border-radius: 1000px / 800%;
-      box-shadow:
-        0 0 6px rgba(255, 255, 255, 0.3),
-        0 0 20px rgba(255, 255, 255, 0.15);
-      animation: beamPulse 4s ease-in-out infinite;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 11;
-    }
-
-    .pulse:active::after {
-      content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 500px;
-      height: 120px;
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08) 0%, transparent 80%);
-      transform: translate(-50%, -50%);
-      border-radius: 1000px / 300%;
-      z-index: -1;
-      pointer-events: none;
-      animation: holePulse 1.5s ease-out;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 5px;
+  background: radial-gradient(
+    ellipse at center 1px,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.4) 55%,
+    transparent 80%
+  );
+  border-radius: 1000px / 800%;
+  box-shadow:
+    0 0 6px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.15);
+  animation: beamPulse 2s ease-in-out infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
     }
 
-    @keyframes beamPulse {
-      0%, 100% {
-        transform: scaleX(1);
-        opacity: 0.6;
-      }
-      50% {
-        transform: scaleX(1.15);
-        opacity: 1;
-      }
+    .pulse::before {
+      content: "";
+  position: absolute;
+  top: 50.5%;
+  left: 50%;
+  width: 100px;
+  height: 2px;
+  transform: translate(-50%, -50%) scaleY(0.7);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.5) 25%,
+    rgba(255, 255, 255, 0.1) 70%,
+    transparent 100%
+  );
+  filter: blur(2px);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: -1;
     }
 
-    @keyframes holePulse {
-      0% {
-        opacity: 0.5;
-        transform: translate(-50%, -50%) scale(0.9);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.4);
-      }
+    .pulse::after {
+      content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  filter: blur(4px);
+  animation: pulseCoreOnly 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
     }
 
+@keyframes pulseCoreOnly {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+}
+/* ==== أنيميشن الشعاع ==== */
+@keyframes beamPulse {
+  0%, 100% {
+    background: radial-gradient(
+      ellipse at center 1px,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.4) 55%,
+      transparent 80%
+    );
+    box-shadow:
+      0 0 4px rgba(255, 255, 255, 0.25),
+      0 0 12px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    background: radial-gradient(
+      ellipse at center 1px,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      transparent 80%
+    );
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 24px rgba(255, 255, 255, 0.3);
+  }
+}
     .content {
       display: none;
       flex-direction: column;
@@ -149,13 +185,13 @@
       opacity: 0;
       transform: translateY(100px);
       transition: all 2s ease;
-      pointer-events: none;
+      pointer-events: none; /* ⛔️ تمنع التفاعل قبل الظهور */
     }
 
     .socials.reveal {
       opacity: 1;
       transform: translateY(0);
-      pointer-events: auto;
+      pointer-events: auto; /* ✅ تسمح بالتفاعل بعد الظهور */
     }
 
     .social-icon {
@@ -201,7 +237,7 @@
       .social-icon img { width: 35px; height: 35px; }
       .social-icon span { font-size: 0.8em; }
       .final-message { font-size: 0.8em; }
-      .pulse { width: 140px; height: 2px; }
+      .pulse { width: 16px; height: 16px; }
     }
 
     @media (max-width: 480px) {
@@ -217,6 +253,7 @@
   <video class="background-video" id="bg-video" autoplay muted loop>
     <source src="vid.mp4" type="video/mp4" />
   </video>
+
   <audio id="bg-audio" autoplay>
     <source src="soundv.mp3" type="audio/mpeg">
   </audio>
@@ -233,6 +270,7 @@
     <div class="line" style="animation-delay: 4.5s;">• IT WAIT'S •</div>
     <div class="line" style="animation-delay: 6s;">• IT HUMS THROUGH BONES .. ECHOES IN YOUR SHADES •</div>
     <div class="line" style="animation-delay: 7.5s;">• AND IF YOU LISTEN CLOSE .. IT MIGHT WAKE YOU UP •</div>
+
     <div class="socials">
       <div class="social-icon">
         <a href="https://www.instagram.com/arabianvillain?igsh=andtbXl0bTZrbmFx"><img src="../A/sl1.jpg" alt="Instagram"/></a>
