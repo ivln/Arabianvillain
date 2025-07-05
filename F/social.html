@@ -48,28 +48,30 @@
       position: relative;
     }
 
-    .pulse {
-      position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 180px;
-height: 5px;
-background: radial-gradient(
-  ellipse at center 1px,
-  rgba(255, 255, 255, 1) 0%,
-  rgba(255, 255, 255, 0.4) 55%,
-  transparent 80%
-);
-border-radius: 1000px / 800%;
-box-shadow:
-  0 0 6px rgba(255, 255, 255, 0.3),
-  0 0 20px rgba(255, 255, 255, 0.15);
-animation: beamPulse 2s ease-in-out infinite;
-cursor: pointer;
-transition: all 0.3s ease;
-z-index: 10;
-    }
+.pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 5px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  border-radius: 999px;
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  animation: beamPulse 2s ease-in-out infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  border: none;
+  outline: none;
+}
 
     .pulse::before {
       content: "";
