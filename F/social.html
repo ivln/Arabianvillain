@@ -39,15 +39,12 @@ audio {
 
 .pulse {
   position: relative;
-  width: 25px;
-  height: 5px;
-  background: white;
-  border-radius: 2.5px / 2.5px;
-  -webkit-mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
-  mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
-  filter: blur(0.3px);
-  animation: corePulse 2.5s ease-in-out infinite;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50%;
   cursor: pointer;
+  transition: opacity 1.5s ease;
 }
 
 .pulse::before {
@@ -222,6 +219,11 @@ audio {
 
   .final-message {
     font-size: 0.7em;
+  }
+
+  .pulse {
+    width: 16px;
+    height: 16px;
   }
 }
 
