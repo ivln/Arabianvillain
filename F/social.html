@@ -6,6 +6,14 @@
   <title>TAPROOT</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -14,10 +22,6 @@
       font-family: 'Cinzel', serif;
       overflow-x: hidden;
       overflow-y: auto;
-    }
-
-    * {
-      -webkit-tap-highlight-color: transparent;
     }
 
     video.background-video {
@@ -168,7 +172,7 @@
     }
 
     .social-icon span {
-      font-size: 1.5em;
+      font-size: 1.8em;
       color: #ccc;
       text-align: center;
       white-space: normal;
@@ -202,12 +206,6 @@
       .social-icon span { font-size: 0.5em; }
       .final-message { font-size: 0.6em; }
     }
-       * {
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-     user-select: none;         /* Standard */
-     }   
   </style>
 </head>
 <body>
@@ -285,16 +283,19 @@
 
     document.addEventListener('copy', e => e.preventDefault());
     document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('paste', e => e.preventDefault());
     document.addEventListener('contextmenu', e => e.preventDefault());
+
     document.addEventListener('keydown', e => {
       if (
-        (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
-        (e.metaKey && e.key === 'c') ||
-        e.key === 'F12'
+        e.ctrlKey && ['c', 'u', 'x', 'a', 's', 'p'].includes(e.key.toLowerCase()) ||
+        e.metaKey && ['c', 'u', 'x', 'a', 's', 'p'].includes(e.key.toLowerCase()) ||
+        ['F12', 'F6'].includes(e.key)
       ) {
         e.preventDefault();
+        return false;
       }
     });
   </script>
 </body>
-  </html>
+</html>
