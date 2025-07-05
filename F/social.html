@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,253 +14,253 @@
       font-family: 'Cinzel', serif;
       overflow-x: hidden;
       overflow-y: auto;
-    }video.background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  display: none;
-}
+    }
 
-audio {
-  display: none;
-}
+    video.background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      display: none;
+    }
 
-.pulse-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: black;
-  position: relative;
-}
+    audio {
+      display: none;
+    }
 
-.pulse {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: opacity 1.5s ease;
-}
+    .pulse-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      position: relative;
+    }
 
-.pulse::before {
-  content: "";
-  position: absolute;
-  top: 50.5%;
-  left: 50%;
-  width: 100px;
-  height: 2px;
-  transform: translate(-50%, -50%) scaleY(0.7);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.5) 25%,
-    rgba(255, 255, 255, 0.1) 70%,
-    transparent 100%
-  );
-  filter: blur(2px);
-  border-radius: 9999px;
-  pointer-events: none;
-  z-index: -1;
-}
+    .pulse-image {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      background-image: url('raycore.jpg'); /* اسم الصورة */
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: opacity 1.5s ease;
+    }
 
-.pulse::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 4px;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 1);
-  border-radius: 50%;
-  filter: blur(4px);
-  animation: pulseCoreOnly 2.5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
+    .pulse-image::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 2px;
+      transform: translate(-50%, -50%) scaleY(0.7);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.5) 25%,
+        rgba(255, 255, 255, 0.1) 70%,
+        transparent 100%
+      );
+      filter: blur(2px);
+      border-radius: 9999px;
+      pointer-events: none;
+      z-index: -1;
+      animation: haloPulseSlow 2.5s ease-in-out infinite;
+    }
 
-@keyframes pulseCoreOnly {
-  0%, 100% {
-    opacity: 0.4;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.4);
-  }
-}
+    .pulse-image::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 4px;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 1);
+      border-radius: 50%;
+      filter: blur(4px);
+      animation: pulseCoreOnly 2.5s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-@keyframes haloPulseSlow {
-  0% {
-    transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
-    opacity: 0.5;
-    filter: blur(2px);
-  }
-  50% {
-    transform: translate(-50%, -50%) scaleX(1.08) scaleY(0.85);
-    opacity: 0.95;
-    filter: blur(4px);
-  }
-  100% {
-    transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
-    opacity: 0.5;
-    filter: blur(2px);
-  }
-}
+    @keyframes pulseCoreOnly {
+      0%, 100% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.4);
+      }
+    }
 
-.content {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 30px 10px;
-  max-width: 1000px;
-  margin: auto;
-}
+    @keyframes haloPulseSlow {
+      0% {
+        transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
+        opacity: 0.5;
+        filter: blur(2px);
+      }
+      50% {
+        transform: translate(-50%, -50%) scaleX(1.08) scaleY(0.85);
+        opacity: 0.95;
+        filter: blur(4px);
+      }
+      100% {
+        transform: translate(-50%, -50%) scaleX(1) scaleY(0.7);
+        opacity: 0.5;
+        filter: blur(2px);
+      }
+    }
 
-.content h1 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
+    .content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 10px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-.line {
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: fadeInLine 2.5s forwards;
-  font-size: 0.9em;
-  margin: 6px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+    .content h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
 
-@keyframes fadeInLine {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .line {
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInLine 2.5s forwards;
+      font-size: 0.9em;
+      margin: 6px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.socials {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  opacity: 0;
-  transform: translateY(100px);
-  transition: all 2s ease;
-}
+    @keyframes fadeInLine {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.socials.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .socials {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 2s ease;
+    }
 
-.social-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-}
+    .socials.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.social-icon img {
-  width: 40px;
-  height: 40px;
-  transition: transform 0.3s ease;
-  margin-bottom: 6px;
-}
+    .social-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
 
-.social-icon:hover img {
-  transform: scale(1.2);
-}
+    .social-icon img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+      margin-bottom: 6px;
+    }
 
-.social-icon span {
-  font-size: 0.7em;
-  color: #ccc;
-  text-align: center;
-  white-space: normal;
-}
+    .social-icon:hover img {
+      transform: scale(1.2);
+    }
 
-.final-message {
-  opacity: 0;
-  text-align: center;
-  margin-top: 30px;
-  font-size: 0.8em;
-  transition: opacity 2s ease;
-}
+    .social-icon span {
+      font-size: 0.7em;
+      color: #ccc;
+      text-align: center;
+      white-space: normal;
+    }
 
-.final-message.show {
-  opacity: 1;
-}
+    .final-message {
+      opacity: 0;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.8em;
+      transition: opacity 2s ease;
+    }
 
-@media (max-width: 768px) {
-  .content h1 {
-    font-size: 1.5em;
-  }
+    .final-message.show {
+      opacity: 1;
+    }
 
-  .line {
-    font-size: 0.75em;
-  }
+    @media (max-width: 768px) {
+      .content h1 {
+        font-size: 1.5em;
+      }
+      .line {
+        font-size: 0.75em;
+      }
+      .social-icon img {
+        width: 30px;
+        height: 30px;
+      }
+      .social-icon span {
+        font-size: 0.6em;
+      }
+      .final-message {
+        font-size: 0.7em;
+      }
+      .pulse-image {
+        width: 90px;
+        height: 90px;
+      }
+    }
 
-  .social-icon img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .social-icon span {
-    font-size: 0.6em;
-  }
-
-  .final-message {
-    font-size: 0.7em;
-  }
-
-  .pulse {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .content h1 {
-    font-size: 1.2em;
-  }
-
-  .line {
-    font-size: 0.65em;
-  }
-
-  .social-icon img {
-    width: 26px;
-    height: 26px;
-  }
-
-  .social-icon span {
-    font-size: 0.5em;
-  }
-
-  .final-message {
-    font-size: 0.6em;
-  }
-}
-
+    @media (max-width: 480px) {
+      .content h1 {
+        font-size: 1.2em;
+      }
+      .line {
+        font-size: 0.65em;
+      }
+      .social-icon img {
+        width: 26px;
+        height: 26px;
+      }
+      .social-icon span {
+        font-size: 0.5em;
+      }
+      .final-message {
+        font-size: 0.6em;
+      }
+    }
   </style>
 </head>
 <body>
   <video class="background-video" id="bg-video" autoplay muted loop>
     <source src="vid.mp4" type="video/mp4" />
-  </video>  <audio id="bg-audio" autoplay>
-    <source src="soundv.mp3" type="audio/mpeg">
-  </audio>  <div class="pulse-container">
-    <div class="pulse" onclick="activateContent()"></div>
-  </div>  <div class="content">
+  </video>
+  <audio id="bg-audio" autoplay>
+    <source src="soundv.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="pulse-container">
+    <div class="pulse-image" onclick="activateContent()"></div>
+  </div>
+
+  <div class="content">
     <h1>TAPROOT</h1>
     <div class="line">YOU THOUGHT IT WAS JUST A BRAND.</div>
     <div class="line">BUT BENEATH THE SURFACE... THERE'S A PULSE</div>
@@ -267,34 +268,39 @@ audio {
     <div class="line">A WHISPER THROUGH THE ROOTS.</div>
     <div class="line">FOLLOW THE VEINS , AND IT'LL LEAD YOU.</div>
     <div class="line">NOT TO JUST THE SURFACE...</div>
-    <div class="line">BUT TO EVERYTHING HIDING BENEATH IT .</div><div class="socials">
-  <div class="social-icon">
-    <a href="https://www.instagram.com/arabianvillain?igsh=andtbXl0bTZrbmFx"><img src="../A/sl1.jpg" alt="Instagram"/></a>
-    <span>WHERE GLIMPSES LEAK OUT</span>
-  </div>
-  <div class="social-icon">
-    <a href="#TIKTOK"><img src="../A/sl2.jpg" alt="TikTok"/></a>
-    <span>MOTION FROM THE UNDERGROUND</span>
-  </div>
-  <div class="social-icon">
-    <a href="#YOUTUBE"><img src="../A/sl3.jpg" alt="YouTube"/></a>
-    <span>ECHOES TURNED TO VISION</span>
-  </div>
-  <div class="social-icon">
-    <a href="#TWITTER"><img src="../A/sl4.jpg" alt="Twitter"/></a>
-    <span>WORDS LEFT UNGUARDED</span>
-  </div>
-  <div class="social-icon">
-    <a href="#FACEBOOK"><img src="../A/sl5.jpg" alt="Facebook"/></a>
-    <span>WHERE THE SURFACE CRACKED FIRST</span>
-  </div>
-</div>
+    <div class="line">BUT TO EVERYTHING HIDING BENEATH IT .</div>
 
-<div class="final-message">YOU FOLLOWED THE ROOTS BUT THE QUESTION IS...<br>DID THE RIOTS FOLLOW YOU BACK?</div>
+    <div class="socials">
+      <div class="social-icon">
+        <a href="https://www.instagram.com/arabianvillain?igsh=andtbXl0bTZrbmFx"><img src="../A/sl1.jpg" alt="Instagram"/></a>
+        <span>WHERE GLIMPSES LEAK OUT</span>
+      </div>
+      <div class="social-icon">
+        <a href="#TIKTOK"><img src="../A/sl2.jpg" alt="TikTok"/></a>
+        <span>MOTION FROM THE UNDERGROUND</span>
+      </div>
+      <div class="social-icon">
+        <a href="#YOUTUBE"><img src="../A/sl3.jpg" alt="YouTube"/></a>
+        <span>ECHOES TURNED TO VISION</span>
+      </div>
+      <div class="social-icon">
+        <a href="#TWITTER"><img src="../A/sl4.jpg" alt="Twitter"/></a>
+        <span>WORDS LEFT UNGUARDED</span>
+      </div>
+      <div class="social-icon">
+        <a href="#FACEBOOK"><img src="../A/sl5.jpg" alt="Facebook"/></a>
+        <span>WHERE THE SURFACE CRACKED FIRST</span>
+      </div>
+    </div>
 
-  </div>  <script>
+    <div class="final-message">
+      YOU FOLLOWED THE ROOTS BUT THE QUESTION IS...<br>DID THE RIOTS FOLLOW YOU BACK?
+    </div>
+  </div>
+
+  <script>
     function activateContent() {
-      document.querySelector('.pulse').style.opacity = 0;
+      document.querySelector('.pulse-image').style.opacity = 0;
 
       const video = document.getElementById('bg-video');
       const audio = document.getElementById('bg-audio');
@@ -320,5 +326,6 @@ audio {
         }, 30000);
       }, 1500);
     }
-  </script></body>
+  </script>
+</body>
 </html>
