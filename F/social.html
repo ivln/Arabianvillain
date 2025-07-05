@@ -250,8 +250,13 @@ audio {
   .final-message {
     font-size: 0.6em;
   }
+  * {
+ -webkit-user-select: none; /* Safari */
+ -moz-user-select: none;    /* Firefox */
+ -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Standard */
+  }
 }
-
   </style>
 </head>
 <body>
@@ -322,5 +327,21 @@ audio {
         }, 30000);
       }, 1500);
     }
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (
+        (e.ctrlKey && (e.key === 'c' || e.key === 'u')) ||
+        (e.metaKey && e.key === 'c') ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+      }
+    });
+  };
+</script>
+</body>
+</html>
   </script></body>
 </html>
