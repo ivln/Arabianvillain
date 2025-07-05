@@ -146,11 +146,13 @@
       opacity: 0;
       transform: translateY(100px);
       transition: all 2s ease;
+      pointer-events: none; /* ⛔️ تمنع التفاعل قبل الظهور */
     }
 
     .socials.reveal {
       opacity: 1;
       transform: translateY(0);
+      pointer-events: auto; /* ✅ تسمح بالتفاعل بعد الظهور */
     }
 
     .social-icon {
